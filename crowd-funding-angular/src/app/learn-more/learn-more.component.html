@@ -1,0 +1,121 @@
+<section class="preview">
+    <div class="preview-title ">
+        <span>{{camp[0]?.cam_title}}</span>
+    </div>
+    <div class="preview-subtitle">
+        <span>{{camp[0]?.cam_subject}}</span>
+    </div>
+
+ 
+    <!-- faq -->
+    <div class="row">
+        <!-- ***** FAQ Start ***** -->
+
+        <div class="col-md-12 ">
+            <div class="faq" id="accordion">
+                <div class="card" *ngFor="let faq of faqs; let rowIndex=index">
+                    <div class="card-header" id="faqHeading-1">
+                        <div class="mb-0">
+                            <span class="faq-title" data-toggle="collapse"
+                                [attr.data-target]="'#faqCollapse-' + faq.faq_id" data-aria-expanded="true"
+                                [attr.data-aria-controls]="'faqCollapse-' +faq.faq_id">
+                                <span class="badge">{{rowIndex+1}}</span>{{faq.faq_qust}}
+                            </span>
+                        </div>
+                    </div>
+                    <div id="{{ 'faqCollapse-' + faq.faq_id }}" class="collapse"
+                        [attr.aria-labelledby]="'faqHeading-'+faq.faq_id" data-parent="#accordion">
+                        <div class="card-body">
+                            <p>{{faq.faq_ans}}</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+</section>
+<section class="comments">
+    <div class="row">
+        <div class="col-md-8">
+            
+
+
+                <div class="comment-input-container ">
+                    <div class="frm">
+                        <form name="form" #commentForm="ngForm"
+                            (ngSubmit)="commentForm.form.valid && addComment(commentForm)">
+                            <input required minlength="2" maxlength="100" [(ngModel)]="commentPost.comment"
+                                name="commentPost.comment" #comment="ngModel" type="text"
+                                placeholder="Share your thoughts...">
+
+
+                            <div class="cmt-note">
+                                <span>
+                                    Your comment will be visible to every backer and creator. <br>Comments are a way,
+                                    the creator gets to know how people feel about thier campaign.
+                                </span>
+                            </div>
+                            <div class="cmt-button">
+                                <button class="cmt-btn" type="submit">Comment</button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+        
+
+
+                <div class="separator" style="display: block; height: 90px;">
+
+                </div>
+            
+            <div class="row">
+
+                <div class="col-md-12">
+
+                    <div class="comment_container">
+
+
+                        <div class="comment"
+                            *ngFor="let cmt of comments"
+                        >
+                            <div class="comment-name">
+                                <span>
+                                    {{cmt.user_name}}
+                                </span>
+                            </div>
+                            <div class="comment-time">
+                                <span>{{cmt.timestamp}}</span>
+                            </div>
+                            <div class="comment-text">
+                                <span>
+                                    {{cmt.comment}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-md-4">
+            <div class="back">
+                <button>Back this Project</button>
+            </div>
+            <div class="learn-more">
+                <button>Learn more</button>
+            </div>
+            <div class="note">
+                <span>
+                    All or nothing. This project will only be funded if it reaches its goal in {{ this.days_to_go}}
+                    days.
+                </span>
+            </div>
+        </div>
+    </div>
+</section>

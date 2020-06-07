@@ -1,0 +1,12 @@
+.form-group label{
+    font-size: 17px;
+    /* font-weight: bold; */
+    /* color: rgb(46, 156, 101); */
+ }  
+ .h-divider{
+    margin-top:5px;
+    margin-bottom:5px;
+    height:1px;
+    width:100%;
+    border-top:1px solid lightgrey;
+   }

@@ -1,0 +1,38 @@
+<p></p>
+<div *ngIf="Myprojects?.length >0 else elseblock" >
+<div class="row" *ngFor="let proj of Myprojects">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+        <div class="card" style="border-color: transparent;">
+
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-3">
+                  <img class="profilepic" style="height:100px; width: 100px;" src="https://upload.wikimedia.org/wikipedia/sco/thumb/e/e0/Iron_Man_bleeding_edge.jpg/250px-Iron_Man_bleeding_edge.jpg">
+      
+                </div>
+                <div class="col-sm-6">
+                  <h5 class="card-title">{{proj.cam_title}}</h5>
+                  <p class="card-text">{{proj.cam_subject}}</p>
+                </div>
+                <div class="col-sm-3">
+                  <a class="btn btn-primary" style="float: right;" href="#" >View</a>
+                </div>
+              </div>
+            </div>
+          </div>
+         <div class="h-divider"></div>
+    </div>
+    <div class="col-sm-3"></div>
+    <br>
+</div>
+</div>
+<ng-template #elseblock>
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+      <p style="font-size: x-large; font-family: monospace;">Have some idea?? Launch it => <a href="#">here</a></p>
+    </div>
+    <div class="col-sm-4"></div>
+  </div>
+</ng-template>

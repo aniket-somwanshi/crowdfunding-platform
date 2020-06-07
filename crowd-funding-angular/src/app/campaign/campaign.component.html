@@ -1,0 +1,154 @@
+<section class="preview">
+    <div class="preview-title ">
+        <span>{{camp[0]?.cam_title}}</span>
+    </div>
+    <div class="preview-subtitle">
+        <span>{{camp[0]?.cam_subject}}</span>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <img class="preview-img"
+            src="http://localhost:3000/{{story[0]?.image_1}}"
+            >
+        </div>
+        <div class="col-md-4">
+            <div class="project-status">
+
+
+            <div class="progress">
+            </div>
+            <div class="total-amount">
+                <span> ₹ {{camp[0]?.total_amount}}</span>
+            </div>
+            <div class="pledge">
+                <span>pledged of ₹ {{camp[0]?.cam_pledge}} goal
+                </span>
+            </div>
+            <div class="backers">
+                <span>{{camp[0]?.cam_no_backers}}</span>
+            </div>
+            <div class="backers-tag">
+                <span>Backers</span>
+            </div>
+            <div class="days-left">
+                <span>{{ days_to_go }}</span>
+            </div>
+            <div class="days-left-tag">
+                <span>days to go</span>
+            </div>
+            <div class="back">
+                <button (click)="goToPledge()" >Back this Project</button>
+            </div>
+            <div class="learn-more">
+                <button>Learn more</button>
+            </div>
+            <div class="note">
+                <span>
+                    All or nothing. This project will only be funded if it reaches its goal in {{ this.days_to_go}} days.
+                </span>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+<section class="cmp-details">
+    <div class="row">
+        <div class="col-md-8">
+
+            <div class="story-tag">
+                <span>Our Story</span>
+            </div>
+            <div class="story">
+                <div class="story-block">
+                    <span>
+                        {{story[0]?.desc_1}}
+                    </span>
+                </div>
+                <div class="story-block">
+                    <img
+                    src="http://localhost:3000/{{story[0]?.image_2}}"
+                    >
+                </div>
+                <div class="story-block">
+                    <span>
+                        {{story[0]?.desc_2}}
+                    </span>
+                </div>
+                <div class="story-block">
+                    <img
+                    src="http://localhost:3000/{{story[0]?.image_3}}"
+                    >
+                </div>
+                <div class="story-block">
+                    <span>
+                        {{story[0]?.desc_4}}
+                    </span>
+                </div>
+                <div class="story-block">
+                    <img
+                    src="http://localhost:3000/{{story[0]?.image_4}}"
+                    >
+                </div>
+                <div class="story-block">
+                    <span>
+                        {{story[0]?.desc_3}}
+                    </span>
+                </div>
+              
+                
+            </div>
+        </div>
+        <div class="col-md-4">
+
+            <div class="rewards">
+
+                <div class="story-tag">
+                    <span>Rewards</span>
+                </div>
+
+
+                <!-- <div class="back">
+                    <button>Community</button>
+                </div>
+                <div class="learn-more">
+                    <button> ABC </button>
+                </div> -->
+
+                <!-- reward -->
+
+                <div  class="reward-default"
+                (click)="goToLearnMore()"
+                >
+                    <div class="reward-amount">
+                        <span>Wanna know more ?</span>
+                    </div>
+                    <div class="reward-title">
+                        <span>FAQs & Comments</span>
+                    </div>
+                  
+                    <div class="reward-desc">
+                        <span>Hesitant to pledge? Get to know what other people in the community has to say about this campaign and make the right decision! </span>
+                    </div>
+                </div>
+
+
+                <div class="reward"
+                *ngFor="let rew of rewards"
+                >
+                    <div class="reward-amount">
+                        <span>Pledge ₹ {{rew.rewards_amount}}</span>
+                    </div>
+                    <div class="reward-title">
+                        <span>{{rew.rewards_sub}}</span>
+                    </div>
+                  
+                    <div class="reward-desc">
+                        <span>{{rew.rewards_desc}}</span>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+    </div>
+</section>

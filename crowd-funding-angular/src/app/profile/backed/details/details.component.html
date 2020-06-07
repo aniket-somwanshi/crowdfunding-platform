@@ -1,0 +1,11 @@
+
+<div class="card shadow-lg" *ngFor="let detail of Details">
+<div class="card-body" >
+    <h3 class="card-title">{{detail.cam_title}}</h3>
+    <p class="card-text"><label>Subject:</label>{{detail.cam_subject}}</p>
+    <p class="card-text">{{detail.cam_desc}}</p>
+    <p class="card-text"><label>Amount Backed:</label> {{detail.amount}}</p>
+    <p class="card-text"><label>Rewards received:</label> {{detail.rewards_desc}}</p>
+    <p class="card-text"><label>Backed on:</label>{{detail.funds_date}}</p>
+    </div>
+  </div>

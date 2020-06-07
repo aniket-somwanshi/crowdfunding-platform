@@ -1,0 +1,53 @@
+<p>register works!</p>
+
+<form name="form" #registerForm="ngForm" (ngSubmit)="registerForm.form.valid && register(registerForm)">
+    <div>Email</div>
+    <input 
+    required 
+    [(ngModel)]="registerData.user_email"
+    name="user_email" #user_email="ngModel" 
+    type="email"
+    >
+
+    <div *ngIf="user_email.touched && !user_email.valid" 
+    style="color: red;">
+    <span *ngIf="user_email.errors.required">email is required.</span>
+    </div>
+    
+    <div>Full Name</div>
+    <input  
+    required 
+    [(ngModel)]="registerData.user_name"
+    name="user_name" #user_name="ngModel" 
+    type="text"
+    >
+
+    <div>Phone</div>
+    <input  
+    required 
+    [(ngModel)]="registerData.user_phone"
+    name="user_phone" #user_phone="ngModel" 
+    type="phone"
+    >
+
+    <div>password</div>
+    <input  
+    required 
+    [(ngModel)]="registerData.password"
+    name="password" #password="ngModel" 
+    type="password"
+    >
+
+    <div>Type</div>
+    <input  
+    required 
+    [(ngModel)]="registerData.type"
+    name="type" #type="ngModel" 
+    type="text"
+    >
+
+    <button 
+    type="submit" 
+    >Sign Up</button>
+
+</form>

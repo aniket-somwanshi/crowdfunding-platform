@@ -1,0 +1,67 @@
+
+<div class="about-main" >
+  <div class="alert alert-success" *ngIf="popup===1">
+    <strong>Success!</strong> Profile updated, refresh page to view changes.
+  </div> 
+  <div class="alert alert-danger" *ngIf="popup===0">
+    <strong>Sorry!</strong> Something went wrong!!!!!
+  </div> 
+  <div class="row">
+  <div class="col-md-10">
+    <form [formGroup]="aboutform" (ngSubmit)="onSubmit()" >
+        <div class="form-row" >
+          
+          <div class="form-group col-md-6">
+            <label for="name" >Name</label>
+            <input type="text"  class="form-control" formControlName="fullname" name="fullname" id="inputname" [disabled]="disable">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputemail">Email</label>
+            <input   type="email" class="form-control" formControlName="email" name="email" id="inputemail"   >
+          </div>
+        </div>
+        <div class="h-divider"> </div>
+        <div class="form-row">
+           
+        <div class="form-group col-md-6">
+          <label for="inputphone">Phone</label>
+          <input   type="text" class="form-control" name="phone" formControlName="phone" id="inputphone"  >
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputwebsite">Website</label>
+          <input   type="text" class="form-control" id="inputwebsite" formControlName="website"  >
+        </div>
+        </div>
+        <div class="form-row">
+          <div class="h-divider"> </div>
+          <div class="form-group col-md-6">
+            <label for="inputLocation">Location</label>
+            <input   type="text" class="form-control" id="inputLocation" formControlName="location" >
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputCity">Bio:</label>
+            <input   type="text" class="form-control" id="inputbio" formControlName="bio"  >
+          </div>
+         
+        </div >
+        <button *ngIf="savebutton ==1" id="enable" type="submit" class="btn btn-success">Save</button>
+      </form>
+  </div>
+        <div style="display: inline;">
+         <label >Wanna update details?</label><br>
+        <button (click)="enable()" type="button" class="btn btn-primary">Click Here.</button>
+        </div>
+        </div>
+      
+</div>
+<!-- <script>
+    $(document).ready(function()
+    {
+     $('#enable').click(function()
+     {
+       $("input[name='fullname']").removeAttr("readonly");  
+     });
+    
+     });
+    
+     </script> -->

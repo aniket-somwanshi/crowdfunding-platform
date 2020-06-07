@@ -1,0 +1,48 @@
+<p></p>
+<div *ngIf="Backed?.length >0 else elseblock">
+<div class="row">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-7">
+     <div class="row" *ngFor="let back of Backed">
+    <!-- <div class="col-sm-1"></div> -->
+    <div class="col-sm-12">
+    <div class="card " style="border-color: transparent;" >
+
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-3">
+            <img class="profilepic" style="height:100px; width: 100px;" src="https://upload.wikimedia.org/wikipedia/sco/thumb/e/e0/Iron_Man_bleeding_edge.jpg/250px-Iron_Man_bleeding_edge.jpg">
+
+          </div>
+          <div class="col-sm-7">
+            <h5 class="card-text">{{back.cam_title}}</h5>
+            <p class="card-text">{{back.cam_subject}}</p>
+          </div>
+          <div class="col-sm-2">
+            <a class="btn btn-primary" style="float: right;" [routerLink]="['./details',back.funds_id]">Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    </div>
+    <div class="h-divider"> </div>
+    <!-- <div class="col-sm-1"></div> -->
+   
+  </div>
+  
+  </div>
+  <div class="col-sm-4">
+    <router-outlet></router-outlet>
+  </div>
+</div><br>
+</div>
+<ng-template #elseblock>
+  <div class="row">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+      <p style="font-size: x-large; font-family:sans-serif;">Wanna explore some ideas?? Click <a href="#" style="color:blue;">here</a></p>
+    </div>
+    <div class="col-sm-4"></div>
+  </div>
+</ng-template>

@@ -1,0 +1,282 @@
+
+ <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+        <div class="row" style="height: 110px;">
+            <div style="width: 100%; text-align: center;">
+                <label class="title">Add Story</label>
+                <p style="font-size: 20px; color: #656969;">Images express about your project better. </p>
+            
+            </div>
+
+        </div>
+
+    <!-- div to make font-weight 300 -->
+        <div style="font-weight: 300;"> 
+
+       
+        <div class="h-divider"> </div>
+        <form name="form" #storyForm="ngForm" (ngSubmit)="storyForm.form.valid && addStory(storyForm)">
+            <div class="form-row">
+
+                <div class="form-group col-md-1">
+                   
+                </div>
+               
+                <div class="form-group col-md-7">
+                    <!-- <label for="inputemail">Title</label> -->
+                    <label>Description of image</label>
+                    <input class="form-control"
+                    required minlength="2" 
+                    [(ngModel)]="story.desc_1"
+                    name="desc_1" #desc_1="ngModel" 
+                    type="text" placeholder="eg.cover page of a book."
+                    >
+                    <div *ngIf="desc_1.touched && !desc_1.valid" 
+                    style="color: red;">
+                    <span *ngIf="desc_1.errors.required">Description is required.</span>
+                    <span *ngIf="desc_1.errors.minlength">Description should be more than 2 characters at least.</span>
+                    </div>
+                    <br>
+                    <label>Image 1</label><br>
+
+                    <input class="form-control-file"
+                    required 
+                    type="file"
+                    name="image_1" (change)="selectImage1($event)"
+                    
+                    accept="image"
+                    >
+                </div>
+                
+                <div class="col-md-4" >
+                    <div style="margin-left: 30px;">
+                    <p>Note!</p>
+                    <p>Images help customers to know what they are actually gonna get.</p>
+                    <p>You can add only four images for your project show choose images which are precise and define your project.</p>
+                </div>
+                </div>
+            </div>
+
+
+            <div class="h-divider"> </div>
+
+            <div class="form-row">
+
+                <div class="form-group col-md-1">
+                   
+                </div>
+               
+                <div class="form-group col-md-7">
+                    <!-- <label for="inputemail">Title</label> -->
+                    <label>Description of image</label>
+                    <input class="form-control"
+    required minlength="2" 
+    [(ngModel)]="story.desc_2"
+    name="desc_2" #desc_2="ngModel" 
+    type="text" placeholder="eg.this book is written by"
+    >
+    <div *ngIf="desc_2.touched && !desc_1.valid" 
+    style="color: red;">
+    <span *ngIf="desc_2.errors.required">Description is required.</span>
+    <span *ngIf="desc_2.errors.minlength">Description should be more than 2 characters at least.</span>
+    </div>
+    <br>
+    <label>Image 2</label>
+    <input  class="form-control-file"
+    required 
+    type="file"
+    name="image_2" (change)="selectImage2($event)"
+    
+    accept="image"
+    >
+                    
+                    
+                    
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-3"></div>
+            </div>
+
+
+            <div class="h-divider"> </div>
+         
+            <div class="form-row">
+
+                <div class="form-group col-md-1">
+                   
+                </div>
+               
+                <div class="form-group col-md-7">
+                    <!-- <label for="inputemail">Title</label> -->
+                    <label>Description of image</label>
+                    <input class="form-control"
+                    required minlength="2" 
+                    [(ngModel)]="story.desc_3"
+                    name="desc_3" #desc_3="ngModel" 
+                    type="text" placeholder="description"
+                    >
+                    <div *ngIf="desc_3.touched && !desc_1.valid" 
+                    style="color: red;">
+                    <span *ngIf="desc_3.errors.required">Description is required.</span>
+                    <span *ngIf="desc_3.errors.minlength">Description should be more than 2 characters at least.</span>
+                    </div>
+                    
+                    <br>
+                
+                    <label>Image 3</label>
+                    <input  class="form-control-file"
+                    required 
+                    type="file"
+                    name="image_3" (change)="selectImage3($event)"
+                    
+                    accept="image"
+                    >
+                   
+
+                   
+                    
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-3"></div>
+            </div>
+
+
+            <div class="h-divider"> </div>
+
+            <div class="form-row">
+
+                <div class="form-group col-md-1">
+                   
+                </div>
+               
+                <div class="form-group col-md-7">
+                    <!-- <label for="inputemail">Title</label> -->
+                    <label>Description of image</label>
+                    <input class="form-control"
+    required minlength="2" 
+    [(ngModel)]="story.desc_4"
+    name="desc_4" #desc_4="ngModel" 
+    type="text" placeholder="description"
+    >
+    <br>
+    <label>Image 4</label>
+    <input  class="form-control-file"
+    required 
+    type="file"
+    name="image_4" (change)="selectImage4($event)"
+        accept="image"
+    >
+                    <div *ngIf="desc_4.touched && !desc_1.valid" 
+                    style="color: red;">
+                    <span *ngIf="desc_4.errors.required">Description is required.</span>
+                    <span *ngIf="desc_4.errors.minlength">Description should be more than 2 characters at least.</span>
+                    </div>
+                
+                    
+                </div>
+                <div class="col-md-1"></div>
+                <div class="col-md-3"></div>
+            </div>
+
+
+            <div class="h-divider"> </div>
+
+            <div class="form-row">
+
+                <div class="form-group col-md-4">
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-6">
+                    
+                    <button type="submit" class="btn btn-dark" style="float: right; width: 200px;" (submit)="addStory()">I'm
+                        done!</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+ 
+
+
+<!-- <form  name="form" #storyForm="ngForm" (ngSubmit)="storyForm.form.valid && addStory(storyForm)">
+    <div>Description 1</div>
+    <input 
+    required minlength="2" 
+    [(ngModel)]="story.desc_1"
+    name="desc_1" #desc_1="ngModel" 
+    type="text"
+    >
+
+    <div *ngIf="desc_1.touched && !desc_1.valid" 
+    style="color: red;">
+    <span *ngIf="desc_1.errors.required">Question is required.</span>
+    <span *ngIf="desc_1.errors.minlength">Question should be more than 2 characters at least.</span>
+    </div>
+    
+    <div>Image 1</div>
+    <input  
+    required 
+    type="file"
+    name="image_1" (change)="selectImage1($event)"
+    
+    accept="image"
+    >
+    
+    <div>Description 2</div>
+    <input 
+    required minlength="2" 
+    [(ngModel)]="story.desc_2"
+    name="desc_2" #desc_2="ngModel" 
+    type="text"
+    >
+
+    <div>Image 2</div>
+    <input  
+    required 
+    type="file"
+    name="image_2" (change)="selectImage2($event)"
+    
+    accept="image"
+    >
+
+    <div>Description 3</div>
+    <input 
+    required minlength="2" 
+    [(ngModel)]="story.desc_3"
+    name="desc_3" #desc_3="ngModel" 
+    type="text"
+    >
+
+    <div>Image 3</div>
+    <input  
+    required 
+    type="file"
+    name="image_3" (change)="selectImage3($event)"
+    
+    accept="image"
+    >
+
+    <div>Description 4</div>
+    <input 
+    required minlength="2" 
+    [(ngModel)]="story.desc_4"
+    name="desc_4" #desc_4="ngModel" 
+    type="text"
+    >
+
+    <div>Image 4</div>
+    <input  
+    required 
+    type="file"
+    name="image_4" (change)="selectImage4($event)"
+        accept="image"
+    >
+
+    <button 
+    type="submit" 
+    >SUBMIT</button>
+
+</form>  -->

@@ -1,0 +1,12 @@
+<p>show-creators-campaigns works!</p>
+<div *ngIf="campaigns.length!=0">
+    <ul *ngFor="let campaign of campaigns">
+        <li>{{campaign.cam_title}}</li>
+        <li>{{campaign.cam_subject}}</li>
+        <li>{{campaign.cam_duration}}</li>
+        <li>{{campaign.cam_pledge}}</li>
+        <li>{{campaign.cam_desc}}</li>
+        <li>{{campaign.total_amount}}</li>
+        <li>{{campaign.cam_no_backers}}</li>
+    </ul>
+</div>

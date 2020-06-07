@@ -1,0 +1,52 @@
+<br>
+
+<div class="main-container">
+  <div class="row">
+    <div class="profile-container" >
+      <img class="profilepic" src="https://upload.wikimedia.org/wikipedia/sco/thumb/e/e0/Iron_Man_bleeding_edge.jpg/250px-Iron_Man_bleeding_edge.jpg"> 
+      <br><br>
+      <label class="name">{{username}}</label><br>
+      <label class="email">email:{{useremail}}</label>
+      <!-- <div class="row">
+      <div class="col-sm-3">
+         <img class="profilepic"  src="https://upload.wikimedia.org/wikipedia/sco/thumb/e/e0/Iron_Man_bleeding_edge.jpg/250px-Iron_Man_bleeding_edge.jpg"> 
+           </div>
+      <div class="col-sm-6">
+        <div style="margin-top: 100px; text-align: center;">
+        <label class="name">{{username}}</label><br>
+        <div>
+        <label class="email">email:{{useremail}}</label></div>
+      </div>
+        <div>
+      </div>
+    </div> 
+     <div class="col-sm-3">
+       <div style="height: 170px;"></div> 
+        <label class="date" >Joined On:</label>
+      </div>
+     </div> -->
+    </div>
+    <div style="background-color:lightgrey; width: 100%; height: 1px; "></div>
+    
+  </div>
+   <br>
+    <div class="row">
+      <div ></div>
+     <div class="nav-items col-sm-12">
+        <ul class="nav nav-tabs justify-content-center">
+            <li class="nav-item"  >
+              <a class="nav-link active" data-toggle="tab" routerLink ="./about" >About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" routerLink ="./backed" >Backed</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" routerLink ="./myprojects">My Projects</a>
+            </li>
+            
+          </ul>
+    </div> 
+    <div ></div>
+    </div>
+    <router-outlet></router-outlet>
+</div>

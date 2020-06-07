@@ -1,0 +1,178 @@
+.preview{
+   
+    background-color: #FBFBFA;
+    padding : 0px 100px 50px 100px; 
+    border-bottom: 1px #F1EEEA solid;
+    border-top: 1px #F1EEEA solid;  
+}
+
+.preview-title{
+    padding-top: 30px;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600; 
+    
+}
+.preview-subtitle{
+    text-align: center;
+    font-weight: 300;
+    font-size: 20px;
+    color:#656969;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+.preview-img{
+    height: 450px;
+    width: 100%;
+}
+.project-status{
+    padding-left: 10px;
+}
+.progress{
+    background-color:#009E74;
+    height: 10px;
+    border-radius: 0px;
+    margin-bottom: 20px;
+}
+.total-amount{
+    color:#009E74;
+    font-weight: 500;
+    font-size: 30px;
+    margin-top: -10px;
+    font-weight: 500;
+}
+.pledge{
+    color:#656969;
+    font-size: 15px;
+    margin-bottom: 20px;
+    margin-top: -5px;
+    font-weight: 300;
+}
+.backers{
+    font-size: 30px;
+    color:#656969;
+}
+.backers-tag{
+    color:#656969;
+    font-size: 15px;
+    margin-bottom: 20px;
+    margin-top: -5px;
+    font-weight: 300;
+}
+.days-left{
+    font-size: 30px;
+    color:#656969;
+}
+.days-left-tag{
+    color:#656969;
+    color:#656969;
+    font-size: 15px;
+    margin-bottom: 20px;
+    margin-top: -5px;
+    font-weight: 300;
+}
+.back button   {
+    font-size: 20px;
+    border: none;
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0px;
+    background-color: #009E74;
+    color:white;
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+.learn-more button   {
+    font-size: 20px;
+    border: none;
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0px;
+    background-color: white;
+    
+
+    font-weight: 300;
+    box-shadow: inset 0px 0px 0px 1px #DCDEDD;
+
+    margin-bottom: 10px;
+}
+.note{
+    font-size: 15px;
+    color:#656969;
+}
+
+
+/* details */
+.cmp-details{
+    padding : 50px 100px 50px 100px; 
+}
+.story-tag{
+    padding-bottom: 10px;
+    font-size: 32px;
+    font-weight: 500; 
+    
+}
+.rewards{
+    padding-left: 10px;
+}
+.reward{
+    border: 1px lightgrey solid; 
+    padding: 25px;
+    margin-bottom: 30px;
+}
+.reward-default{
+    border: 1px #009E74 solid; 
+    padding: 25px;
+    margin-bottom: 30px;
+}
+.reward-amount{
+    font-size: 18px;
+    color:#282828;
+    margin-bottom: 10px;
+    font-weight: 300;
+}
+.reward-title{
+    font-size: 18px;
+    font-weight: 300;
+    color:#282828;
+    text-decoration: underline;
+    text-decoration-color: #282828;
+    margin-bottom: 5px;
+
+}
+.reward-desc{
+    font-size: 16px;
+    font-weight: 300;
+    color:#656969;
+}
+/* story */
+.story{
+    /* padding-right: 20px; */
+}
+.story-block{
+    font-weight: 300;
+    font-size: 20px;
+    margin-bottom: 30px;
+    columns: #282828;;
+}
+.story-block img{
+    width: 100%;
+    height: 380px;
+}
+.reward-default:hover{
+    cursor: pointer;
+}
+
+
+.reward:hover{
+    cursor: pointer;
+    border: 2px #009E74 solid; 
+    
+}
+/* .reward:hover .reward-title{
+    color: white;
+    text-decoration-color: white;
+} */
+

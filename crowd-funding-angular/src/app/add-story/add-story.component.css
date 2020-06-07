@@ -1,0 +1,48 @@
+.h-divider{
+    margin-top:5px;
+    margin-bottom:5px;
+    height:1px;
+    width:100%;
+    border-top:1px solid lightgrey;
+   }
+ .title{
+     
+     text-align: center;
+     font-size: 40px;
+ }
+ 
+
+ .form-row{
+    margin-top: 50px;
+     margin-bottom: 50px;
+ }
+
+ .h-divider{
+    margin-top:5px;
+    margin-bottom:5px;
+    height:1px;
+    width:100%;
+    border-top:1px solid lightgrey;
+   }
+ .title{
+     
+     text-align: center;
+     font-size: 40px;
+ }
+ 
+
+ .form-row{
+    margin-top: 50px;
+     margin-bottom: 50px;
+ }
+/* aniket custom css */
+button{
+    font-weight: 300;
+    border-radius: 0px;
+    padding: 10px;
+}
+.form-group label{
+    font-size: 22px;
+    font-weight: 400;
+    color: rgb(46, 156, 101);
+ } 

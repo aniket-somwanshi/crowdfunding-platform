@@ -1,0 +1,251 @@
+.preview{
+   
+    background-color: #FBFBFA;
+    padding : 0px 100px 50px 100px; 
+    border-bottom: 1px #F1EEEA solid;  
+    border-top: 1px #F1EEEA solid;  
+
+}
+
+.preview-title{
+    padding-top: 30px;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 600; 
+    
+}
+.preview-subtitle{
+    text-align: center;
+    font-weight: 300;
+    font-size: 20px;
+    color:#656969;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+/* faq */
+
+
+
+.faq-title h2 {
+  position: relative;
+  margin-bottom: 45px;
+  display: inline-block;
+  font-weight: 300;
+  line-height: 1;
+}
+.faq-title h2::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 60px;
+    height: 2px;
+    background: #009E74;
+    bottom: -25px;
+    margin-left: -30px;
+}
+.faq-title p {
+  padding: 0 190px;
+  margin-bottom: 10px;
+}
+
+.faq {
+  background: #FFFFFF;
+  box-shadow: 0 2px 48px 0 rgba(0, 0, 0, 0.06);
+  border-radius: 4px;
+}
+
+.faq .card {
+  border: none;
+  background: none;
+  border-bottom: 1px solid #EDF1F8;
+}
+
+.faq .card .card-header {
+  padding: 0px;
+  border: none;
+  background: none;
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+.faq .card .card-header:hover{
+    background:#EDF1F8;
+    padding-left: 10px;
+}
+
+.faq .card .card-header .faq-title {
+  width: 100%;
+  text-align: left;
+  padding: 0px;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-weight: 300;
+  font-size: 20px;
+  /* letter-spacing: 1px; */
+  color: #656969;
+  text-decoration: none !important;
+  -webkit-transition: all 0.3s ease 0s;
+  -moz-transition: all 0.3s ease 0s;
+  -o-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.faq .card .card-header .faq-title .badge {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  line-height: 14px;
+  float: left;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  text-align: center;
+  background: #009E74;
+  color: #fff;
+  font-size: 15px;
+  margin-right: 20px;
+}
+
+.faq .card .card-body {
+  padding: 30px;
+  padding-left: 35px;
+  padding-bottom: 16px;
+  font-weight: 300;
+  font-size: 20px;
+  color: #656969;
+  line-height: 28px;
+  /* letter-spacing: 1px; */
+  border-top: 1px solid #F3F8FF;
+}
+
+.faq .card .card-body p {
+  margin-bottom: 14px;
+}
+
+@media (max-width: 991px) {
+  .faq {
+    margin-bottom: 30px;
+  }
+  .faq .card .card-header .faq-title {
+    line-height: 26px;
+    margin-top: 10px;
+  }
+}
+
+.card-header div{
+    padding:20px 20px 20px 40px;
+}
+
+
+/* comments */
+.comments{
+    padding:50px 100px 50px 100px;
+
+  
+}
+.bg-grey{
+  background-color:#FBFBFA;
+  border:1px solid #E8E8E8; 
+}
+.note{
+  font-size: 15px;
+  color:#656969;
+}
+
+
+.back button   {
+    font-size: 20px;
+    border: none;
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0px;
+    background-color: #009E74;
+    color:white;
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+.learn-more button   {
+    font-size: 20px;
+    border: none;
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0px;
+    background-color: white;
+    
+
+    font-weight: 300;
+    box-shadow: inset 0px 0px 0px 1px #DCDEDD;
+
+    margin-bottom: 10px;
+}
+
+.comment-input-container{
+  display: block;
+  padding:0px 10px;
+}
+.comment-input-container input{
+  color: #656969;
+  font-weight: 300;
+  font-size: 18px;
+  padding:15px 10px;
+  border: lightgrey 1px solid;
+  width: 100%;
+}
+.cmt-btn{
+  margin-top: 10px;
+  padding:10px 20px !important;
+  float: right;
+  font-weight: 300;
+  font-size: 18px;
+  padding:10px;
+  border: none;
+  background-color: #009E74;
+  color: white;
+}
+
+.cmt-note{
+  float: left;
+}
+.cmt-note{
+  margin-top: 10px;
+  font-weight: 300;
+  font-size: 15px;
+  color: #656969;
+}
+
+.comment{
+  background-color:white;
+  border: 1px solid #DCDEDD;
+  padding:15px;
+  margin-bottom: 10px;
+}
+.comment-name{
+  font-weight: 300;
+  columns: #282828;;
+  font-size: 20px;
+}
+.comment-time{
+  font-weight: 300;
+  color:lightgray;
+  font-size: 15px;
+}
+.comment-text{
+  font-weight: 300;
+  color:#656969;
+  font-size: 20px;
+}
+
+.comment_container{
+  margin: 50px 10px;
+  border:1px solid #E8E8E8; 
+  padding:10px;
+  background-color:#FBFBFA;
+}

@@ -1,0 +1,33 @@
+<p>login-creator works!</p>
+<p *ngIf="invalidCredentials==true" 
+style="color: red;">
+    incoreect credentials!
+</p>
+<form name="form" #loginForm="ngForm" (ngSubmit)="loginForm.form.valid && login(loginForm)">
+    <div>Email</div>
+    <input 
+    required 
+    [(ngModel)]="loginData.email"
+    name="email" #email="ngModel" 
+    type="text"
+    >
+
+    <div *ngIf="email.touched && !email.valid" 
+    style="color: red;">
+    <span *ngIf="email.errors.required">email is required.</span>
+    </div>
+    
+    <div>password</div>
+    <input  
+    required 
+    [(ngModel)]="loginData.password"
+    name="password" #password="ngModel" 
+    type="password"
+    >
+
+    
+    <button 
+    type="submit" 
+    >Login</button>
+
+</form>
