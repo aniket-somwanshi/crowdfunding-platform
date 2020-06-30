@@ -6,6 +6,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { MainService } from 'src/app/services/main.service';
 import { Profile } from 'src/app/model/profile';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
@@ -13,7 +14,7 @@ import { Profile } from 'src/app/model/profile';
 })
 export class AboutComponent implements OnInit {
 
-  constructor(private main: MainService, private route: ActivatedRoute, private router: Router, private fb: FormBuilder) { }
+  constructor(private authService:AuthService,private main: MainService, private route: ActivatedRoute, private router: Router, private fb: FormBuilder) { }
   //About:any =[];
   about: Profile;
   profileid: string;
@@ -34,11 +35,11 @@ export class AboutComponent implements OnInit {
     })
 
 
-    this.route.parent.paramMap.subscribe(
-      (params: Params) => {
-        if (params.has('id')) {
-          this.profileid = params.get('id');
-          this.main.getabout(this.profileid).subscribe((data: Profile) => {
+    this.authService.getUserId().subscribe(
+      (data:any) => {
+        if (data.user_id && data.status=="1") {
+          this.profileid = data.user_id;
+          this.main.getabout(data.user_id).subscribe((data: Profile) => {
             this.about = data[0];
             console.log(this.about)
             // this.About =data;

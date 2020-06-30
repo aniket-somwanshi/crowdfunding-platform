@@ -21,6 +21,7 @@ import { AboutComponent } from './profile/about/about.component';
 import { BackedComponent } from './profile/backed/backed.component';
 import { DetailsComponent } from './profile/backed/details/details.component';
 import { MyprojectsComponent } from './profile/myprojects/myprojects.component';
+import { ManageCampaignComponent } from './manage-campaign/manage-campaign.component';
 
 
 const routes: Routes = [
@@ -38,19 +39,20 @@ const routes: Routes = [
     { path : 'add-story/:campaign_id', component : AddStoryComponent }
   ] },
   { path : 'show-creators-campaigns', component : ShowCreatorsCampaignsComponent },
-  { path : 'campaign/:id' , component : CampaignComponent },
+  { path : 'campaign/:id', component : CampaignComponent },
   { path : 'category/:category', component : CategoryComponent },
   { path : 'learn-more/:campaign_id', component : LearnMoreComponent },
   { path : 'pledge/:campaign_id', component : PledgeComponent },
 
-  { path: "profile/:id", component: ProfileComponent,
+  { path: "profile", component: ProfileComponent,
   children: [
     { path: "about", component: AboutComponent },
     { path: "backed", component: BackedComponent,
       children: [{ path: "details/:fundsid", component: DetailsComponent }]
     },
     { path: "myprojects", component: MyprojectsComponent }]
-  }
+  },
+  {path : 'manage-campaigns', component : ManageCampaignComponent}
 ];
 
 @NgModule({

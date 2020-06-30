@@ -59,6 +59,14 @@ export class LearnMoreComponent implements OnInit {
   }
 
 
+  goToLearnMore() {
+    this.router.navigate(['learn-more/' + this.camp[0].campaign_id]);
+  }
+  goToPledge(){
+    this.router.navigate(['pledge/' + this.camp[0].campaign_id]);
+  }
+
+
   addComment(commentForm: NgForm) {
     this.commentPost.campaign_id = this.camp[0].campaign_id;
     // this.commentPost.user_id = this.user.id

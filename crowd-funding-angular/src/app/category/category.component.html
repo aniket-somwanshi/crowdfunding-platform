@@ -2,7 +2,7 @@
     <div class="row category">
         <div class="col-md-12">
             <div class="cat-title">
-                <span>Games</span>
+                <span>{{cat}}</span>
             </div>
             <div class="cat-desc">
                 <span>
@@ -10,7 +10,7 @@
                 </span>
             </div>
             <div class="cat-explore">
-                Explore Games
+                Explore {{cat}}
             </div>
         </div>
     </div>
@@ -27,7 +27,8 @@
                         src="https://ksr-static.imgix.net/hb6w3nl7-ptolus_2.png?ixlib=rb-2.1.0&s=247ac0cc90963c796ad757ace6bb5ab6">
                 </div>
                 <div class="featured-title head">
-                    <span [routerLink]="['/campaign/2']" >Ptolus: Monte Cook's City by the Spire</span>
+                    <!-- change the id in the function below with actual ID of the campaign -->
+                    <span (click)="goToCampaign(13)">Ptolus: Monte Cook's City by the Spire</span>
                 </div>
                 <div class="featured-desc">
                     <span>Monte Cook's legendary campaign setting, updated for Fifth Edition and the Cypher System.
@@ -43,41 +44,42 @@
                 <div class="success-tag">
                     <span>Recent success</span>
                 </div>
-            
-            <div class="success-project" style="padding-top: 0px;">
-                <div class="row">
-                    <div class="col-md-5">
-                        <div class="success-img">
-                            <img height="100%" width="100%" src="https://ksr-ugc.imgix.net/assets/027/994/350/88e477139c21255783b81d69367e2475_original.png?ixlib=rb-2.1.0&crop=faces&w=352&h=198&fit=crop&v=1580988168&auto=format&frame=1&q=92&s=9589a0f7494b3b7fcbab65ebc4937737">
+
+                <div class="success-project" style="padding-top: 0px;">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="success-img">
+                                <img height="100%" width="100%"
+                                    src="https://ksr-ugc.imgix.net/assets/027/994/350/88e477139c21255783b81d69367e2475_original.png?ixlib=rb-2.1.0&crop=faces&w=352&h=198&fit=crop&v=1580988168&auto=format&frame=1&q=92&s=9589a0f7494b3b7fcbab65ebc4937737">
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-7">
-                        <div class="success-title">
-                            <span>Pathfinder: Wrath of the Righteous
-                            </span>
-                        </div>
-                        <div class="success-by">
-                            <span>By OwlCat Games</span>
-                        </div>
-                        <div class="success-explore">
-                            <span>Explore</span>
+                        <div class="col-md-7">
+                            <div class="success-title">
+                                <!-- change the id in the function below with actual ID of the campaign -->
+                                <span (click)="goToCampaign(13)">Pathfinder: Wrath of the Righteous
+                                </span>
+                            </div>
+                            <div class="success-by">
+                                <span>By OwlCat Games</span>
+                            </div>
+                            <div class="success-explore">
+                                <span>Explore</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
                 <!-- iteration of success project -->
                 <div class="success-project">
                     <div class="row">
                         <div class="col-md-5">
                             <div class="success-img">
-                                <img height="100%" width="100%" 
-                                src="https://ksr-ugc.imgix.net/assets/028/088/926/539d0bd42331d84bd195840b77afba4c_original.PNG?ixlib=rb-2.1.0&crop=faces&w=352&h=198&fit=crop&v=1581682492&auto=format&frame=1&q=92&s=b867b21f44c7f0478cb4c38704195824"
-                                >
+                                <img height="100%" width="100%"
+                                    src="https://ksr-ugc.imgix.net/assets/028/088/926/539d0bd42331d84bd195840b77afba4c_original.PNG?ixlib=rb-2.1.0&crop=faces&w=352&h=198&fit=crop&v=1581682492&auto=format&frame=1&q=92&s=b867b21f44c7f0478cb4c38704195824">
                             </div>
                         </div>
                         <div class="col-md-7">
                             <div class="success-title">
-                                <span>Dungeon Drafters
+                                <span (click)="goToCampaign(13)">Dungeon Drafters
                                 </span>
                             </div>
                             <div class="success-by">
@@ -89,19 +91,18 @@
                         </div>
                     </div>
                 </div>
-                 <!-- iteration of success project -->
-                 <div class="success-project">
+                <!-- iteration of success project -->
+                <div class="success-project">
                     <div class="row">
                         <div class="col-md-5">
                             <div class="success-img">
-                                <img height="100%" width="100%" 
-                                src="https://ksr-ugc.imgix.net/assets/028/373/600/a0f4d93cbef81f37043d685e224a64a2_original.png?ixlib=rb-2.1.0&crop=faces&w=352&h=198&fit=crop&v=1583767639&auto=format&frame=1&q=92&s=9f852d4d0e5fd13000274858e3cd6f4b"
-                                >
+                                <img height="100%" width="100%"
+                                    src="https://ksr-ugc.imgix.net/assets/028/373/600/a0f4d93cbef81f37043d685e224a64a2_original.png?ixlib=rb-2.1.0&crop=faces&w=352&h=198&fit=crop&v=1583767639&auto=format&frame=1&q=92&s=9f852d4d0e5fd13000274858e3cd6f4b">
                             </div>
                         </div>
                         <div class="col-md-7">
                             <div class="success-title">
-                                <span>Among Ripples: Shallow Waters - Restore the World
+                                <span (click)="goToCampaign(13)">Among Ripples: Shallow Waters - Restore the World
                                 </span>
                             </div>
                             <div class="success-by">

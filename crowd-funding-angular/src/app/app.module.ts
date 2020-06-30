@@ -32,6 +32,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainService } from './services/main.service';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { ManageCampaignComponent } from './manage-campaign/manage-campaign.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     BackedComponent,
     MyprojectsComponent,
     ProfileComponent,
-    DetailsComponent
+    DetailsComponent,
+    ManageCampaignComponent
 
   ],
   imports: [

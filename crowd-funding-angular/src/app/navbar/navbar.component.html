@@ -1,4 +1,46 @@
-<p>navbar works!</p>
+<!-- <p>navbar works!</p>
 <button [routerLink]="['/login']">Login</button>
 <button [routerLink]="['/login-creator']">Creator Login</button>
-<button [routerLink]="['/register']">Join</button>
+<button [routerLink]="['/register']">Join</button> -->
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light" style="border-bottom: 1px solid rgb(236, 236, 236); padding:15px 100px;">
+    <!-- <a class="navbar-brand" href="#" style="font-family: 'Luckiest Guy', cursive; font-size: 30px; color: var(--prim);
+    ">CrowdFunding</a> -->
+    
+    <!-- &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; -->
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav" >
+        <li class="nav-item dropdown">
+          <a class="nav-link hover-underline" style="color: #282828;" href="">Home</a>
+         
+        </li>
+        &nbsp; &nbsp; &nbsp;
+      
+        <li class="nav-item dropdown">
+          <a class="nav-link hover-underline" style="color: #282828;" (click)="createCampaign()">Launch your Campaign</a>
+         
+        </li>
+       
+      </ul>
+      <a class="nav-link mr-auto ml-auto" href="#" style="
+
+       text-decoration: underline;font-size: 30px; color: var(--prim);
+    ">CrowdFunding</a>
+      <form class="form-inline my-2 my-lg-0">
+        <ul class="navbar-nav">
+       
+      <li class="nav-item">
+        <a class="nav-link hover-underline" style="color: #282828;" (click)="manageCampaigns()">Manage Campaigns</a>
+    </li>
+    &nbsp; &nbsp; &nbsp;
+    <li class="nav-item">
+      <a class="nav-link hover-underline" style="color: #282828;" (click)="profile()"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
+        Profile</a>
+  </li>
+        </ul>
+      </form>
+    </div>
+  </nav>

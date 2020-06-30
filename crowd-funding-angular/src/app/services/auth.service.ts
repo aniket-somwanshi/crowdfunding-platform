@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse, HttpRequest, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpResponse, HttpRequest, HttpHeaders, HttpParams } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -9,16 +9,27 @@ export class AuthService {
 
   constructor(public http:HttpClient) { }
 
-  loginBacker(loginData){
-    return this.http.post(this.url+'login-backer', loginData);
+  login(loginData){
+    return this.http.post(this.url+'login', loginData);
   }
 
-  loginCreator(loginData){
-    return this.http.post(this.url+'login-creator', loginData);
-  }
+  // loginCreator(loginData){
+  //   return this.http.post(this.url+'login-creator', loginData);
+  // }
 
   register(registerData){
     return this.http.post(this.url+'register', registerData);
+  }
+  
+  getUserId() {
+    return this.http.get(this.url+'getUserId', {
+      observe: 'body',
+      params: new HttpParams().append('token', localStorage.getItem('token'))
+    });
+  }
+
+  getUserDetails(id){
+    return this.http.get(this.url+'get-user-details/'+id);
   }
 
 }

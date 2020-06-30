@@ -1,4 +1,4 @@
-<p>register works!</p>
+<!-- <p>register works!</p>
 
 <form name="form" #registerForm="ngForm" (ngSubmit)="registerForm.form.valid && register(registerForm)">
     <div>Email</div>
@@ -50,4 +50,193 @@
     type="submit" 
     >Sign Up</button>
 
-</form>
+</form> -->
+
+
+<div class="auth-container">
+    <div class="authbox">
+
+        <div class="login-tag font-inter-medium">
+            <span>
+                Register
+            </span>
+        </div>
+
+
+        <!-- <div class="alternate">
+            <span>Welcome Back! Login to continue</span>
+        </div> -->
+
+        <hr>
+
+        <!-- invalid credentails -->
+        <div *ngIf="errorRegistering" class="invalid"
+            style="display: inline-block; padding: 5px; border-radius:5px; border:1px solid red; color:red; font-size: 14px;">
+            <span>
+                <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+                Error occured while registering! Please and try again. </span>
+        </div>
+
+        <form name="form" #registerForm="ngForm" (ngSubmit)="registerForm.form.valid && register(registerForm)">
+    
+                    <!-- Full name -->
+                    <div class="email">
+                    
+                        <input placeholder="Full name" class="email-input" required [(ngModel)]="registerData.user_name"
+                            name="full_name" #full_name="ngModel" type="text">
+        
+                        <div *ngIf="full_name.touched && !full_name.valid" style="color: red; text-align: left; font-size: 14px;">
+                            <span *ngIf="full_name.errors.required">Full name is required.</span>
+                        </div>
+                    </div>
+                
+                
+                    <!-- email -->
+                    <div class="email">
+                       
+                        
+                        <input 
+                        
+                        placeholder="Email address" class="email-input" required [(ngModel)]="registerData.user_email"
+                            name="email" #email="ngModel" type="text">
+        
+                        <div *ngIf="email.touched && !email.valid" style="color: red; text-align: left; font-size: 14px;">
+                            <span *ngIf="email.errors.required">Email is required.</span>
+                        </div>
+                        <!-- validate email -->
+                        <!-- <div *ngIf="invalidEmail" style="color: red; text-align: left; font-size: 14px;">
+                            <span>Email is already registered.</span>
+                        </div> -->
+                    </div>
+               
+
+            
+
+                    <!-- pass -->
+                    <div class="email">
+                        
+                        <input 
+                        placeholder="Create a password"
+                        class="email-input" minlength="6" required [(ngModel)]="registerData.password" name="password" #password="ngModel" type="password">
+        
+                        <!-- validation error -->
+                        <div *ngIf="password.touched && !password.valid" style="color: red; text-align: left; font-size: 14px;">
+                            <span *ngIf="password.errors.required">Password is required.</span>
+                        </div>
+                        <!-- validation eror -->
+                        <div *ngIf="password.touched && !password.valid" style="color: red; text-align: left; font-size: 14px;">
+                            <span *ngIf="password.errors.minlength">Th length of password must be 6 or more.</span>
+                        </div>
+        
+                 
+                    
+                    </div>
+                    
+                
+               
+                    <!-- country -->
+                    <!-- <div class="email">
+                       
+        
+                        <select class="select-input" required [(ngModel)]="registerData.country"
+                            name="country" #country="ngModel">
+                            <option selected value="">--Select--</option>
+                            <option *ngFor="let con of countryList" value="{{con}}">{{con}}</option>
+                        </select>
+        
+                        <div *ngIf="country.touched && !country.valid" style="color: red; text-align: left; font-size: 14px;">
+                            <span *ngIf="country.errors.required">Select your country.</span>
+                        </div>
+                    </div> -->
+                    
+             
+    
+                    <!-- currency -->
+                   
+          
+                
+
+                
+                    <!-- currency info -->
+                    <!-- <div class="email">
+                       
+                    <div class="email-input currency-note">
+                        
+                        <span>
+                           <i 
+                           placement="right" ngbTooltip="The currency is used for fund transfers and withdrawals. Careful selection of your currency is important."
+                           tooltipClass="my-custom-class"
+                           class="fas fa-question-circle"></i>
+                            Note : Currency once set, cannot be changed later on.
+                        </span>
+                    </div> -->
+               
+                
+
+            <!-- </div> -->
+            
+            <!-- avatar -->
+            <!-- <div class="avatar-change-container">
+
+    
+                <div class="center-tag" style="text-align: left; margin-bottom: 20px;">
+                    <span class="name-tag">Select your Avatar</span>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-3 col-lg-3 align-center">
+                        <label>
+                            <input type="radio" name="avatar" [(ngModel)]="registerData.avatar" value="small">
+                            <img class="avatar-img" height="180px" width="100%" src="https://i.pinimg.com/564x/3a/3d/af/3a3daf880f3de23843661ffb0e9add59.jpg">
+                        </label>
+                    </div>
+                    <div class="col-sm-12 col-md-3 col-lg-3 align-center">
+                        <label>
+                            <input type="radio" name="avatar" [(ngModel)]="registerData.avatar"
+                                value="https://i.pinimg.com/564x/f3/b5/3e/f3b53ef5bcd6e8b115cdcdf4e92ca4f0.jpg">
+                            <img class="avatar-img" height="180px" width="100%"
+                                src="https://i.pinimg.com/564x/f3/b5/3e/f3b53ef5bcd6e8b115cdcdf4e92ca4f0.jpg">
+                        </label>
+                    </div>
+                    <div class="col-sm-12 col-md-3 col-lg-3 align-center">
+                        <label>
+                            <input type="radio" name="avatar" [(ngModel)]="registerData.avatar" value="big">
+                            <img class="avatar-img" height="180px" width="100%" src="https://i.pinimg.com/564x/3a/3d/af/3a3daf880f3de23843661ffb0e9add59.jpg">
+                        </label>
+                    </div>
+                    <div class="col-sm-12 col-md-3 col-lg-3 align-center">
+                        <label>
+                            <input type="radio" name="avatar" [(ngModel)]="registerData.avatar"
+                                value="https://i.pinimg.com/564x/f3/b5/3e/f3b53ef5bcd6e8b115cdcdf4e92ca4f0.jpg">
+                            <img class="avatar-img" height="180px" width="100%"
+                                src="https://i.pinimg.com/564x/f3/b5/3e/f3b53ef5bcd6e8b115cdcdf4e92ca4f0.jpg">
+                        </label>
+                    </div>
+                </div>
+            
+            </div> -->
+            
+           
+            <div class="login-button">
+                <button class="font-inter-medium" type="submit">Create account <i class="fas fa-arrow-right"></i></button>
+            </div>
+
+            <div class="alternate">
+                <span>Already have an account? </span> <span [routerLink]="['/login']" class="alternate-link">Log
+                    in</span>
+            </div>
+
+            <!-- <div class="alternate">
+                <span>Don't have an account? </span> <span class="alternate-link">Register</span>
+            </div> -->
+
+            <div class="terms">
+                <span>
+                    By joining, or logging in, you accept Change.org’s <span class="forgot-password">Terms
+                        of Service</span> and <span class="forgot-password">Privacy Policy</span>.
+                </span>
+            </div>
+
+        </form>
+
+    </div>
+</div>

@@ -89,7 +89,7 @@
                                 </span>
                             </div>
                             <div class="comment-time">
-                                <span>{{cmt.timestamp}}</span>
+                                <span>{{cmt.timestamp | date}}</span>
                             </div>
                             <div class="comment-text">
                                 <span>
@@ -105,11 +105,9 @@
         </div>
         <div class="col-md-4">
             <div class="back">
-                <button>Back this Project</button>
+                <button (click)="goToPledge()" >Back this Project</button>
             </div>
-            <div class="learn-more">
-                <button>Learn more</button>
-            </div>
+           
             <div class="note">
                 <span>
                     All or nothing. This project will only be funded if it reaches its goal in {{ this.days_to_go}}

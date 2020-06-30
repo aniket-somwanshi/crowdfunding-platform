@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { MainService } from 'src/app/services/main.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-backed',
@@ -10,15 +11,15 @@ import { MainService } from 'src/app/services/main.service';
 
 export class BackedComponent implements OnInit {
 
-  constructor(private main: MainService, private route : ActivatedRoute) { }
+  constructor(private authService:AuthService,private main: MainService, private route : ActivatedRoute) { }
    profileid:any;
    Backed:any=[];
   ngOnInit() {
-    this.route.parent.paramMap.subscribe(
-      (params: Params) => {
-        if (params.has('id')){
-          this.profileid=params.get('id');
-    this.main.getbacked(this.profileid).subscribe(
+    this.authService.getUserId().subscribe(
+      (data: any) => {
+        if (data.user_id && data.status=="1"){
+          this.profileid=data.user_id;
+    this.main.getbacked(data.user_id).subscribe(
       (data) =>{
           this.Backed=data;
           console.log(this.Backed);

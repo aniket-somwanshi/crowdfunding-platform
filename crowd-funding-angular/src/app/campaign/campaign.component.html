@@ -40,8 +40,8 @@
             <div class="back">
                 <button (click)="goToPledge()" >Back this Project</button>
             </div>
-            <div class="learn-more">
-                <button>Learn more</button>
+            <div  class="learn-more">
+                <button (click)="goToLearnMore()" >Learn more</button>
             </div>
             <div class="note">
                 <span>
@@ -133,7 +133,7 @@
                 </div>
 
 
-                <div class="reward"
+                <div (click)="goToPledge()" class="reward"
                 *ngFor="let rew of rewards"
                 >
                     <div class="reward-amount">
@@ -143,7 +143,7 @@
                         <span>{{rew.rewards_sub}}</span>
                     </div>
                   
-                    <div class="reward-desc">
+                    <div class="reward-desc"> 
                         <span>{{rew.rewards_desc}}</span>
                     </div>
                 </div>

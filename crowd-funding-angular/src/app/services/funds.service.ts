@@ -26,5 +26,8 @@ export class FundsService {
   }
 
 
+  manageCampaigns(user_id){
+    return this.http.get(this.url+"manage-campaigns/"+user_id);
+  }
 
 }

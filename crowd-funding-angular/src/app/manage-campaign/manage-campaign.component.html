@@ -1,0 +1,28 @@
+<div style="text-align: center; padding-top: 50px;" >
+<h4>Orders of your campaigns</h4>
+</div>
+<div style="padding: 50px 100px;">
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Sr. No</th>
+    <th scope="col">Reward to be delivered</th>
+    <th scope="col">Backer's email</th>
+    <th scope="col">Amount</th>
+    <th scope="col">Campaign</th>
+    <th scope="col">Date of payment</th>
+    
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let fund of funds; index as i">
+    <td>{{ i + 1 }}</td>
+    <td style="font-weight: bold; font-style: italic;">{{ fund.rewards_sub }}</td>
+    <td>{{ fund.user_email  }}</td>
+    <td>₹{{ fund.amount  }}</td>
+    <td (click)="goToCampaign(fund.campaign_id)" style="cursor: pointer; text-decoration: underline;">{{ fund.cam_title }}</td>
+    <td>{{ fund.funds_date | date }}</td>
+  </tr>
+  </tbody>
+</table></div>

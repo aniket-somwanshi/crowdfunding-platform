@@ -20,7 +20,7 @@ export class LoginCreatorComponent implements OnInit {
     this.invalidCredentials=false;
   }
   login(){
-    this.authService.loginCreator(this.loginData).subscribe((data:any) =>{
+    this.authService.login(this.loginData).subscribe((data:any) =>{
       if(data.status=="1"){
         this.router.navigate(['creator']);
         this.invalidCredentials=false;

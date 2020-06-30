@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CampaignService } from '../services/campaign.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-create-campaign',
@@ -9,6 +10,8 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./create-campaign.component.css']
 })
 export class CreateCampaignComponent implements OnInit {
+
+  user:any;
 
   // define stucture of campaign to be created
   campaign={
@@ -22,11 +25,22 @@ export class CreateCampaignComponent implements OnInit {
   }
 
   constructor(
+    private authService:AuthService,
     private router:Router,
     public campaignService:CampaignService
   ) { }
   
   ngOnInit() {
+      this.authService.getUserId()
+      .subscribe((data:any)=>{
+        if(data.status!="0"){
+          this.authService.getUserDetails(data.user_id.toString())
+          .subscribe(data=>{
+            this.user=data;
+            console.log(data);
+          });
+        }
+      });
     // intialize all form inputs to null
     // this.campaign.user_id=0;
     // this.campaign.cam_title='';
@@ -40,7 +54,7 @@ export class CreateCampaignComponent implements OnInit {
   createCampaign(campaignForm:NgForm){
     console.log(this.campaign);
     // static user_id
-    this.campaign.user_id=3;
+    this.campaign.user_id=this.user.user_id;
     // call service to crate campaign and redirect user to enter next inputs
     this.campaignService.createCampaign(this.campaign).subscribe((data:any)=>{
       //insertId gives - auto increment primary key 
@@ -50,7 +64,6 @@ export class CreateCampaignComponent implements OnInit {
     });
     // finally reset the form
     campaignForm.reset();
-
   }
 
 }

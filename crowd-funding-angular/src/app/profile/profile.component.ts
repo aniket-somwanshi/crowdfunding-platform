@@ -5,6 +5,7 @@ import { ActivatedRoute,Params,Router } from '@angular/router';
 import { Profile} from '../model/profile';
 import { Route } from '@angular/compiler/src/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { AuthService } from '../services/auth.service';
 
 
 @Component({
@@ -12,6 +13,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
+
 export class ProfileComponent implements OnInit {
   profile:Profile;
    Profile:any =[];
@@ -19,21 +21,23 @@ export class ProfileComponent implements OnInit {
    username:string;
    useremail:string;
    thumbnail:any;
-  constructor(private main: MainService, private route : ActivatedRoute,private router:Router,private sanitizer: DomSanitizer) { }
+  constructor(private authService:AuthService,private main: MainService, private route : ActivatedRoute,private router:Router,private sanitizer: DomSanitizer) { }
  
   ngOnInit() {
     
-    this.route.params.subscribe(
-      (params: Params) => {
-        if(params.id){
-          this.profileid=params.id;
-    this.main.getprofile(this.profileid).subscribe(
+    this.authService.getUserId().subscribe(
+      (data:any) => {
+        if(data.user_id && data.status=='1'){
+          this.profileid=data.user_id;
+          console.log(data);
+    this.main.getprofile(data.user_id).subscribe(
       (data) =>{
           this.Profile=data;
           //console.log(data[0].profile_img.data);
           this.username=data[0].user_name;
           this.useremail=data[0].user_email
-        })}
+        });
+      }
         else{
             this.Profile =undefined;
         }  

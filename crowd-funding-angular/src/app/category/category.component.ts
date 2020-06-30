@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CampaignService } from '../services/campaign.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-category',
@@ -10,14 +11,17 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class CategoryComponent implements OnInit {
 
   newestCampaigns=[];
+  cat;
 
-  constructor(private router:Router,
+  constructor(
+    private authService:AuthService,
+    private router:Router,
     public route:ActivatedRoute,
     public campaignService:CampaignService,
     ) { }
 
   ngOnInit() {
-   
+    this.cat=this.route.snapshot.paramMap.get("category");
     this.campaignService.getNewestCampaignsByCategory(this.route.snapshot.paramMap.get("category"))
     .subscribe((data:any)=>{
       this.newestCampaigns=data;
@@ -36,8 +40,25 @@ export class CategoryComponent implements OnInit {
   };
   
 goToCampaign(id){
-  console.log("sd"+id);
-  this.router.navigate(['/campaign/'+id]);
+
+
+    if(localStorage.getItem('token')){
+      this.authService.getUserId().subscribe((data:any)=>{
+        if(data.status=="1"){
+          this.router.navigate(['/campaign/'+id]);
+        }
+        else{
+          this.router.navigate(['login']);
+        }
+      });
+    }
+    else{
+      this.router.navigate(['login']);
+    }
+  
+
+
+  
 }
 
 }

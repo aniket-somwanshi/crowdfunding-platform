@@ -12,21 +12,22 @@ export class RegisterComponent implements OnInit {
     user_name : '',
     user_email : '',
     password : '',
-    user_phone : '',
-    type : ''
   };
   
+  errorRegistering;
   constructor( private router:Router, public authService:AuthService) { }
 
   ngOnInit() { }
 
   register(){
     this.authService.register(this.registerData).subscribe((data:any) =>{
-      if(data.status=="1" && data.type=="backer"){
-        this.router.navigate(['login']);
+      if(data.status=="1"){
+        this.router.navigate(['']);
+        console.log(data);
+        localStorage.setItem('token',data.jwtToken);
       }
-      else if(data.status=="1" && data.type=="creator"){
-        this.router.navigate(['login-creator']);
+      else{
+        this.errorRegistering=true;
       }
     });
   }

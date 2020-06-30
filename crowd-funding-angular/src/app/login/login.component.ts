@@ -13,16 +13,18 @@ export class LoginComponent implements OnInit {
     password : ''
   }
   invalidCredentials;
-  constructor( private router:Router, public authService:AuthService) { }
+  constructor(private router:Router, public authService:AuthService) { }
 
   ngOnInit() {
     this.invalidCredentials=false;
   }
   login(){
-    this.authService.loginBacker(this.loginData).subscribe((data:any) =>{
+    this.authService.login(this.loginData).subscribe((data:any) =>{
       if(data.status=="1"){
-        this.router.navigate(['backer']);
-      }
+        this.router.navigate(['']);
+        console.log(data);
+        localStorage.setItem('token',data.jwtToken);
+      } 
       else{
         this.invalidCredentials=true;
       }

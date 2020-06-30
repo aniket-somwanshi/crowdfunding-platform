@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MainService } from 'src/app/services/main.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-myprojects',
@@ -9,15 +10,15 @@ import { ActivatedRoute, Params } from '@angular/router';
 })
 export class MyprojectsComponent implements OnInit {
 
-  constructor(private main: MainService, private route : ActivatedRoute) { }
+  constructor(private authService:AuthService, private router:Router,private main: MainService, private route : ActivatedRoute) { }
   profileid:any;
   Myprojects:any=[];
   ngOnInit() {
-    this.route.parent.paramMap.subscribe(
-      (params: Params) => {
-        if (params.has('id')){
-          this.profileid=params.get('id');
-    this.main.getmyprojects(this.profileid).subscribe(
+    this.authService.getUserId().subscribe(
+      (data:any) => {
+        if(data.user_id && data.status=='1'){
+          this.profileid=data.user_id;
+    this.main.getmyprojects(data.user_id).subscribe(
       (data) =>{
           this.Myprojects=data;
           console.log(this.Myprojects);
@@ -28,6 +29,11 @@ export class MyprojectsComponent implements OnInit {
         }  
        // console.log(this.Profile);
       })
+  }
+
+  goToCampaign(id){
+    console.log("sd"+id);
+    this.router.navigate(['/campaign/'+id]);
   }
 
 }

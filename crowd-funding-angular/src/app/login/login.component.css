@@ -1,0 +1,109 @@
+.auth-container{
+    background: #FBFBFA;
+    padding: 50px 0px;
+    text-align: center;
+}
+.authbox{
+    max-width: 400px;
+    padding: 20px;
+    display: inline-block;
+    background:white;
+    border-radius: 0px;
+    border: 1px solid lightgray;
+}
+
+hr{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.login-tag{
+    padding-bottom: 10px;
+    color: var(--light-text);
+    font-size: 28px;
+}
+.alternate{
+    font-size: 15px;
+    color:var(--light-text);
+}
+.alternate-link{
+    cursor: pointer;
+    color:var(--prim);
+    text-decoration: underline;    
+}
+
+/* login form css */
+.email-input{
+    color: var(--text);
+    margin-top: 5px;
+    width: 100%;
+    /* border-radius: 2px; */
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid lightgray;
+}
+.email-input:focus{
+    border: 1px solid var(--prim);
+}
+
+.email{
+    text-align: left;
+    padding: 10px 0px;
+    color:#3d3d3d;
+}
+
+.login-button{
+    padding-top:10px;
+    padding-bottom: 5px;
+}
+
+.login-button button{
+    padding: 12px 20px;
+    color:white;
+    background: var(--prim);
+    border: none;
+    /* border-radius:2px; */
+    width: 100%;
+    transition: all ease-in-out 0.25s;
+}
+
+.login-button button:hover{
+    transform: translateY(-1px);
+}
+
+.email-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    
+    opacity: 1; /* Firefox */
+  }
+  
+  .email-input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   
+  }
+  
+  .email-input::-ms-input-placeholder { /* Microsoft Edge */
+   
+  }
+
+.terms{
+    padding-top: 20px;
+    font-size: 12px;
+    text-align: left;
+}
+
+.forgot-password{
+    font-size: 12px;
+    text-align: right;
+    text-decoration: underline;
+    color:var(--blue);
+}
+
+@media screen and (max-width:600px){
+    .auth-container{
+        padding:0px;
+    }
+    .authbox{
+        border: none;
+        border-radius:0px;
+        width:100%;
+    }
+}

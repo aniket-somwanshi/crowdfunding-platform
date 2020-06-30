@@ -5,12 +5,15 @@ const router = express.Router();
 const db = require("../database");
 const multer = require('multer');
 
+var jwt = require('jsonwebtoken');
+
+
 const storage = multer.diskStorage({
         destination: function (req, file, cb) {
                 cb(null, './uploads/');
         },
         filename: function (req, file, cb) {
-                cb(null, new Date().toISOString().replace(/:/g, '_') + file.originalname);
+                cb(null, new Date().toISOString() + file.originalname);
         }
 });
 
@@ -22,47 +25,95 @@ const upload = multer({
 
 // creator's routes ----------------------------------------------
 
-// login - backer
-router.post('/login-backer', (req, res) => {
+// // login - backer
+// router.post('/login-backer', (req, res) => {
 
-        let sql = "select * from user where type ='backer' and user_email = ? and password = ?";
+//         let sql = "select * from user where type ='backer' and user_email = ? and password = ?";
+//         db.query(sql, [req.body.email, req.body.password], (err, result, fields) => {
+//                 if (err) throw err;
+//                 console.log(result);
+//                 if (result.length > 0) {
+//                         res.send({ status: "1", user: result });
+//                 }
+//                 else {
+//                         res.send({ status: "0" });
+//                 }
+//         });
+// });
+
+//login
+router.post('/login', function (req, res, next) {
+
+        let sql = "SELECT * from user where user_email = ? and password = ?";
         db.query(sql, [req.body.email, req.body.password], (err, result, fields) => {
-                if (err) throw err;
-                console.log(result);
-                if (result.length > 0) {
-                        res.send({ status: "1", user: result });
+                if (err) {
+                        throw err;
                 }
                 else {
-                        res.send({ status: "0" });
+                        console.log(req.body);
+                        console.log(result);
+                        console.log(result.length); 
+                        if (result.length > 0) {
+                                // generate token
+                                
+                                let token = jwt.sign({ username: result[0].user_id }, 'secret', { expiresIn: '3h' });
+                                res.send({ status: '1', jwtToken: token });
+                                
+                                console.log("token is "+token);
+                                 console.log('lol');
+ 
+                        }
+                        else {
+                                res.send({ status: '0' }); 
+                        } 
                 }
         });
 });
 
-// login creator
-router.post('/login-creator', (req, res) => {
-
-        let sql = "select * from user where type ='creator' and user_email = ? and password = ?";
-        db.query(sql, [req.body.email, req.body.password], (err, result) => {
-                if (err) throw err;
-                console.log(result);
-                if (result.length > 0) {
-                        res.send({ status: "1", user: result });
-                }
-                else {
-                        res.send({ status: "0" });
-                }
-        });
-});
-
-// reg
-router.post('/register', (req, res) => {
+//register
+router.post('/register', (req, res) => { 
         let sql = "INSERT INTO user SET ?";
         db.query(sql, req.body, (err, result) => {
                 if (err) throw err;
-                console.log(result);
                 if (result.affectedRows > 0) {
-                        res.send({ status: "1" });
+                         // generate token
+                         let token = jwt.sign({ username: result.insertId }, 'secret', { expiresIn: '3h' });
+                         res.send({ status: "1", jwtToken: token });           
                 }
+                else{
+                        res.send({status:"0"});
+                }
+        });
+});
+
+//get user 
+router.get('/getUserId', verifyToken, function (req, res, next) {
+        // return res.status(200).json(decodedToken.username);
+        res.send({ status: '1', user_id: decodedToken.username });
+});
+
+var decodedToken = '';
+function verifyToken(req, res, next) {
+        let token = req.query.token;
+
+        jwt.verify(token, 'secret', function (err, tokendata) {
+                if (err) {
+                        res.send({ status: '0' });
+                }
+                if (tokendata) {
+                        decodedToken = tokendata;
+                        next();
+                }
+        })
+};
+
+// get user details by id
+
+router.get('/get-user-details/:id', (req, res) => {
+        let sql = "SELECT * from user where user_id=?";
+        db.query(sql, req.params.id, (err, result) => {
+                if (err) throw err;
+                res.send(result[0]);
         });
 });
 
@@ -80,8 +131,8 @@ router.post('/create-campaign', (req, res) => {
 router.post('/add-faq', (req, res) => {
         let sql = "INSERT INTO faq_campaign SET ?";
         db.query(sql, req.body, (err, result) => {
-                if (err) throw err;
-                console.log(result);
+                if (err) throw err; 
+                console.log(result); 
                 res.send(result);
         });
 });
@@ -297,7 +348,6 @@ router.get('/get-campaign-by-category/:cat', (req, res) => {
         let sql = "SELECT * FROM campaign WHERE status!='failed' AND WHERE cam_category = " + req.params.cat;
         db.query(sql, (err, result) => {
                 if (err) throw err;
-                console.log(result);
                 res.send('campaign by category fetched...');
         });
 });
@@ -307,7 +357,7 @@ router.get('/get-trending-campaigns/', (req, res) => {
         db.query(sql, (err, results) => {
                 if (err) throw err;
                 console.log(results);
-                res.send('Highest backers fetched...');
+                res.send(results);
         });
 });
 
@@ -317,8 +367,7 @@ router.get('/get-newest-campaigns', (req, res) => {
                 if (err) throw err;
                 console.log(result);
                 res.send('latest campaigns fetched...');
-                res.send(result);
-                res.send(result);
+                
         });
 });
 // popular by cat
@@ -347,22 +396,32 @@ router.get('/get-comments/:campaign_id', (req, res) => {
         db.query(sql, campaign_id, (err, results) => {
                 if (err) throw err;
                 console.log(results);
-                res.send('comments fetched...');
+                res.send(results);
         });
 });
 
 router.get('/get-rewards/:campaign_id', (req, res) => {
         let sql = 'SELECT * FROM rewards where campaign_id = ?';
-        ldb.query(sql, campaign_id, (err, results) => {
+        db.query(sql, campaign_id, (err, results) => {
                 if (err) throw err;
-                console.log(results);
+                console.log(results); 
                 res.send('rewards fetched...');
         });
 });
 
+//manage campaings
+ router.get('/manage-campaigns/:user_id', (req, res) => {
+        let sql = "SELECT funds.*,user.user_email, rewards.rewards_sub, campaign.cam_title FROM funds INNER JOIN rewards ON rewards.rewards_id = funds.rewards_id INNER JOIN user ON user.user_id = funds.backer_id INNER JOIN campaign ON campaign.campaign_id = funds.campaign_id WHERE funds.campaign_id IN (SELECT campaign_id FROM campaign WHERE user_id="+req.params.user_id+")";
+        db.query(sql, (err, results) => {
+                if (err) throw err;
+                console.log(results);  
+                res.send(results);
+        });
+});
 
 
 // harsh's apis
+
 
 //to get name and email on profile
 router.get('/:id',function(req,res){

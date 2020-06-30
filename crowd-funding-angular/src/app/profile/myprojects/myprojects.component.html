@@ -7,16 +7,16 @@
 
             <div class="card-body">
               <div class="row">
-                <div class="col-sm-3">
-                  <img class="profilepic" style="height:100px; width: 100px;" src="https://upload.wikimedia.org/wikipedia/sco/thumb/e/e0/Iron_Man_bleeding_edge.jpg/250px-Iron_Man_bleeding_edge.jpg">
+                <!-- <div class="col-sm-5">
+                  <img class="profilepic" style="height:100px; width: 100px;" src="{{proj.image}}">
       
-                </div>
-                <div class="col-sm-6">
-                  <h5 class="card-title">{{proj.cam_title}}</h5>
+                </div> -->
+                <div class="col-sm-9">
+                  <h3 class="card-title">{{proj.cam_title}}</h3>
                   <p class="card-text">{{proj.cam_subject}}</p>
                 </div>
                 <div class="col-sm-3">
-                  <a class="btn btn-primary" style="float: right;" href="#" >View</a>
+                  <a class="btn btn-primary" style="float: right;  color: white; padding: 5px 20px;" (click)="goToCampaign(proj.campaign_id)" >View</a>
                 </div>
               </div>
             </div>
