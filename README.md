@@ -1,1 +1,1 @@
-# CrowdFunding using MEAN stack and MySQL database
+# CrowdFunding webapp using MEAN stack and MySQL database
