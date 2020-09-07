@@ -51,4 +51,10 @@ export class ProfileComponent implements OnInit {
 
     this.thumbnail = this.sanitizer.bypassSecurityTrustUrl(objectURL);
    }
+
+
+   logout(){
+     localStorage.clear();
+     this.router.navigate(['/login']);  
+   }
 }

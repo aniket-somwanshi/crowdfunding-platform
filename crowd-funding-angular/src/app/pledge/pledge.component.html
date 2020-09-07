@@ -1,98 +1,149 @@
 <section class="preview">
-    <div class="preview-title ">
-        <span>{{camp[0]?.cam_title}}</span>
-    </div>
-    <div class="preview-subtitle">
-        <span>{{camp[0]?.cam_subject}}</span>
-    </div>
+  <div class="preview-title">
+    <span>{{ camp[0]?.cam_title }}</span>
+  </div>
+  <div class="preview-subtitle">
+    <span>{{ camp[0]?.cam_subject }}</span>
+  </div>
 </section>
 
 <section class="rewards">
-    <div class="row">
-        <div class="col-md-7">
-            <div class="reward-tag">
-                <span>Support this Project</span>
-            </div>
-            <div class="reward-sub-tag">
-                <span>Select a reward to pledge</span>
-            </div>
+  <div class="row">
+    <div class="col-md-7">
+      <div class="reward-tag">
+        <span>Support this Project</span>
+      </div>
 
-            <!-- reward s-->
+      <!-- reward s-->
 
-            <div  class="reward-default"
-            (click)="goToLearnMore()"
-            >
-                <div class="reward-amount">
-                    <span>Wanna know more ?</span>
-                </div>
-                <div class="reward-title">
-                    <span>FAQs & Comments</span>
-                </div>
-              
-                <div class="reward-desc">
-                    <span>Hesitant to pledge? Get to know what other people in the community has to say about this campaign and make the right decision! </span>
-                </div>
-            </div>
-
-            <div *ngIf="this.successful" class="successful" style="padding: 10px; background-color:#EDF1F8; font-weight: 300; margin-bottom: 10px;">
-                <span style="color: #656969;">Your have successfully funded this project.</span>
-            </div>
-            <div class="reward"
-            *ngFor="let rew of rewards"
-            >
-                <div class="reward-amount">
-                    <span>Pledge ₹ {{rew.rewards_amount}}</span>
-                </div>
-                <div class="reward-title">
-                    <span>{{rew.rewards_sub}}</span>
-                </div>
-              
-                <div class="reward-desc">
-                    <span>{{rew.rewards_desc}}</span>
-                </div>
-                <div class="reward-pledge">
-                    <button (click)="pledge(rew.rewards_id, rew.rewards_amount)" >Pledge ₹ {{rew.rewards_amount}}</button>
-                </div>
-            </div>
+      <div class="reward-default" (click)="goToLearnMore()">
+        <div class="reward-amount">
+          <span>Wanna know more ?</span>
         </div>
-        <div class="col-md-5">
-            <div class="about">
-                <div class="about-title">
-                    <span>You are about to bring a project to life!</span>
-                </div>
-                <div class="about-desc">
-                    <span>
-
-                        We transform ideas into reality. It’s where creators share new visions for creative work with the communities that will come together to fund them.
-                       <br> No matter what, creators always control how the work comes together—no 100-page grant applications, no donors demanding you modify your message, no last-minute edits from investors. When backers chip in funding and help spread the word, they too become part of these independent works.
-                    </span>
-                </div>
-                <div class="about-points">
-                    <div class="point">
-                        <span>#  You're only charged if funding succeeds </span>
-                    </div>
-                    <div class="point-desc">
-                        <span>
-                            Yes! That's part of what makes Kickstarter special. If a project isn't successfully funded, no one pays anything.
-                        </span>
-                    </div>
-                    <div class="point">
-                        <span># Privacy about your pledge </span>
-                    </div>
-                    <div class="point-desc">
-                        <span>
-                            The project will be added to the list of backings on your profile page, but the amount you pledge, and the reward you choose, will not be made public.                        </span>
-                    </div>
-                    <div class="point">
-                        <span>#  How you will get the reward if the project is funded. </span>
-                    </div>
-                    <div class="point-desc">
-                        <span>
-                            When your reward is ready, Melbot Studios will send you a survey via email to request any info needed to deliver your reward (mailing address, T-shirt size, etc).             
-                        </span>       </div>
-                    
-                </div>
-            </div>
+        <div class="reward-title">
+          <span>FAQs & Comments</span>
         </div>
+
+        <div class="reward-desc">
+          <span
+            >Hesitant to pledge? Get to know what other people in the community
+            has to say about this campaign and make the right decision!
+          </span>
+        </div>
+      </div>
+
+      <div class="reward-sub-tag">
+        <span>Select a reward to pledge</span>
+      </div>
+
+      <div
+        *ngIf="this.successful"
+        class="successful"
+        style="
+          padding: 10px;
+          background-color: #edf1f8;
+          font-weight: 300;
+          margin-bottom: 10px;
+        "
+      >
+        <span style="color: #656969"
+          >Your have successfully funded this project.</span
+        >
+      </div>
+      <div class="reward" *ngFor="let rew of rewards">
+        <div class="reward-amount">
+          <span>Pledge ₹ {{ rew.rewards_amount }}</span>
+        </div>
+        <div class="reward-title">
+          <span>{{ rew.rewards_sub }}</span>
+        </div>
+
+        <div class="reward-desc">
+          <span>{{ rew.rewards_desc }}</span>
+        </div>
+        <div class="reward-pledge">
+          <button (click)="pledge(rew.rewards_id, rew.rewards_amount)">
+            Pledge ₹ {{ rew.rewards_amount }}
+          </button>
+        </div>
+      </div>
+
+      <!-- Pledge without reward -->
+
+      <div class="reward">
+        <div class="reward-amount">
+          <span>Pledge without a reward.</span>
+        </div>
+
+        <div class="reward-desc">
+          <span>Back it because you believe in us.</span>
+          <span>Pledge not for a reward but because you loved this.</span>
+        </div>
+        <div class="reward-pledge">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Enter amount in ₹"
+          />
+          <br />
+          <button (click)="pledge(rew.rewards_id, rew.rewards_amount)">
+            Pledge
+          </button>
+        </div>
+      </div>
     </div>
+    <div class="col-md-5">
+      <div class="about">
+        <div class="about-title">
+          <span>You are about to bring a project to life!</span>
+        </div>
+        <div class="about-desc">
+          <span>
+            We transform ideas into reality. It’s where creators share new
+            visions for creative work with the communities that will come
+            together to fund them.
+            <br />
+            No matter what, creators always control how the work comes
+            together—no 100-page grant applications, no donors demanding you
+            modify your message, no last-minute edits from investors. When
+            backers chip in funding and help spread the word, they too become
+            part of these independent works.
+          </span>
+        </div>
+        <div class="about-points">
+          <div class="point">
+            <span># You're only charged if funding succeeds </span>
+          </div>
+          <div class="point-desc">
+            <span>
+              Yes! That's part of what makes Kickstarter special. If a project
+              isn't successfully funded, no one pays anything.
+            </span>
+          </div>
+          <div class="point">
+            <span># Privacy about your pledge </span>
+          </div>
+          <div class="point-desc">
+            <span>
+              The project will be added to the list of backings on your profile
+              page, but the amount you pledge, and the reward you choose, will
+              not be made public.
+            </span>
+          </div>
+          <div class="point">
+            <span
+              ># How you will get the reward if the project is funded.
+            </span>
+          </div>
+          <div class="point-desc">
+            <span>
+              When your reward is ready, Melbot Studios will send you a survey
+              via email to request any info needed to deliver your reward
+              (mailing address, T-shirt size, etc).
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>

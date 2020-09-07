@@ -1,175 +1,213 @@
-
 <div class="row">
-    <div class="col-md-1"></div>
-    <div class="col-md-10">
-        <div class="row">
-          <div style="width: 100%; text-align: center; padding-top: 50px;">
-           <label class="title">Start Your Project</label>
-           <p  style="color: #656969; font-size: 20px;">Talk is useless, Execution is the key!</p>
-        </div>
-        </div>
-        <div class="h-divider"> </div>
-        <form name="form" #campaignForm="ngForm" (ngSubmit)="campaignForm.form.valid && createCampaign(campaignForm)" >
-            <div class="form-row">
-          
-                <div class="form-group col-md-4">
-                  <label for="name" >Project Title</label>
-                  <p>Be more precise and give clear brief  title that helps people quickly understand the gist of your project.</p>
-                </div>
-                <div class="col-md-2"></div>
-                <div class="form-group col-md-6">
-                  <label for="inputemail">Title</label>
-                 
-                  <input class="form-control"
-                  required minlength="2" maxlength="20"
-                  [(ngModel)]="campaign.cam_title"
-                  name="cam_title" #cam_title="ngModel" 
-                  type="text" placeholder="eg.Self recording machine"
-                  >
-                  <div *ngIf="cam_title.touched && !cam_title.valid" 
-    style="color: red;">
-    <span *ngIf="cam_title.errors.required">Title is required.</span>
-    <span *ngIf="cam_title.errors.minlength">Title should be more than 2 characters at least.</span>
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+    <div class="row">
+      <div style="width: 100%; text-align: center; padding-top: 50px">
+        <label class="title">Start Your Project</label>
+        <p style="color: #656969; font-size: 20px">
+          Talk is useless, Execution is the key!
+        </p>
+      </div>
     </div>
-                </div>
-              </div>
-              
-              <div class="h-divider"> </div>
-
-              <div class="form-row">
-          
-                <div class="form-group col-md-4">
-                  <label for="name" >Subtitle</label>
-                  <p>Give an elegant subtitle to express your idea easily. </p>
-                </div>
-                <div class="col-md-2"></div>
-                <div class="form-group col-md-6">
-                 
-                  <input  class="form-control"
-    required minlength="2" 
-    [(ngModel)]="campaign.cam_subject"
-    name="cam_subject" #cam_subject="ngModel" 
-    type="text" placeholder="Enter subtitle.."
-    > 
-                  
-                </div>
-              </div>
-              
-              <div class="h-divider"> </div>
-
-              <div class="form-row">
-          
-                <div class="form-group col-md-4">
-                  <label for="name" >Category</label>
-                  <p>Choose category that is suitable for your project.  </p>
-                  <p>Category helps for people with certain interests reach to your project easily.</p>
-                </div>
-                <div class="col-md-2"></div>
-                <div class="form-group col-md-6">
-                 
-                  <select class="form-control"
-                  required 
-                  [(ngModel)]="campaign.cam_category"
-                  name="cam_category" #cam_category="ngModel"
-                  >
-                    <option value="Miscelleneous">Miscelleneous</option>
-                    <option value="Comics">Comics</option>
-                    <option value="Sports">Sports</option>
-                    <option value="Publish">Publish</option>
-                    <option selected value="Innovation">Innovation</option>
-                    <option value="Design & Tech">Design & Tech</option>
-                </select>
-
-                  
-                </div>
-              </div>
-              
-              <div class="h-divider"> </div>
-
-              <div class="form-row">
-          
-                <div class="form-group col-md-4">
-                  <label for="name" >Description</label>
-                  <p>Describe your project as briefly as you can.  </p>
-                  <p>Better the people will understand your project more is the money you make!</p>
-                </div>
-                <div class="col-md-2"></div>
-                <div class="form-group col-md-6">
-                 
-                  <textarea class="form-control"
-                  required minlength="2"
-                  [(ngModel)]="campaign.cam_desc"
-                  name="cam_desc" #cam_desc="ngModel" 
-                  placeholder="Brief Description of your project."></textarea>                  
-                </div>
-              </div>
-              <div class="h-divider"> </div>
-
-              <div class="form-row">
-          
-                <div class="form-group col-md-4">
-                  <label for="name" >Your Funding Goal</label>
-                  <p>Set an achievable goal that covers what you need to complete your project. </p>
-                  <p>Funding is all-or-nothing. If you don’t meet your goal, you won’t receive any money.</p>
-                </div>
-                <div class="col-md-2"></div>
-                <div class="form-group col-md-6">
-                 <label>Goal Amount</label>
-                  <input class="form-control"
-    required 
-    [(ngModel)]="campaign.cam_pledge"
-    name="cam_pledge" #cam_pledge="ngModel" 
-    type="number" placeholder="0 Rs"
-    >                
-  </div>
-              </div>
-              <div class="h-divider"> </div>
-              <div class="form-row">
-          
-                <div class="form-group col-md-4">
-                  <label for="name" >Campaign Duration</label>
-                  <p>Set a time limit for your project. </p>
-                  
-                </div>
-                <div class="col-md-2"></div>
-                <div class="form-group col-md-6">
-                 <label>No. of Days</label>
-                 <select class="form-control"
-    required
-    [(ngModel)]="campaign.cam_duration"
-    name="cam_duration" #cam_duration="ngModel" 
-    
+    <div class="h-divider"></div>
+    <form
+      name="form"
+      #campaignForm="ngForm"
+      (ngSubmit)="campaignForm.form.valid && createCampaign(campaignForm)"
     >
-                    <option  value="10">10 Days</option>
-                    <option value="15">15 Days</option>
-                    <option  selected value="20">20 Days</option>
-                    <option value="25">25 Days</option>
-                    <option value="30">30 Days</option>
-</select>
-   
-    
-  </div>
-              </div>
-              <div class="form-row">
-          
-                <div class="form-group col-md-4">
-                  
-                  
-                </div>
-                <div class="col-md-2"></div>
-                <div class="form-group col-md-6">
-    
-    <button class="btn" style="float: right;"
-    type="submit" 
-    >Create</button>
-    
-  </div>
-              </div>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="name">Project Title</label>
+          <p>
+            Be more precise and give clear brief title that helps people quickly
+            understand the gist of your project.
+          </p>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="form-group col-md-6">
+          <label for="inputemail">Title</label>
 
-        </form>
-   
-    </div>
-    <div class="col-md-1"></div>
+          <input
+            class="form-control"
+            required
+            minlength="2"
+            maxlength="80"
+            [(ngModel)]="campaign.cam_title"
+            name="cam_title"
+            #cam_title="ngModel"
+            type="text"
+            placeholder="eg.Self recording machine"
+          />
+          <div *ngIf="cam_title.touched && !cam_title.valid" style="color: red">
+            <span *ngIf="cam_title.errors.required">Title is required.</span>
+            <span *ngIf="cam_title.errors.minlength"
+              >Title should be more than 2 characters at least.</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="h-divider"></div>
+
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="name">Subtitle</label>
+          <p>Give an elegant subtitle to express your idea easily.</p>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="form-group col-md-6">
+          <input
+            class="form-control"
+            required
+            minlength="2"
+            [(ngModel)]="campaign.cam_subject"
+            name="cam_subject"
+            #cam_subject="ngModel"
+            type="text"
+            placeholder="Enter subtitle.."
+          />
+        </div>
+      </div>
+
+      <div class="h-divider"></div>
+
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="name">Category</label>
+          <p>Choose category that is suitable for your project.</p>
+          <p>
+            Category helps for people with certain interests reach to your
+            project easily.
+          </p>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="form-group col-md-6">
+          <select
+            class="form-control"
+            required
+            [(ngModel)]="campaign.cam_category"
+            name="cam_category"
+            #cam_category="ngModel"
+          >
+            <option selected value="Miscelleneous">Miscelleneous</option>
+            <option value="Comics">Comics</option>
+            <option value="Sports">Sports</option>
+            <option value="Publish">Publish</option>
+            <option selected value="Innovation">Innovation</option>
+            <option value="Design & Tech">Design & Tech</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="h-divider"></div>
+
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="name">Description</label>
+          <p>Describe your project as briefly as you can.</p>
+          <p>
+            Better the people will understand your project more is the money you
+            make!
+          </p>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="form-group col-md-6">
+          <textarea
+            class="form-control"
+            required
+            minlength="2"
+            [(ngModel)]="campaign.cam_desc"
+            name="cam_desc"
+            #cam_desc="ngModel"
+            placeholder="Brief Description of your project."
+          ></textarea>
+        </div>
+      </div>
+      <div class="h-divider"></div>
+
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="name">Your Funding Goal</label>
+          <p>
+            Set an achievable goal that covers what you need to complete your
+            project.
+          </p>
+          <p>
+            Funding is all-or-nothing. If you don’t meet your goal, you won’t
+            receive any money.
+          </p>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="form-group col-md-6">
+          <label>Goal Amount</label>
+          <input
+            class="form-control"
+            required
+            [(ngModel)]="campaign.cam_pledge"
+            name="cam_pledge"
+            #cam_pledge="ngModel"
+            type="number"
+            placeholder="0 Rs"
+          />
+        </div>
+      </div>
+      <div class="h-divider"></div>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="name">Campaign Duration</label>
+          <p>Set a time limit for your project.</p>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="form-group col-md-6">
+          <label>No. of Days</label>
+          <select
+            class="form-control"
+            required
+            [(ngModel)]="campaign.cam_duration"
+            name="cam_duration"
+            #cam_duration="ngModel"
+          >
+            <option value="10">10 Days</option>
+            <option value="15">15 Days</option>
+            <option selected value="20">20 Days</option>
+            <option value="25">25 Days</option>
+            <option value="30">30 Days</option>
+            <option value="60">60 Days</option>
+            <option value="90">90 Days</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="h-divider"></div>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="name">Campaign Preview Image</label>
+          <p>Set a time preview picture for your project.</p>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="form-group col-md-6">
+          <label>Image url</label>
+          <input
+            type="file"
+            class="form-control-file"
+            (change)="selectImage($event)"
+            required
+            name="image_preview"
+            accept="image"
+          />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-4"></div>
+        <div class="col-md-2"></div>
+        <div class="form-group col-md-6">
+          <button class="btn" style="float: right" type="submit">Create</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-1"></div>
 </div>
 
 <!-- <form name="form" #campaignForm="ngForm" (ngSubmit)="campaignForm.form.valid && createCampaign(campaignForm)">

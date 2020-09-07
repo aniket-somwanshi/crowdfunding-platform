@@ -1,635 +1,560 @@
-
 <section class="featured-container">
-    <div class="row featured">
-        <div class="col-md-7 padding-right-0">
-            <div class="featured-first">
-                <div class="featured-tag">
-                    <span>Featured Project</span>
-                </div>
-                <div class="featured-img">
-                    <img height="400px"
-                        src="https://ksr-static.imgix.net/hb6w3nl7-ptolus_2.png?ixlib=rb-2.1.0&s=247ac0cc90963c796ad757ace6bb5ab6">
-                </div>
-                <div class="featured-title head">
-                    <!-- change the id in the function below with actual ID of the campaign -->
-                    <span (click)="goToCampaign(13)">Ptolus: Monte Cook's City by the Spire</span>
-                </div>
-                <div class="featured-desc">
-                    <span>Monte Cook's legendary campaign setting, updated for Fifth Edition and the Cypher System.
-                    </span>
-                </div>
-                <div class="featured-by">
-                    <span>By Monte Cook Games</span>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-5 padding-left-0">
-            <div class="featured-second">
-                <div class="success-tag">
-                    <span>Recent success</span>
-                </div>
-
-                <div class="success-project" style="padding-top: 0px;">
-                    <div class="row">
-                        <div class="col-md-5">
-                            <div class="success-img">
-                                <img height="100%" width="100%"
-                                    src="https://ksr-ugc.imgix.net/assets/027/994/350/88e477139c21255783b81d69367e2475_original.png?ixlib=rb-2.1.0&crop=faces&w=352&h=198&fit=crop&v=1580988168&auto=format&frame=1&q=92&s=9589a0f7494b3b7fcbab65ebc4937737">
-                            </div>
-                        </div>
-                        <div class="col-md-7">
-                            <div class="success-title">
-                                <!-- change the id in the function below with actual ID of the campaign -->
-                                <span (click)="goToCampaign(13)">Pathfinder: Wrath of the Righteous
-                                </span>
-                            </div>
-                            <div class="success-by">
-                                <span>By OwlCat Games</span>
-                            </div>
-                            <div class="success-explore">
-                                <span>Explore</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- iteration of success project -->
-                <div class="success-project">
-                    <div class="row">
-                        <div class="col-md-5">
-                            <div class="success-img">
-                                <img height="100%" width="100%"
-                                    src="https://ksr-ugc.imgix.net/assets/028/088/926/539d0bd42331d84bd195840b77afba4c_original.PNG?ixlib=rb-2.1.0&crop=faces&w=352&h=198&fit=crop&v=1581682492&auto=format&frame=1&q=92&s=b867b21f44c7f0478cb4c38704195824">
-                            </div>
-                        </div>
-                        <div class="col-md-7">
-                            <div class="success-title">
-                                <span (click)="goToCampaign(13)">Dungeon Drafters
-                                </span>
-                            </div>
-                            <div class="success-by">
-                                <span>By Manalith Studios</span>
-                            </div>
-                            <div class="success-explore">
-                                <span>Explore</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- iteration of success project -->
-                <div class="success-project">
-                    <div class="row">
-                        <div class="col-md-5">
-                            <div class="success-img">
-                                <img height="100%" width="100%"
-                                    src="https://ksr-ugc.imgix.net/assets/028/373/600/a0f4d93cbef81f37043d685e224a64a2_original.png?ixlib=rb-2.1.0&crop=faces&w=352&h=198&fit=crop&v=1583767639&auto=format&frame=1&q=92&s=9f852d4d0e5fd13000274858e3cd6f4b">
-                            </div>
-                        </div>
-                        <div class="col-md-7">
-                            <div class="success-title">
-                                <span (click)="goToCampaign(13)">Among Ripples: Shallow Waters - Restore the World
-                                </span>
-                            </div>
-                            <div class="success-by">
-                                <span>By Eat Create Sleep</span>
-                            </div>
-                            <div class="success-explore">
-                                <span>Explore</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div>
-
-        </div>
-
+  <div class="row">
+    <div class="col-md-6">
+      <select
+        name="order-by"
+        (change)="newOrTrending($event.target.value)"
+        class="col-md-3 custom-select"
+        id=""
+      >
+        <option selected value="trending">Trending</option>
+        <option value="newer">Newer</option>
+      </select>
     </div>
+    <div class="col-md-6">
+      <div class="row">
+        <form name="form" class="ml-5">
+          <div class="d-flex" style="width: 100%">
+            <input
+              type="text"
+              class="form-control"
+              required
+              minlength="5"
+              #search="ngModel"
+              [(ngModel)]="searchData.data"
+              placeholder="Search campaign"
+              name="data"
+              style="
+                border: none;
+                border-bottom: 1px solid black;
+                border-radius: 0;
+                outline: none;
+              "
+            />
+            <button
+              class="btn btn-success"
+              type="submit"
+              *ngIf="search.valid"
+              (click)="searchFunction()"
+              style="border-radius: 0"
+            >
+              <!-- <img src="../../assets/search.png" /> -->
+              Search
+            </button>
+          </div>
+        </form>
+        <div class="row">
+          <div
+            class="ml-auto"
+            *ngIf="search.touched && !search.valid"
+            style="color: red; text-align: left; font-size: 14px"
+          >
+            <span *ngIf="search.errors.required">Can't be empty</span>
+          </div>
+          <div
+            class="ml-auto"
+            *ngIf="search.touched && !search.valid"
+            style="color: red; text-align: left; font-size: 14px"
+          >
+            <span *ngIf="search.errors.minlength"
+              >The length of text must be 5 or more.</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
+  <div
+    class="row my-5"
+    *ngIf="searchedCampaigns.length != 0"
+    style="border-bottom: 1px solid lightgrey; border-top: 1px solid lightgrey"
+  >
+    <div class="col-md-8">
+      <div class="row my-5" *ngFor="let campaign of searchedCampaigns">
+        <div
+          class="card"
+          style="border-color: transparent; cursor: pointer"
+          (click)="goToCampaign(campaign.campaign_id)"
+        >
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-4">
+                <img
+                  class="card-img"
+                  style="max-height: 150px"
+                  src="http://localhost:3000/{{ campaign.image_preview }}"
+                  alt="preview image"
+                />
+              </div>
+              <div class="col-sm-8">
+                <h5 class="card-text">{{ campaign.cam_title }}</h5>
+                <p class="card-text">{{ campaign.cam_subject }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 my-5">
+      <div class="ml-auto">
+        <a
+          class="text-success"
+          (click)="clearSearch($event)"
+          href=""
+          style="font-size: 18px"
+          >Clear Search</a
+        >
+      </div>
+    </div>
+  </div>
+
+  <div class="row featured pt-5">
+    <div class="col-md-7 padding-right-0">
+      <div class="featured-first">
+        <div class="featured-tag">
+          <span>Featured Project</span>
+        </div>
+        <div class="featured-img">
+          <!-- <img
+            height="400px"
+            src="https://ksr-static.imgix.net/hb6w3nl7-ptolus_2.png?ixlib=rb-2.1.0&s=247ac0cc90963c796ad757ace6bb5ab6"
+          /> -->
+          <img
+            height="400px"
+            src="http://localhost:3000/{{ orderBy[0]?.image_preview }}"
+          />
+        </div>
+        <div class="featured-title head">
+          <!-- change the id in the function below with actual ID of the campaign -->
+          <!-- <span (click)="goToCampaign(27)">Ptolus: Monte Cook's City by the Spire</span  > -->
+          <span
+            (click)="goToCampaign(orderBy[0]?.campaign_id)"
+            style="cursor: pointer"
+            >{{ orderBy[0]?.cam_title }}</span
+          >
+        </div>
+        <div class="featured-desc">
+          <span>{{ orderBy[0]?.cam_subject }} </span>
+        </div>
+        <div class="featured-by">
+          <span>By {{ orderBy[0]?.user_name }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5 padding-left-0" *ngIf="orderBy.length > 1">
+      <div class="featured-second">
+        <div class="success-tag">
+          <span>Recent success</span>
+        </div>
+
+        <!-- trending or newest projects iteration -->
+        <ng-container *ngFor="let campaign of orderBy; let i = index">
+          <div
+            *ngIf="i != 0 && i < 4"
+            class="success-project"
+            style="padding-top: 0px"
+          >
+            <div class="row">
+              <div class="col-md-5">
+                <div class="success-img">
+                  <!-- <img
+                  height="100%"
+                  width="100%"
+                  src="https://ksr-ugc.imgix.net/assets/027/994/350/88e477139c21255783b81d69367e2475_original.png?ixlib=rb-2.1.0&crop=faces&w=352&h=198&fit=crop&v=1580988168&auto=format&frame=1&q=92&s=9589a0f7494b3b7fcbab65ebc4937737"
+                /> -->
+
+                  <img
+                    height="100%"
+                    width="100%"
+                    src="http://localhost:3000/{{ campaign.image_preview }}"
+                  />
+                </div>
+              </div>
+              <div class="col-md-7">
+                <div class="success-title">
+                  <!-- change the id in the function below with actual ID of the campaign -->
+                  <span
+                    (click)="goToCampaign(campaign.campaign_id)"
+                    style="cursor: pointer"
+                    >{{ campaign.cam_title }}
+                  </span>
+                </div>
+                <div class="success-by">
+                  <span>By {{ campaign.user_name }}</span>
+                </div>
+                <div class="success-explore">
+                  <span (click)="goToCampaign(campaign.campaign_id)"
+                    >Explore</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <!-- iteration of success project -->
+
+        <!-- iteration of success project -->
+      </div>
+    </div>
+  </div>
 </section>
-
 
 <section class="category-container">
-    <div class="row category">
-        <div class="col-md-12">
-            <div class="cat-title">
-                <span>Welcome to the world of </span><span>Creative</span><span> people.</span>
-            </div>
-            <div class="cat-desc">
-                <span>
-                    From tabletop adventures to beloved revivals, discover the projects forging the future of gameplay.
-                </span>
-            </div>
-            <!-- <div class="cat-explore">
+  <div class="row category-div">
+    <div class="col-md-12">
+      <div class="cat-title">
+        <span>Welcome to the world of </span><span>Creative</span
+        ><span> people.</span>
+      </div>
+      <div class="cat-desc">
+        <span>
+          From tabletop adventures to beloved revivals, discover the projects
+          forging the future of gameplay.
+        </span>
+      </div>
+      <!-- <div class="cat-explore">
                 Advanced search
             </div> -->
-        </div>
     </div>
+  </div>
 </section>
 
-
-<div style="background-color: rgb(237, 241, 248);">
-    <div class="row category"  style="background-color:  rgb(237, 241, 248);">
+<div style="background-color: rgb(237, 241, 248)">
+  <div class="row category-div" style="background-color: rgb(237, 241, 248)">
     <div class="col-md-12">
-        <div class="discover-by-tag" style="margin-bottom: 0px !important;">
-            <span>Discover by Categories</span>
-        </div>
-        <div class="cat-desc">
-            <span>
-                From tabletop adventures to beloved revivals, discover the projects forging the future of gameplay.
-            </span>
-        </div>
-        <!-- <div class="cat-explore">
+      <div class="discover-by-tag" style="margin-bottom: 0px !important">
+        <span>Discover by Categories</span>
+      </div>
+      <div class="cat-desc">
+        <span>
+          From tabletop adventures to beloved revivals, discover the projects
+          forging the future of gameplay.
+        </span>
+      </div>
+      <!-- <div class="cat-explore">
             Advanced Search
         </div> -->
     </div>
+  </div>
+
+  <section class="categories">
+    <div class="row">
+      <div class="col-md-6">
+        <a (click)="goToCategory('Miscelleneous')">
+          <div
+            class="category card"
+            style="background-image: url('assets/images/green.png')"
+          >
+            <div class="category-title card-title">
+              <span>Miscelleneous</span>
+            </div>
+            <div class="category-subtitle">
+              <span>Believe it or not, Orange is the new black.</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-6">
+        <a (click)="goToCategory('Comics')">
+          <div
+            class="category card"
+            style="background-image: url('assets/images/books.png')"
+          >
+            <div class="category-title head">
+              <span>Comics</span>
+            </div>
+            <div class="category-subtitle">
+              <span>Believe it or not, Orange is the new black.</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <a (click)="goToCategory('Sports')">
+          <div
+            class="category card"
+            style="background-image: url('assets/images/sports.png')"
+          >
+            <div class="category-title head">
+              <span>Sports</span>
+            </div>
+            <div class="category-subtitle">
+              <span>Believe it or not, Orange is the new black.</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-6">
+        <a (click)="goToCategory('Publish')">
+          <div
+            class="category card"
+            style="background-image: url('assets/images/wikipedia.png')"
+          >
+            <div class="category-title head">
+              <span>Publish</span>
+            </div>
+            <div class="category-subtitle">
+              <span>Believe it or not, Orange is the new black.</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <a (click)="goToCategory('Innovation')">
+          <div
+            class="category card"
+            style="background-image: url('assets/images/abstract.png')"
+          >
+            <div class="category-title head">
+              <span>Innovation</span>
+            </div>
+            <div class="category-subtitle">
+              <span>Believe it or not, Orange is the new black.</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="col-md-6">
+        <a (click)="goToCategory('Design & Tech')">
+          <div
+            class="category card"
+            style="background-image: url('assets/images/tech.png')"
+          >
+            <div class="category-title head">
+              <span>Design & Tech</span>
+            </div>
+            <div class="category-subtitle">
+              <span>Believe it or not, Orange is the new black.</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
 </div>
-
-
-
-<section class="categories"> 
-    <div class="row">
-        <div class="col-md-6">
-            <a (click)="goToCategory('Miscelleneous')">
-
-                <div class="card" style="background-image:url('assets/images/green.png');">
-                    <div class="card-title">
-                        <span>Miscelleneous</span>
-                    </div>
-                    <div class="card-subtitle">
-                        <span>Believe it or not, Orange is the new black.</span>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-md-6">
-            <a (click)="goToCategory('Comics')">
-                <div class="card" style="background-image:url('assets/images/books.png');">
-                    <div class="card-title head">
-                        <span>Comics</span>
-                    </div>
-                    <div class="card-subtitle">
-                        <span>Believe it or not, Orange is the new black.</span>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
-
-    <div class="row">
-        
-        <div class="col-md-6">
-            <a (click)="goToCategory('Sports')">
-                <div class="card" style="background-image:url('assets/images/sports.png');">
-                    <div class="card-title head">
-                        <span>Sports</span>
-                    </div>
-                    <div class="card-subtitle">
-                        <span>Believe it or not, Orange is the new black.</span>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-md-6">
-            <a (click)="goToCategory('Publish')">
-                <div class="card" style="background-image:url('assets/images/wikipedia.png');">
-                    <div class="card-title head">
-                        <span>Publish</span>
-                    </div>
-                    <div class="card-subtitle">
-                        <span>Believe it or not, Orange is the new black.</span>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
-
-    <div class="row">
-       
-        <div class="col-md-6">
-            <a (click)="goToCategory('Innovation')">
-
-                <div class="card" style="background-image:url('assets/images/abstract.png');">
-                    <div class="card-title head">
-                        <span>Innovation</span>
-                    </div>
-                    <div class="card-subtitle">
-                        <span>Believe it or not, Orange is the new black.</span>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-md-6">
-            <a (click)='goToCategory("Design & Tech")'>
-
-                <div class="card" style="background-image:url('assets/images/tech.png');">
-                    <div class="card-title head">
-                        <span>Design & Tech</span>
-                    </div>
-                    <div class="card-subtitle">
-                        <span>Believe it or not, Orange is the new black.</span>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
-</section>
-</div>
-
 
 <section class="filter-campaigns">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="filter-by">
-                <span class="filter-by-tag">Fresh Favorites</span>
-                <span class="discover-more">Discover More</span>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="filter-by">
+        <span class="filter-by-tag">EDITORS PICKS</span>
+        <span class="discover-more">Discover More</span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <ngx-slick-carousel
+        class="carousel"
+        #slickModal="slick-carousel"
+        [config]="slideConfig"
+      >
+        <div ngxSlickItem class="slide">
+          <div class="campaign-slide">
+            <div class="slide-img">
+              <img
+                src="https://ksr-ugc.imgix.net/assets/028/278/269/c5993fe5c6d2ac08164434883b17cc14_original.JPG?ixlib=rb-2.1.0&crop=faces&w=352&h=198&fit=crop&v=1583068589&auto=format&frame=1&q=92&s=90b03796fa54356cbc4b332d47ddd4c7"
+              />
             </div>
+            <div class="slide-title">
+              <span>Sharjah Sketchbook (Quickstarter) </span>
+            </div>
+            <div class="slide-desc">
+              <span>
+                The Roller World tarot deck is a stylized 78 card deck that
+                celebrates roller skating and the wonderfully diverse community
+                within.
+              </span>
+            </div>
+            <div class="slide-by">
+              <span>By Fury Nick</span>
+            </div>
+          </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-
-            <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
-                <div ngxSlickItem class="slide">
-                    <div class="campaign-slide">
-                        <div class="slide-img">
-                            <img
-                                src="https://ksr-ugc.imgix.net/assets/028/278/269/c5993fe5c6d2ac08164434883b17cc14_original.JPG?ixlib=rb-2.1.0&crop=faces&w=352&h=198&fit=crop&v=1583068589&auto=format&frame=1&q=92&s=90b03796fa54356cbc4b332d47ddd4c7">
-                        </div>
-                        <div class="slide-title">
-                            <span>Sharjah Sketchbook (Quickstarter)
-
-                            </span>
-                        </div>
-                        <div class="slide-desc">
-                            <span>
-                                The Roller World tarot deck is a stylized 78 card deck that celebrates roller skating
-                                and the wonderfully diverse community within.
-                            </span>
-                        </div>
-                        <div class="slide-by">
-                            <span>By Fury Nick</span>
-                        </div>
-                    </div>
-                </div>
-                <div ngxSlickItem class="slide">
-                    <div class="campaign-slide">
-                        <div class="slide-img">
-                            <img
-                                src="https://ksr-ugc.imgix.net/assets/028/282/367/6033cb7a26598f96d18d8d31964ffb13_original.png?ixlib=rb-2.1.0&crop=faces&w=352&h=198&fit=crop&v=1583097778&auto=format&frame=1&q=92&s=7619c14df81b9480170eecd6d831aac0">
-                        </div>
-                        <div class="slide-title">
-                            <span>Sweethearts of 1989: Chapter 2!
-
-                            </span>
-                        </div>
-                        <div class="slide-desc">
-                            <span>
-                                Deck is a stylized 78 card deck that celebrates roller skating and the wonderfully
-                                diverse community.
-                            </span>
-                        </div>
-                        <div class="slide-by">
-                            <span>By Titanium Hill</span>
-                        </div>
-                    </div>
-                </div>
-                <div ngxSlickItem class="slide">
-                    <div class="campaign-slide">
-                        <div class="slide-img">
-                            <img src="https://ksr-ugc.imgix.net/assets/028/298/070/94a9b6102a87d052a821c569a2f8c505_original.jpg?ixlib=rb-2.1.0&crop=faces&w=352&h=198&fit=crop&v=1583205404&auto=format&frame=1&q=92&s=f01d625e06e66193f46ff0b4053a1a0e"
-                                alt="" width="100%">
-                        </div>
-                        <div class="slide-title">
-                            <span>The Roller World Tarot Deck
-                            </span>
-                        </div>
-                        <div class="slide-desc">
-                            <span>
-                                The Roller World tarot deck is a stylized 78 card deck that celebrates roller skating
-                                and the wonderfully diverse community within.
-                            </span>
-                        </div>
-                        <div class="slide-by">
-                            <span>By Youshan Rak</span>
-                        </div>
-                    </div>
-                </div>
-                <div ngxSlickItem class="slide">
-                    <div class="campaign-slide">
-                        <div class="slide-img">
-                            <img src="https://ksr-ugc.imgix.net/assets/027/760/794/57019c83a92108cefacd298e9742ac29_original.jpeg?ixlib=rb-2.1.0&crop=faces&w=352&h=198&fit=crop&v=1579102945&auto=format&frame=1&q=92&s=af3db6c78b5bca3093f492cc490fec2e"
-                                alt="" width="100%">
-                        </div>
-                        <div class="slide-title">
-                            <span>Fyodor Pavlov Tarot
-
-                            </span>
-                        </div>
-                        <div class="slide-desc">
-                            <span>
-                                The Roller World tarot deck is a stylized 78 card deck that celebrates roller skating
-                                and the wonderfully diverse community within.
-                            </span>
-                        </div>
-                        <div class="slide-by">
-                            <span>By Titanium Hill</span>
-                        </div>
-                    </div>
-                </div>
-                <div ngxSlickItem class="slide">
-                    <div class="campaign-slide">
-                        <div class="slide-img">
-                            <img
-                                src="https://ksr-ugc.imgix.net/assets/028/307/500/0c49c5eb94db8e93d1f313219056061e_original.jpg?ixlib=rb-2.1.0&crop=faces&w=352&h=198&fit=crop&v=1583261644&auto=format&frame=1&q=92&s=907724bae1e8eda33c9589ec5fcca373">
-                        </div>
-                        <div class="slide-title">
-                            <span>The Roller World Tarot Deck
-                            </span>
-                        </div>
-                        <div class="slide-desc">
-                            <span>
-                                The Roller World tarot deck is a stylized 78 card deck that celebrates roller skating
-                                and the wonderfully diverse community within.
-                            </span>
-                        </div>
-                        <div class="slide-by">
-                            <span>By Titanium Hill</span>
-                        </div>
-                    </div>
-                </div>
-
-
-
-
-            </ngx-slick-carousel>
+        <div ngxSlickItem class="slide">
+          <div class="campaign-slide">
+            <div class="slide-img">
+              <img
+                src="https://ksr-ugc.imgix.net/assets/028/282/367/6033cb7a26598f96d18d8d31964ffb13_original.png?ixlib=rb-2.1.0&crop=faces&w=352&h=198&fit=crop&v=1583097778&auto=format&frame=1&q=92&s=7619c14df81b9480170eecd6d831aac0"
+              />
+            </div>
+            <div class="slide-title">
+              <span>Sweethearts of 1989: Chapter 2! </span>
+            </div>
+            <div class="slide-desc">
+              <span>
+                Deck is a stylized 78 card deck that celebrates roller skating
+                and the wonderfully diverse community.
+              </span>
+            </div>
+            <div class="slide-by">
+              <span>By Titanium Hill</span>
+            </div>
+          </div>
         </div>
-
+        <div ngxSlickItem class="slide">
+          <div class="campaign-slide">
+            <div class="slide-img">
+              <img
+                src="https://ksr-ugc.imgix.net/assets/028/298/070/94a9b6102a87d052a821c569a2f8c505_original.jpg?ixlib=rb-2.1.0&crop=faces&w=352&h=198&fit=crop&v=1583205404&auto=format&frame=1&q=92&s=f01d625e06e66193f46ff0b4053a1a0e"
+                alt=""
+                width="100%"
+              />
+            </div>
+            <div class="slide-title">
+              <span>The Roller World Tarot Deck </span>
+            </div>
+            <div class="slide-desc">
+              <span>
+                The Roller World tarot deck is a stylized 78 card deck that
+                celebrates roller skating and the wonderfully diverse community
+                within.
+              </span>
+            </div>
+            <div class="slide-by">
+              <span>By Youshan Rak</span>
+            </div>
+          </div>
+        </div>
+        <div ngxSlickItem class="slide">
+          <div class="campaign-slide">
+            <div class="slide-img">
+              <img
+                src="https://ksr-ugc.imgix.net/assets/027/760/794/57019c83a92108cefacd298e9742ac29_original.jpeg?ixlib=rb-2.1.0&crop=faces&w=352&h=198&fit=crop&v=1579102945&auto=format&frame=1&q=92&s=af3db6c78b5bca3093f492cc490fec2e"
+                alt=""
+                width="100%"
+              />
+            </div>
+            <div class="slide-title">
+              <span>Fyodor Pavlov Tarot </span>
+            </div>
+            <div class="slide-desc">
+              <span>
+                The Roller World tarot deck is a stylized 78 card deck that
+                celebrates roller skating and the wonderfully diverse community
+                within.
+              </span>
+            </div>
+            <div class="slide-by">
+              <span>By Titanium Hill</span>
+            </div>
+          </div>
+        </div>
+        <div ngxSlickItem class="slide">
+          <div class="campaign-slide">
+            <div class="slide-img">
+              <img
+                src="https://ksr-ugc.imgix.net/assets/028/307/500/0c49c5eb94db8e93d1f313219056061e_original.jpg?ixlib=rb-2.1.0&crop=faces&w=352&h=198&fit=crop&v=1583261644&auto=format&frame=1&q=92&s=907724bae1e8eda33c9589ec5fcca373"
+              />
+            </div>
+            <div class="slide-title">
+              <span>The Roller World Tarot Deck </span>
+            </div>
+            <div class="slide-desc">
+              <span>
+                The Roller World tarot deck is a stylized 78 card deck that
+                celebrates roller skating and the wonderfully diverse community
+                within.
+              </span>
+            </div>
+            <div class="slide-by">
+              <span>By Titanium Hill</span>
+            </div>
+          </div>
+        </div>
+      </ngx-slick-carousel>
     </div>
+  </div>
 </section>
- 
-<section class="filter-campaigns" style="background-color: rgb(237, 241, 248);">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="filter-by">
-                <span class="filter-by-tag">Taking Off</span>
 
-                <span class="discover-more">Discover More</span>
+<section class="filter-campaigns" style="background-color: rgb(237, 241, 248)">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="filter-by">
+        <span class="filter-by-tag">FRESH FAVORITES </span>
+
+        <span class="discover-more">Discover More</span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <ngx-slick-carousel
+        class="carousel"
+        #slickModal="slick-carousel"
+        [config]="slideConfig"
+      >
+        <div *ngFor="let nc of newestCampaigns" ngxSlickItem class="slide">
+          <a (click)="goToCampaign(nc.campaign_id)">
+            <div class="campaign-slide">
+              <div class="slide-img">
+                <img src="http://localhost:3000/{{ nc.image_preview }}" />
+              </div>
+              <div class="slide-title">
+                <span>{{ nc.cam_title }} </span>
+              </div>
+              <div class="slide-desc">
+                <span>
+                  {{ nc.cam_desc }}
+                </span>
+              </div>
+              <div class="slide-by">
+                <span>By {{ nc.user_name }}</span>
+              </div>
+              <p>{{ nc.cam_reg_date | date }}</p>
             </div>
+          </a>
         </div>
-
+      </ngx-slick-carousel>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-
-            <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
-                <div ngxSlickItem class="slide">
-                    <div class="campaign-slide">
-                        <div class="slide-img">
-                            <img
-                                src="https://ksr-ugc.imgix.net/assets/028/278/269/c5993fe5c6d2ac08164434883b17cc14_original.JPG?ixlib=rb-2.1.0&crop=faces&w=352&h=198&fit=crop&v=1583068589&auto=format&frame=1&q=92&s=90b03796fa54356cbc4b332d47ddd4c7">
-                        </div>
-                        <div class="slide-title">
-                            <span>Sharjah Sketchbook (Quickstarter)
-
-                            </span>
-                        </div>
-                        <div class="slide-desc">
-                            <span>
-                                The Roller World tarot deck is a stylized 78 card deck that celebrates roller skating
-                                and the wonderfully diverse community within.
-                            </span>
-                        </div>
-                        <div class="slide-by">
-                            <span>By Fury Nick</span>
-                        </div>
-                    </div>
-                </div>
-                <div ngxSlickItem class="slide">
-                    <div class="campaign-slide">
-                        <div class="slide-img">
-                            <img
-                                src="https://ksr-ugc.imgix.net/assets/028/282/367/6033cb7a26598f96d18d8d31964ffb13_original.png?ixlib=rb-2.1.0&crop=faces&w=352&h=198&fit=crop&v=1583097778&auto=format&frame=1&q=92&s=7619c14df81b9480170eecd6d831aac0">
-                        </div>
-                        <div class="slide-title">
-                            <span>Sweethearts of 1989: Chapter 2!
-
-                            </span>
-                        </div>
-                        <div class="slide-desc">
-                            <span>
-                                Deck is a stylized 78 card deck that celebrates roller skating and the wonderfully
-                                diverse community.
-                            </span>
-                        </div>
-                        <div class="slide-by">
-                            <span>By Titanium Hill</span>
-                        </div>
-                    </div>
-                </div>
-                <div ngxSlickItem class="slide">
-                    <div class="campaign-slide">
-                        <div class="slide-img">
-                            <img src="https://ksr-ugc.imgix.net/assets/028/298/070/94a9b6102a87d052a821c569a2f8c505_original.jpg?ixlib=rb-2.1.0&crop=faces&w=352&h=198&fit=crop&v=1583205404&auto=format&frame=1&q=92&s=f01d625e06e66193f46ff0b4053a1a0e"
-                                alt="" width="100%">
-                        </div>
-                        <div class="slide-title">
-                            <span>The Roller World Tarot Deck
-                            </span>
-                        </div>
-                        <div class="slide-desc">
-                            <span>
-                                The Roller World tarot deck is a stylized 78 card deck that celebrates roller skating
-                                and the wonderfully diverse community within.
-                            </span>
-                        </div>
-                        <div class="slide-by">
-                            <span>By Youshan Rak</span>
-                        </div>
-                    </div>
-                </div>
-                <div ngxSlickItem class="slide">
-                    <div class="campaign-slide">
-                        <div class="slide-img">
-                            <img src="https://ksr-ugc.imgix.net/assets/027/760/794/57019c83a92108cefacd298e9742ac29_original.jpeg?ixlib=rb-2.1.0&crop=faces&w=352&h=198&fit=crop&v=1579102945&auto=format&frame=1&q=92&s=af3db6c78b5bca3093f492cc490fec2e"
-                                alt="" width="100%">
-                        </div>
-                        <div class="slide-title">
-                            <span>Fyodor Pavlov Tarot
-
-                            </span>
-                        </div>
-                        <div class="slide-desc">
-                            <span>
-                                The Roller World tarot deck is a stylized 78 card deck that celebrates roller skating
-                                and the wonderfully diverse community within.
-                            </span>
-                        </div>
-                        <div class="slide-by">
-                            <span>By Titanium Hill</span>
-                        </div>
-                    </div>
-                </div>
-                <div ngxSlickItem class="slide">
-                    <div class="campaign-slide">
-                        <div class="slide-img">
-                            <img
-                                src="https://ksr-ugc.imgix.net/assets/028/307/500/0c49c5eb94db8e93d1f313219056061e_original.jpg?ixlib=rb-2.1.0&crop=faces&w=352&h=198&fit=crop&v=1583261644&auto=format&frame=1&q=92&s=907724bae1e8eda33c9589ec5fcca373">
-                        </div>
-                        <div class="slide-title">
-                            <span>The Roller World Tarot Deck
-                            </span>
-                        </div>
-                        <div class="slide-desc">
-                            <span>
-                                The Roller World tarot deck is a stylized 78 card deck that celebrates roller skating
-                                and the wonderfully diverse community within.
-                            </span>
-                        </div>
-                        <div class="slide-by">
-                            <span>By Titanium Hill</span>
-                        </div>
-                    </div>
-                </div>
-
-
-
-
-            </ngx-slick-carousel>
-        </div>
-
-    </div>
+  </div>
 </section>
 
 <section class="filter-campaigns">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="filter-by">
-                <span class="filter-by-tag">Ending Soon</span>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="filter-by">
+        <span class="filter-by-tag">TRENDING CAMPAIGNS</span>
 
-                <span class="discover-more">Discover More</span>
+        <span class="discover-more">Discover More</span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <ngx-slick-carousel
+        class="carousel"
+        #slickModal="slick-carousel"
+        [config]="slideConfig"
+      >
+        <div *ngFor="let nc of trendingCampaigns" ngxSlickItem class="slide">
+          <a (click)="goToCampaign(nc.campaign_id)">
+            <div class="campaign-slide">
+              <div class="slide-img">
+                <img src="http://localhost:3000/{{ nc.image_preview }}" />
+              </div>
+              <div class="slide-title">
+                <span>{{ nc.cam_title }} </span>
+              </div>
+              <div class="slide-desc">
+                <span>
+                  {{ nc.cam_desc }}
+                </span>
+              </div>
+              <div class="slide-by">
+                <span>By {{ nc.user_name }}</span>
+              </div>
             </div>
+          </a>
         </div>
-
+      </ngx-slick-carousel>
     </div>
-    <div class="row">
-        <div class="col-md-12">
-
-            <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
-                <div ngxSlickItem class="slide">
-                    <div class="campaign-slide">
-                        <div class="slide-img">
-                            <img
-                                src="https://ksr-ugc.imgix.net/assets/028/278/269/c5993fe5c6d2ac08164434883b17cc14_original.JPG?ixlib=rb-2.1.0&crop=faces&w=352&h=198&fit=crop&v=1583068589&auto=format&frame=1&q=92&s=90b03796fa54356cbc4b332d47ddd4c7">
-                        </div>
-                        <div class="slide-title">
-                            <span>Sharjah Sketchbook (Quickstarter)
-
-                            </span>
-                        </div>
-                        <div class="slide-desc">
-                            <span>
-                                The Roller World tarot deck is a stylized 78 card deck that celebrates roller skating
-                                and the wonderfully diverse community within.
-                            </span>
-                        </div>
-                        <div class="slide-by">
-                            <span>By Fury Nick</span>
-                        </div>
-                    </div>
-                </div>
-                <div ngxSlickItem class="slide">
-                    <div class="campaign-slide">
-                        <div class="slide-img">
-                            <img
-                                src="https://ksr-ugc.imgix.net/assets/028/282/367/6033cb7a26598f96d18d8d31964ffb13_original.png?ixlib=rb-2.1.0&crop=faces&w=352&h=198&fit=crop&v=1583097778&auto=format&frame=1&q=92&s=7619c14df81b9480170eecd6d831aac0">
-                        </div>
-                        <div class="slide-title">
-                            <span>Sweethearts of 1989: Chapter 2!
-
-                            </span>
-                        </div>
-                        <div class="slide-desc">
-                            <span>
-                                Deck is a stylized 78 card deck that celebrates roller skating and the wonderfully
-                                diverse community.
-                            </span>
-                        </div>
-                        <div class="slide-by">
-                            <span>By Titanium Hill</span>
-                        </div>
-                    </div>
-                </div>
-                <div ngxSlickItem class="slide">
-                    <div class="campaign-slide">
-                        <div class="slide-img">
-                            <img src="https://ksr-ugc.imgix.net/assets/028/298/070/94a9b6102a87d052a821c569a2f8c505_original.jpg?ixlib=rb-2.1.0&crop=faces&w=352&h=198&fit=crop&v=1583205404&auto=format&frame=1&q=92&s=f01d625e06e66193f46ff0b4053a1a0e"
-                                alt="" width="100%">
-                        </div>
-                        <div class="slide-title">
-                            <span>The Roller World Tarot Deck
-                            </span>
-                        </div>
-                        <div class="slide-desc">
-                            <span>
-                                The Roller World tarot deck is a stylized 78 card deck that celebrates roller skating
-                                and the wonderfully diverse community within.
-                            </span>
-                        </div>
-                        <div class="slide-by">
-                            <span>By Youshan Rak</span>
-                        </div>
-                    </div>
-                </div>
-                <div ngxSlickItem class="slide">
-                    <div class="campaign-slide">
-                        <div class="slide-img">
-                            <img src="https://ksr-ugc.imgix.net/assets/027/760/794/57019c83a92108cefacd298e9742ac29_original.jpeg?ixlib=rb-2.1.0&crop=faces&w=352&h=198&fit=crop&v=1579102945&auto=format&frame=1&q=92&s=af3db6c78b5bca3093f492cc490fec2e"
-                                alt="" width="100%">
-                        </div>
-                        <div class="slide-title">
-                            <span>Fyodor Pavlov Tarot
-
-                            </span>
-                        </div>
-                        <div class="slide-desc">
-                            <span>
-                                The Roller World tarot deck is a stylized 78 card deck that celebrates roller skating
-                                and the wonderfully diverse community within.
-                            </span>
-                        </div>
-                        <div class="slide-by">
-                            <span>By Titanium Hill</span>
-                        </div>
-                    </div>
-                </div>
-                <div ngxSlickItem class="slide">
-                    <div class="campaign-slide">
-                        <div class="slide-img">
-                            <img
-                                src="https://ksr-ugc.imgix.net/assets/028/307/500/0c49c5eb94db8e93d1f313219056061e_original.jpg?ixlib=rb-2.1.0&crop=faces&w=352&h=198&fit=crop&v=1583261644&auto=format&frame=1&q=92&s=907724bae1e8eda33c9589ec5fcca373">
-                        </div>
-                        <div class="slide-title">
-                            <span>The Roller World Tarot Deck
-                            </span>
-                        </div>
-                        <div class="slide-desc">
-                            <span>
-                                The Roller World tarot deck is a stylized 78 card deck that celebrates roller skating
-                                and the wonderfully diverse community within.
-                            </span>
-                        </div>
-                        <div class="slide-by">
-                            <span>By Titanium Hill</span>
-                        </div>
-                    </div>
-                </div>
-
-
-
-
-            </ngx-slick-carousel>
-        </div>
-
-    </div>
+  </div>
 </section>

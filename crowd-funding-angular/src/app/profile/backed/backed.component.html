@@ -1,44 +1,89 @@
 <p></p>
-<div *ngIf="Backed?.length >0 else elseblock">
-<div class="row">
-  <div class="col-sm-3"></div>
-  <div class="col-sm-6">
-     <div class="row" *ngFor="let back of Backed">
-    <!-- <div class="col-sm-1"></div> -->
-    <div class="col-sm-12">
-    <div class="card " style="border-color: transparent;" >
-
-      <div class="card-body">
-        <div class="row">
-          
-          <div class="col-sm-9">
-            <h5 class="card-text">{{back.cam_title}}</h5>
-            <p class="card-text">{{back.cam_subject}}</p>
-          </div>
-          <div class="col-sm-3">
-            <a class="btn btn-primary" style="float: right;" [routerLink]="['./details',back.funds_id]">Details</a>
+<div *ngIf="Backed?.length > 0; else elseblock">
+  <div class="row">
+    <div
+      class="col-sm-6 offset-3"
+      *ngIf="detailsVisible == false; else detailsvisible"
+    >
+      <div class="row" *ngFor="let back of Backed">
+        <!-- <div class="col-sm-1"></div> -->
+        <div class="col-sm-12">
+          <div class="card" style="border-color: transparent">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-3">
+                  <img
+                    class="card-img"
+                    style="max-height: 100px"
+                    src="http://localhost:3000/{{ back.image_preview }}"
+                    alt="Suresh Dasari Card"
+                  />
+                </div>
+                <div class="col-sm-7">
+                  <h5 class="card-text">{{ back.cam_title }}</h5>
+                  <p class="card-text">{{ back.cam_subject }}</p>
+                </div>
+                <div class="col-sm-2">
+                  <a
+                    class="btn btn-primary"
+                    style="float: right"
+                    [routerLink]="['./details', back.funds_id]"
+                    (click)="showDetails()"
+                    >Details</a
+                  >
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+        <div class="h-divider"></div>
+        <!-- <div class="col-sm-1"></div> -->
       </div>
     </div>
-    
+    <ng-template #detailsvisible>
+      <div class="col-sm-6">
+        <div class="row" *ngFor="let back of Backed">
+          <!-- <div class="col-sm-1"></div> -->
+          <div class="col-sm-12">
+            <div class="card" style="border-color: transparent">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm-9">
+                    <h5 class="card-text">{{ back.cam_title }}</h5>
+                    <p class="card-text">{{ back.cam_subject }}</p>
+                  </div>
+                  <div class="col-sm-3">
+                    <a
+                      class="btn btn-primary"
+                      style="float: right"
+                      [routerLink]="['./details', back.funds_id]"
+                      (click)="showDetails()"
+                      >Details</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="h-divider"></div>
+          <!-- <div class="col-sm-1"></div> -->
+        </div>
+      </div>
+    </ng-template>
+    <div class="col-sm-6">
+      <router-outlet></router-outlet>
     </div>
-    <div class="h-divider"> </div>
-    <!-- <div class="col-sm-1"></div> -->
-   
   </div>
-  
-  </div>
-  <div class="col-sm-3">
-    <router-outlet></router-outlet>
-  </div>
-</div><br>
+  <br />
 </div>
 <ng-template #elseblock>
   <div class="row">
     <div class="col-sm-4"></div>
     <div class="col-sm-4">
-      <p style="text-align: center;">Wanna explore some ideas?? Click <a href="#" style="color:blue;">here</a></p>
+      <p style="text-align: center">
+        Wanna explore some ideas?? Click
+        <a href="#" style="color: blue">here</a>
+      </p>
     </div>
     <div class="col-sm-4"></div>
   </div>
