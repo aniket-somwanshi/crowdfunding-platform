@@ -1,0 +1,159 @@
+<div class="auth-container">
+  <div class="authbox">
+    <div class="login-tag font-inter-medium">
+      <span> Password recovery </span>
+    </div>
+
+    <!-- <div class="alternate">
+              <span>Welcome Back! Login to continue</span>
+          </div> -->
+
+    <hr />
+
+    <!-- invalid credentails -->
+    <div
+      *ngIf="invalidCredentials"
+      class="invalid"
+      style="
+        display: inline-block;
+        padding: 5px;
+        border-radius: 0px;
+        border: 1px solid red;
+        color: red;
+        font-size: 14px;
+      "
+    >
+      <span>
+        <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+        Invalid credentials! Please and try again.
+      </span>
+    </div>
+
+    <form *ngIf="one">
+      <div class="email">
+        <span>Email</span>
+
+        <input
+          placeholder="Enter Email"
+          class="email-input"
+          required
+          [(ngModel)]="OtpArray.email"
+          name="email"
+          #email="ngModel"
+          type="text"
+        />
+
+        <div
+          *ngIf="email.touched && !email.valid"
+          style="color: red; text-align: left; font-size: 14px"
+        >
+          <span *ngIf="email.errors.required">Email is required.</span>
+        </div>
+      </div>
+
+      <div class="login-button">
+        <button (click)="verifyEmail()" class="font-inter-medium" type="submit">
+          Submit <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+
+      <!-- <div class="alternate">
+                  <span>Don't have an account? </span> <span class="alternate-link">Register</span>
+              </div> -->
+
+      <div class="terms">
+        <span>
+          By joining, or logging in via Facebook, you accept Change.org’s
+          <span class="forgot-password1">Terms of Service</span> and
+          <span class="forgot-password1">Privacy Policy</span>.
+        </span>
+      </div>
+    </form>
+
+    <!-- two -->
+    <form *ngIf="two">
+      <div class="email">
+        <span>Enter OTP</span>
+
+        <input
+          placeholder="Enter OTP"
+          class="email-input"
+          required
+          [(ngModel)]="otp"
+          name="otp"
+          #otpp="ngModel"
+          type="number"
+        />
+
+        <div
+          *ngIf="otpp.touched && !otpp.valid"
+          style="color: red; text-align: left; font-size: 14px"
+        >
+          <span *ngIf="otpp.errors.required">otp is required.</span>
+        </div>
+      </div>
+
+      <div class="login-button">
+        <button (click)="verifyOtp()" class="font-inter-medium" type="submit">
+          Submit <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+
+      <!-- <div class="alternate">
+          <span>Don't have an account? </span> <span class="alternate-link">Register</span>
+      </div> -->
+
+      <div class="terms">
+        <span>
+          By joining, or logging in via Facebook, you accept Change.org’s
+          <span class="forgot-password1">Terms of Service</span> and
+          <span class="forgot-password1">Privacy Policy</span>.
+        </span>
+      </div>
+    </form>
+
+    <!-- three -->
+    <form *ngIf="three">
+      <div class="email">
+        <span>Reset Password</span>
+
+        <input
+          placeholder="Enter New Password"
+          class="email-input"
+          required
+          [(ngModel)]="passwordArray.new_password"
+          name="new_password"
+          type="password"
+          #newpass="ngModel"
+          minlength="5"
+        />
+      </div>
+      <div
+        *ngIf="newpass.touched && !newpass.valid"
+        style="color: red; text-align: left; font-size: 14px"
+      >
+        <span *ngIf="newpass.errors.minlength"
+          >password should be more than 5 characters.</span
+        >
+      </div>
+
+      <div class="login-button">
+        <button
+          (click)="resetPassword()"
+          class="font-inter-medium"
+          type="submit"
+        >
+          Submit <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+
+      <div class="terms">
+        <span>
+          By joining, or logging in via Facebook, you accept Change.org’s
+          <span class="forgot-password1">Terms of Service</span> and
+          <span class="forgot-password1">Privacy Policy</span>.
+        </span>
+      </div>
+    </form>
+  </div>
+</div>

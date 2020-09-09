@@ -26,7 +26,7 @@ export class LearnMoreComponent implements OnInit {
   comments: any;
   story = [];
   faqs: any;
-  camp = [];
+  camp = []; 
   // camp = {
   //   'campaign_id': '',
   //   'cam_reg_date': '',
@@ -36,7 +36,7 @@ export class LearnMoreComponent implements OnInit {
   //   'user_id': 0,
   //   'cam_title': '',
   //   'cam_subject': '',
-  //   'cam_desc': '',
+  //   'cam_desc': '', 
   //   'cam_category': '',
   //   'cam_duration': '',
   //   'cam_pledge': ''

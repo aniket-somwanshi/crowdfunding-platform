@@ -23,6 +23,10 @@ import { BackedComponent } from "./profile/backed/backed.component";
 import { DetailsComponent } from "./profile/backed/details/details.component";
 import { MyprojectsComponent } from "./profile/myprojects/myprojects.component";
 import { ManageCampaignComponent } from "./manage-campaign/manage-campaign.component";
+import { EditCampaignComponent } from "./edit-campaign/edit-campaign.component";
+import { NewFAQsComponent } from "./new-faqs/new-faqs.component";
+import { NewRewardsComponent } from "./new-rewards/new-rewards.component";
+import { VerifyEmailComponent } from "./verify-email/verify-email.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
@@ -47,15 +51,8 @@ const routes: Routes = [
   { path: "campaign/:id", component: CampaignComponent },
   { path: "category/:category", component: CategoryComponent },
   { path: "learn-more/:campaign_id", component: LearnMoreComponent },
-  {
-    path: "pledge/:campaign_id",
-    children: [
-      { path: "", component: PledgeComponent },
-      { path: "success", component: SuccesspageComponent },
-    ],
-  },
-  { path: "success/:funds_id", component: SuccesspageComponent },
-
+  { path: "pledge/:campaign_id", component: PledgeComponent },
+  { path: "success", component: SuccesspageComponent },
   {
     path: "profile",
     component: ProfileComponent,
@@ -70,6 +67,12 @@ const routes: Routes = [
     ],
   },
   { path: "manage-campaigns", component: ManageCampaignComponent },
+  { path: "edit-campaign/:campaign_id", component: EditCampaignComponent },
+
+  { path: "new-faqs/:campaign_id", component: NewFAQsComponent },
+  { path: "new-rewards/:campaign_id", component: NewRewardsComponent },
+
+  { path: "verify-email", component: VerifyEmailComponent },
 ];
 
 @NgModule({

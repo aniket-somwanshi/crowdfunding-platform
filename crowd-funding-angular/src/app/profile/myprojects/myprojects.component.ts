@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MainService } from 'src/app/services/main.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { CampaignService } from 'src/app/services/campaign.service';
 
 @Component({
   selector: 'app-myprojects',
@@ -10,7 +11,8 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class MyprojectsComponent implements OnInit {
 
-  constructor(private authService:AuthService, private router:Router,private main: MainService, private route : ActivatedRoute) { }
+  constructor(
+    private campaignService:CampaignService, private authService:AuthService, private router:Router,private main: MainService, private route : ActivatedRoute) { }
   profileid:any;
   Myprojects:any=[];
   ngOnInit() {
@@ -34,6 +36,18 @@ export class MyprojectsComponent implements OnInit {
   goToCampaign(id){
     console.log("sd"+id);
     this.router.navigate(['/campaign/'+id]);
+  }
+  goToDeleteCampaign(id){
+    console.log(id);
+    this.campaignService.deleteCampaign(id).subscribe((data)=>{
+      console.log(id);
+    });
+    this.router.navigate(['/profile/myprojects']);
+
+  }
+  goToEditCampaign(id){
+    console.log("sd"+id);
+    this.router.navigate(['/edit-campaign/'+id]);
   }
 
 }

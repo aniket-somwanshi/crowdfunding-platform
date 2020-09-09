@@ -64,4 +64,15 @@ export class CampaignService {
   addComment(comment) {
     return this.http.post(this.url + "add-comment", comment);
   }
+
+
+  //delet campaign
+  deleteCampaign(campaign_id){ 
+      return this.http.get(this.url + "delete-campaign/" + campaign_id);
+  }
+
+  //update campaign
+  updateCampaign(campaign){
+    return this.http.post(this.url+ "update-campaign", campaign);
+  }
 }

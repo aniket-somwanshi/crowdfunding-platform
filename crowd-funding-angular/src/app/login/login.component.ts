@@ -30,4 +30,8 @@ export class LoginComponent implements OnInit {
       }
     });
   }
+
+  goToVerifyEmail(){
+    this.router.navigate(['/verify-email']);
+  }
 }

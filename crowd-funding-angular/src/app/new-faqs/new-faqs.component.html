@@ -1,0 +1,124 @@
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="row" style="height: 110px">
+        <div style="width: 100%; text-align: center">
+          <label class="title">Add FAQ</label>
+          <p style="color: #656969; font-size: 20px">
+            Clear common doubts for your potential backers.
+          </p>
+        </div>
+      </div>
+  
+      <div class="h-divider"></div>
+      <form
+        name="form"
+        #faqsForm="ngForm"
+        (ngSubmit)="faqsForm.form.valid && addFaqs(faqsForm)"
+      >
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="name">FAQs</label>
+            <p>
+              Add all common possible questions and its answers for your project.
+            </p>
+          </div>
+          <div class="col-md-2"></div>
+          <div class="form-group col-md-6">
+            <!-- <label for="inputemail">Title</label> -->
+            <label>Question :</label>
+            <input
+              class="form-control"
+              required
+              minlength="2"
+              [(ngModel)]="faq.faq_qust"
+              name="faq_qust"
+              #faq_qust="ngModel"
+              type="text"
+              placeholder="eg. Will this t-shirt be available in XXXL?"
+            /><br />
+  
+            <div *ngIf="faq_qust.touched && !faq_qust.valid" style="color: red">
+              <span *ngIf="faq_qust.errors.required">Question is required.</span>
+              <span *ngIf="faq_qust.errors.minlength"
+                >Question should be more than 2 characters at least.</span
+              >
+            </div>
+  
+            <label>Answer :</label>
+            <input
+              class="form-control"
+              required
+              minlength="2"
+              [(ngModel)]="faq.faq_ans"
+              name="faq_ans"
+              #faq_ans="ngModel"
+              type="text"
+              placeholder="eg. Yeah sure, you can visit our store as well."
+            /><br />
+            <p *ngIf="inserted == true" style="color: green">
+              Question no.{{ count - 1 }} was added successfully.
+            </p>
+          </div>
+        </div>
+  
+        <div class="h-divider"></div>
+        <div class="form-row">
+          <div class="form-group col-md-4"></div>
+          <div class="col-md-2"></div>
+          <div class="form-group col-md-6">
+            <div class="row">
+              <div class="col-md-6">
+                <button class="btn btn-dark" style="width: 200px" type="submit">
+                  + Add Question
+                </button>
+              </div>
+              <div class="col-md-6">
+                <button
+                  *ngIf="inserted == true"
+                  type="button"
+                  class="btn btn-success"
+                  style="width: 200px"
+                  (click)="goToStory()"
+                >
+                  I'm done!
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+  
+  <!-- <form name="form" #faqsForm="ngForm" (ngSubmit)="faqsForm.form.valid && addFaqs(faqsForm)">
+        <div>Question</div>
+        <input 
+        required minlength="2" maxlength="20"
+        [(ngModel)]="faq.faq_qust"
+        name="faq_qust" #faq_qust="ngModel" 
+        type="text"
+        >
+        
+        <div *ngIf="faq_qust.touched && !faq_qust.valid" 
+        style="color: red;">
+        <span *ngIf="faq_qust.errors.required">Question is required.</span>
+        <span *ngIf="faq_qust.errors.minlength">Question should be more than 2 characters at least.</span>
+        </div>
+        
+        <div>Answer</div>
+        <input  
+        required minlength="2" 
+        [(ngModel)]="faq.faq_ans"
+        name="faq_ans" #faq_ans="ngModel" 
+        type="text"
+        >
+            
+        <button 
+        type="submit" 
+        >ADD</button>
+        <button (click)="goToStory()"
+        >DONE</button>
+    </form>  -->
+  

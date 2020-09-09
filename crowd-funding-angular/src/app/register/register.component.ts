@@ -12,7 +12,8 @@ export class RegisterComponent implements OnInit {
     user_name: "",
     user_email: "",
     password: "",
-  };
+    pan_card:""
+    };
 
   errorRegistering;
   userAlreadyExists = false;

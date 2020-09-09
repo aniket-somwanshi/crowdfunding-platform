@@ -1,0 +1,171 @@
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class="row" style="height: 110px; margin-top: 20px">
+        <div style="width: 100%; text-align: center">
+          <label class="title">Add Rewards</label>
+          <p style="color: #656969; font-size: 20px">
+            Offer some precious rewards in return, to your backers!
+          </p>
+        </div>
+      </div>
+  
+      <div class="h-divider"></div>
+      <form
+        name="form"
+        #rewardsForm="ngForm"
+        (ngSubmit)="rewardsForm.form.valid && addReward(rewardsForm)"
+      >
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="name">Reward Title</label>
+            <p>Give title to this reward.</p>
+          </div>
+          <div class="col-md-2"></div>
+          <div class="form-group col-md-6">
+            <!-- <label for="inputemail">Title</label> -->
+            <input
+              class="form-control"
+              required
+              minlength="2"
+              maxlength="40"
+              [(ngModel)]="reward.rewards_sub"
+              name="rewards_sub"
+              #rewards_sub="ngModel"
+              type="text"
+              placeholder="eg. Signed First Copy "
+            />
+            <div
+              *ngIf="rewards_sub.touched && !rewards_sub.valid"
+              style="color: red"
+            >
+              <span *ngIf="rewards_sub.errors.required">Title is required.</span>
+              <span *ngIf="rewards_sub.errors.minlength"
+                >Title should be more than 2 characters at least.</span
+              >
+            </div>
+          </div>
+        </div>
+  
+        <div class="h-divider"></div>
+  
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="name">Description</label>
+            <p>Briefly describe your reward.</p>
+          </div>
+          <div class="col-md-2"></div>
+          <div class="form-group col-md-6">
+            <input
+              class="form-control"
+              required
+              minlength="2"
+              [(ngModel)]="reward.rewards_desc"
+              name="rewards_desc"
+              #rewards_desc="ngModel"
+              type="text"
+              placeholder="eg. Get first copy specially signed by marvel creator STAN LEE!!!"
+            />
+          </div>
+        </div>
+        <div class="h-divider"></div>
+  
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <label for="name">Amount (in Rs.)</label>
+            <p>Set the pledge amount for this reward.</p>
+          </div>
+          <div class="col-md-2"></div>
+          <div class="form-group col-md-6">
+            <input
+              class="form-control"
+              required
+              [(ngModel)]="reward.rewards_amount"
+              name="rewards_amount"
+              #rewards_amount="ngModel"
+              type="number"
+              placeholder="0 Rs."
+            />
+          </div>
+        </div>
+        <div class="h-divider"></div>
+        <div class="form-row">
+          <div class="form-group col-md-4">
+            <p>
+              To save this reward or add more rewards click add more. If you are
+              done adding rewards click I,m done.
+            </p>
+          </div>
+          <div class="col-md-2"></div>
+          <div class="form-group col-md-6">
+            <div class="row">
+              <div class="col-md-6">
+                <button class="btn btn-dark" style="width: 200px" type="submit">
+                  Save & Add more
+                </button>
+              </div>
+              <div class="col-md-6">
+                <button
+                  *ngIf="insertedReward == true"
+                  type="button"
+                  class="btn btn-success"
+                  style="width: 200px"
+                  (click)="goToFaq()"
+                >
+                  I'm done!
+                </button>
+              </div>
+            </div>
+            <br />
+            <p *ngIf="insertedReward == true" style="color: green">
+              Reward added successfully
+            </p>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-1"></div>
+  </div>
+  
+  <!-- <p *ngIf="insertedReward==true" 
+  style="color: green;">
+      Reward added successfully
+  </p>
+  <form name="form" #rewardsForm="ngForm" (ngSubmit)="rewardsForm.form.valid && addReward(rewardsForm)">
+      <div>Reward Title</div>
+      <input 
+      required minlength="2" maxlength="20"
+      [(ngModel)]="reward.rewards_sub"
+      name="rewards_sub" #rewards_sub="ngModel" 
+      type="text"
+      >
+      <div *ngIf="rewards_sub.touched && !rewards_sub.valid" 
+      style="color: red;">
+      <span *ngIf="rewards_sub.errors.required">Title is required.</span>
+      <span *ngIf="rewards_sub.errors.minlength">Title should be more than 2 characters at least.</span>
+      </div>
+      
+      <div>Description</div>
+      <input  
+      required minlength="2" 
+      [(ngModel)]="reward.rewards_desc"
+      name="rewards_desc" #rewards_desc="ngModel" 
+      type="text"
+      >
+      
+      <div>Amount (in INR)</div>
+      <input 
+      required 
+      [(ngModel)]="reward.rewards_amount"
+      name="rewards_amount" #rewards_amount="ngModel" 
+      type="number"
+      >
+      
+      
+      <button 
+      type="submit" 
+      >ADD</button>
+      <button (click)="goToFaq()"
+      >DONE</button>
+  </form> -->
+  

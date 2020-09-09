@@ -32,4 +32,11 @@ export class AuthService {
     return this.http.get(this.url+'get-user-details/'+id);
   }
 
+  // verify email exists in db and send
+  sendOtp(otpArray){
+    return this.http.post(this.url+'send-otp',otpArray);
+  }
+  resetPassword(passwordArray){
+    return this.http.post(this.url+'reset-password',passwordArray);
+  }
 }

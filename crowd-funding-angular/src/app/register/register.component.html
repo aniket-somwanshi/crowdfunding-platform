@@ -180,6 +180,40 @@
         </div>
       </div>
 
+      <!-- pan card -->
+      <div class="email">
+        <input
+          placeholder="Enter your pan card number"
+          class="email-input"
+          minlength="10"
+          maxlength="10"
+          required
+          [(ngModel)]="registerData.pan_card"
+          name="pan_card"
+          #pan_card="ngModel"
+          type="text"
+        />
+
+        <!-- validation error -->
+        <div
+          *ngIf="pan_card.touched && !pan_card.valid"
+          style="color: red; text-align: left; font-size: 14px"
+        >
+          <span *ngIf="pan_card.errors.required">Pan card is required.</span>
+        </div>
+        <!-- validation eror -->
+        <div
+          *ngIf="pan_card.touched && !pan_card.valid"
+          style="color: red; text-align: left; font-size: 14px"
+        >
+          <span *ngIf="pan_card.errors.minlength || pan_card.errors.maxlength"
+            >The length of pan card must be 10 digits.</span
+          >
+       
+        </div>
+      </div>
+
+  
       <!-- country -->
       <!-- <div class="email">
                        

@@ -1,3 +1,5 @@
+import { EditCampaignComponent } from "./edit-campaign/edit-campaign.component";
+import { VerifyEmailComponent } from "./verify-email/verify-email.component";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 
@@ -33,10 +35,12 @@ import { MainService } from "./services/main.service";
 
 import { ReactiveFormsModule } from "@angular/forms";
 import { ManageCampaignComponent } from "./manage-campaign/manage-campaign.component";
+import { NewRewardsComponent } from "./new-rewards/new-rewards.component";
+import { NewFAQsComponent } from "./new-faqs/new-faqs.component";
 
 //stripe payment module
 import { NgxStripeModule } from "ngx-stripe";
-import { SuccesspageComponent } from './successpage/successpage.component';
+import { SuccesspageComponent } from "./successpage/successpage.component";
 
 @NgModule({
   declarations: [
@@ -64,6 +68,10 @@ import { SuccesspageComponent } from './successpage/successpage.component';
     DetailsComponent,
     ManageCampaignComponent,
     SuccesspageComponent,
+    VerifyEmailComponent,
+    EditCampaignComponent,
+    NewRewardsComponent,
+    NewFAQsComponent,
   ],
   imports: [
     BrowserModule,

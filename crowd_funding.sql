@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Sep 07, 2020 at 08:01 PM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.4
+-- Host: localhost
+-- Generation Time: Sep 09, 2020 at 06:50 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.2.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -37,11 +37,11 @@ CREATE TABLE `campaign` (
   `cam_duration` int(11) NOT NULL,
   `cam_pledge` float NOT NULL,
   `user_id` int(11) NOT NULL,
-  `cam_reg_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `cam_reg_date` datetime DEFAULT current_timestamp(),
   `cam_no_backers` int(11) NOT NULL,
   `total_amount` float NOT NULL,
   `status` varchar(20) NOT NULL DEFAULT 'in_progress',
-  `image_preview` text
+  `image_preview` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -49,21 +49,21 @@ CREATE TABLE `campaign` (
 --
 
 INSERT INTO `campaign` (`campaign_id`, `cam_title`, `cam_subject`, `cam_desc`, `cam_category`, `cam_duration`, `cam_pledge`, `user_id`, `cam_reg_date`, `cam_no_backers`, `total_amount`, `status`, `image_preview`) VALUES
-(1, 'Quiplash', 'Extraordinary party game from JackBox Party Pack', 'Get ready for JackBox Party Packs 3 charter Quiplash. 3-8 player game suited best for your next party with friends!', 'games', 20, 2000, 3, '2020-09-01 00:00:00', 0, 0, 'in_progress', NULL),
-(13, 'MOFT Z: The 4-in-1 invisible sit-stand laptop desk', 'It helps you develop a healthy sit-stand working posture in an easy way, keeping you active and productive all day.', 'MOFT Z is a truly lightweight and versatile sit-stand desk at an affordable price. It’s designed to offer THE HEAVEY LAPTOP USER a maximum comfort with maximum freedom on location.', 'Design & Tech', 30, 10000, 3, '2020-08-14 00:00:00', 13, 21220, 'in_progress', 'uploads/maxresdefault.jpg'),
+(1, 'Quiplash', 'Extraordinary party game from JackBox Party Pack', 'Get ready for JackBox Party Packs 3 charter Quiplash. 3-8 player game suited best for your next party with friends!', 'games', 20, 2000, 3, '2020-09-01 00:00:00', 0, 0, 'failed', NULL),
+(13, 'MOFT Z: The 4-in-1 invisible sit-stand laptop desk  ', 'It helps you develop a healthy sit and stand working posture  in an easy way, keeping you active and productive all day.', 'MOFT Z is a truly lightweight and versatile sit-stand desk at an affordable price. It’s designed to offer THE HEAVEY LAPTOP USER a maximum comfort with maximum freedom on location.', 'Design & Tech', 30, 10000, 3, '2020-08-14 00:00:00', 13, 21220, 'failed', 'uploads/maxresdefault.jpg'),
 (20, 'A Double Moonphase Mechanical Watch with Swiss Movement', 'Chic or classy? No need to choose only one. Designed with reference to vintage codes, the Original S collection will remain timeless and never go out of style. Built to serve you in a lifetime of adve', 'For thousands of years, humanity has been enamored by the moon’s heavenly dance. The Original S collection takes you back to where horology began, an age when people tracked time by the lunar cycle. These days, premium watches that contain moonphase complications usually reside on the exclusive end of the timepiece spectrum. Now, we are breaking boundaries by bringing you affordable access to this range of timepieces.', 'Miscelleneous', 30, 12500, 3, '2020-09-07 00:00:00', 0, 10000, 'in_progress', 'uploads/3a625ef3ecb54dc5d4e1ba08852e1f20_original.jpg'),
-(21, 'UVMask - Enjoy Breathing Air in Public Again\r\n\r\nA patent-pending UV-C light air purification face mask filtering all pollutants, pathogens, dust, and allergens faster than you breathe', 'Equipped with a passive air filter, and a groundbreaking patent-pending Sterile-Vortex active protection, it filters and purifies 99.99% of air 10x faster than you can breathe. ', 'Meet UVMask, the next-generation reusable mask with the most powerful UV-C purification technology on the market. \r\n\r\nEquipped with a passive air filter, and a groundbreaking patent-pending Sterile-Vortex active protection, it filters and purifies 99.99% of air 10x faster than you can breathe. ', 'Innovation', 25, 10000, 3, '2020-09-07 00:00:00', 25, 5000, 'in_progress', 'uploads/e83da3bed8125d652ddfa18295f175f3_original.png'),
-(22, 'Catapult Kingdoms', 'Ready. Aim. LAUNCH! Build your castle, set up your troops, load your catapults and use your cunning tactics to conquer the floor!', 'Two households, the Chauforts and the Cunningfields, both alike in dignity, in their fair kingdoms... if only there wasn\'t that ancient grudge...', 'Miscelleneous', 30, 20000, 3, '2020-09-07 00:00:00', 15, 10000, 'in_progress', 'uploads/d284834f00c2bf41cb58a4ad10c23ed1_original.jpg'),
+(21, 'UVMask - Enjoy Breathing Air in Public Again\r\n\r\nA patent-pending UV-C light air purification face mask filtering all pollutants, pathogens, dust, and allergens faster than you breathe', 'Equipped with a passive air filter, and a groundbreaking patent-pending Sterile-Vortex active protection, it filters and purifies 99.99% of air 10x faster than you can breathe. ', 'Meet UVMask, the next-generation reusable mask with the most powerful UV-C purification technology on the market. \r\n\r\nEquipped with a passive air filter, and a groundbreaking patent-pending Sterile-Vortex active protection, it filters and purifies 99.99% of air 10x faster than you can breathe. ', 'Innovation', 25, 10000, 3, '2020-09-07 00:00:00', 25, 5000, 'failed', 'uploads/e83da3bed8125d652ddfa18295f175f3_original.png'),
+(22, 'Catapult Kingdoms', 'Ready. Aim. LAUNCH! Build your castle, set up your troops, load your catapults and use your cunning tactics to conquer the floor!', 'Two households, the Chauforts and the Cunningfields, both alike in dignity, in their fair kingdoms... if only there wasn\'t that ancient grudge...', 'Miscelleneous', 30, 20000, 3, '2020-09-07 00:00:00', 15, 10000, 'failed', 'uploads/d284834f00c2bf41cb58a4ad10c23ed1_original.jpg'),
 (23, 'DRAGON: a new graphic novel by Saladin Ahmed and Dave Acosta', 'A fallen Muslim knight. A zealous young nun. Together against Dracula! A story of horror and faith, presented as a beautiful hardcover.', 'DRAGON tells the story of Adil, a fallen old Muslim warrior, and Marjorie, a zealous young Christian nun, two scarred heroes who must overcome inherited bigotries and mutual distrust to hunt a demonic creature that wears the skin of a prince -- Vlad the Impaler, known to history as Dracula. ', 'Comics', 30, 35000, 3, '2020-08-27 00:00:00', 49, 40000, 'in_progress', 'uploads/9d29ce30c09d0fffcb9bafa9277c4344_original.png'),
 (24, 'The Way of Kings 10th Anniversary Leatherbound Edition', 'Celebrate 10 years of The Stormlight Archive with Brandon Sanderson', 'The Way of Kings Prime was written in 2002 and is basically an alternate version of The Way of Kings, which was published by Tor Books in 2010. The Way of Kings Prime is very different from the published book. Think of it as set in a different universe with a completely different plot. If you haven\'t read the 2010 canonical version, please read that one first.', 'Publish', 30, 3500000, 3, '2020-07-28 00:00:00', 11482, 256000, 'failed', 'uploads/d6ec0f09d61da16cd2405539411ef072_original.jpg'),
 (25, 'Waveblade Sports Roller', 'The Waveblade is a versatile, durable and compact sports massage tool, designed to target all areas of the body. We are now in production and available to order, follow the link below to learn more! ', 'The Waveblade Sports Roller is a durable, versatile, and highly effective sports massage product that dramatically improves the way athletes address their preparation and recovery sessions, enhancing athletic potential.', 'Sports', 30, 43798, 3, '2020-08-30 00:00:00', 180, 39154, 'in_progress', 'uploads/b1bb892669457c58487d868f48db1dfc_original.png'),
 (26, 'Cinera Edge, a 5K OLED HMD with Dolby Digital 5.1 Headphone', '5K?micro OLED | Dolby Digital Certified | 5.1 Surround Sound Headphone | Android OS | HDMI 2.0 input | Elegant Design', 'Cinera Edge is the world\'s first personal cinema HMD that features dual 2.5K micro-OLED and a Dolby Digital® certified headphone with 5.1 channels of surround sound. The combination boasts a real theatrical immersive experience with fantastic video and audio quality, making the device a true mobile cinema. It invigorates your movie, TV, or gaming experience, and escalates your daily entertainment to a new level.\r\n', 'Design & Tech', 30, 536987, 3, '2020-08-27 00:00:00', 949, 10000, 'in_progress', 'uploads/2ef0884aa0dfbb6aa6b729bd91e42872_original.jpg'),
-(27, 'Ptolus: Monte Cook\'s City by the Spire', '5K?micro OLED | Dolby Digital Certified | 5.1 Surround Sound Headphone | Android OS | HDMI 2.0 input | Elegant Design', 'Cinera Edge is the world\'s first personal cinema HMD that features dual 2.5K micro-OLED and a Dolby Digital® certified headphone with 5.1 channels of surround sound. The combination boasts a real theatrical immersive experience with fantastic video and audio quality, making the device a true mobile cinema. It invigorates your movie, TV, or gaming experience, and escalates your daily entertainment to a new level.\r\n', 'Comics', 30, 50000, 3, '2020-09-02 00:00:00', 1, 2900, 'in_progress', 'uploads/f2.jpg\r\n'),
-(28, 'MOFT Z: The 4-in-1 w', 'It helps you develop a healthy sit-stand working posture in an easy way, keeping you active and productive all day.', 'sd', 'Innovation', 15, 21312, 3, '2020-08-24 00:00:00', 1, 7321, 'in_progress', 'https://ksr-ugc.imgix.net/assets/029/917/974/ceeeaf2762dca8be23fe136527f567da_original.JPG?ixlib=rb-2.1.0&crop=faces&w=352&h=198&fit=crop&v=1595473971&auto=format&frame=1&q=92&s=11cc9d0617a96365b1c5f9c7dc12051a'),
-(30, 'Programmer quotes T-shirts', 'T-shirts with awesome programming quotes.', 'Coding Tshirts', 'Design & Tech', 30, 150000, 13, '2020-09-06 18:08:04', 1, 10000, 'in_progress', 'https://ksr-ugc.imgix.net/assets/029/917/974/ceeeaf2762dca8be23fe136527f567da_original.JPG?ixlib=rb-2.1.0&crop=faces&w=352&h=198&fit=crop&v=1595473971&auto=format&frame=1&q=92&s=11cc9d0617a96365b1c5f9c7dc12051a'),
+(27, 'Ptolus: Monte Cook\'s City by the Spire', '5K?micro OLED | Dolby Digital Certified | 5.1 Surround Sound Headphone | Android OS | HDMI 2.0 input | Elegant Design', 'Cinera Edge is the world\'s first personal cinema HMD that features dual 2.5K micro-OLED and a Dolby Digital® certified headphone with 5.1 channels of surround sound. The combination boasts a real theatrical immersive experience with fantastic video and audio quality, making the device a true mobile cinema. It invigorates your movie, TV, or gaming experience, and escalates your daily entertainment to a new level.\r\n', 'Comics', 30, 50000, 3, '2020-09-02 00:00:00', 1, 2900, 'failed', 'uploads/f2.jpg\r\n'),
+(28, 'MOFT Z: The 4-in-1 w', 'It helps you develop a healthy sit-stand working posture in an easy way, keeping you active and productive all day.', 'sd', 'Innovation', 15, 21312, 3, '2020-08-24 00:00:00', 1, 7321, 'failed', 'https://ksr-ugc.imgix.net/assets/029/917/974/ceeeaf2762dca8be23fe136527f567da_original.JPG?ixlib=rb-2.1.0&crop=faces&w=352&h=198&fit=crop&v=1595473971&auto=format&frame=1&q=92&s=11cc9d0617a96365b1c5f9c7dc12051a'),
+(30, 'Programmer quotes T-shirts', 'T-shirts with awesome programming quotes.', 'Coding Tshirts', 'Design & Tech', 30, 150000, 13, '2020-09-06 18:08:04', 2, 20000, 'in_progress', 'https://ksr-ugc.imgix.net/assets/029/917/974/ceeeaf2762dca8be23fe136527f567da_original.JPG?ixlib=rb-2.1.0&crop=faces&w=352&h=198&fit=crop&v=1595473971&auto=format&frame=1&q=92&s=11cc9d0617a96365b1c5f9c7dc12051a'),
 (32, 'test', 'test', 'test', 'Publish', 30, 454778, 13, '2020-09-07 00:00:19', 0, 0, 'in_progress', 'uploads\\2020-09-06T18_30_18.790Zeight.jpg'),
 (33, 'test2', 'test2', 'test description', 'Innovation', 60, 100000, 13, '2020-09-07 18:56:59', 0, 0, 'in_progress', 'uploads\\2020-09-07T13_26_56.651Ztwo.jpg'),
-(34, 'test4', 'test4', 'test 4', 'Innovation', 30, 600000, 3, '2020-09-07 20:34:30', 1, 5000, 'in_progress', 'uploads\\2020-09-07T15_04_29.133Zone.jpg');
+(34, 'test4', 'test4', 'test 4', 'Innovation', 30, 600000, 3, '2020-09-07 20:34:30', 1, 5000, 'failed', 'uploads\\2020-09-07T15_04_29.133Zone.jpg');
 
 -- --------------------------------------------------------
 
@@ -76,7 +76,7 @@ CREATE TABLE `comments` (
   `campaign_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `comment` text NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -126,7 +126,8 @@ INSERT INTO `faq_campaign` (`faq_id`, `campaign_id`, `faq_qust`, `faq_ans`) VALU
 (11, 24, 'Who is the author?', 'John Snow'),
 (15, 30, 'Are these t-shirts available in 4XL?', 'Yes they are.'),
 (16, 33, 'qusn 1', 'yes'),
-(17, 34, 'test 4 qustn', 'test 4 answer');
+(17, 34, 'test 4 qustn', 'test 4 answer'),
+(18, 13, 'What is the warranty of the MOFT-Z Desk flap ?', 'The warranty is 2 years');
 
 -- --------------------------------------------------------
 
@@ -139,7 +140,7 @@ CREATE TABLE `funds` (
   `campaign_id` int(11) NOT NULL,
   `backer_id` int(11) NOT NULL,
   `rewards_id` int(11) NOT NULL,
-  `funds_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `funds_date` timestamp NOT NULL DEFAULT current_timestamp(),
   `amount` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -166,7 +167,8 @@ INSERT INTO `funds` (`funds_id`, `campaign_id`, `backer_id`, `rewards_id`, `fund
 (16, 24, 7, 20, '2020-09-06 10:06:57', 3000),
 (17, 30, 7, 23, '2020-09-06 14:19:30', 10000),
 (18, 13, 13, 11, '2020-09-07 13:25:00', 3900),
-(19, 34, 7, 25, '2020-09-07 17:48:35', 5000);
+(19, 34, 7, 25, '2020-09-07 17:48:35', 5000),
+(20, 30, 3, 23, '2020-09-08 08:51:03', 10000);
 
 -- --------------------------------------------------------
 
@@ -201,7 +203,8 @@ INSERT INTO `rewards` (`rewards_id`, `campaign_id`, `rewards_desc`, `rewards_sub
 (20, 24, 'Get exclusive author designed cover', 'Exclusive cover', 3000),
 (23, 30, 'Get your named First edition exclusive T-shirt', 'Your Named T-shirt', 10000),
 (24, 33, 'reward desc', 'reward 1', 5000),
-(25, 34, 'test4 reward', 'test4 reward ', 5000);
+(25, 34, 'test4 reward', 'test4 reward ', 5000),
+(26, 13, 'You will get a MOFT Z and a MOFT X phone stand at only $64', 'Early Bird - MOFT Z + MOFT X Phone Stand', 999);
 
 -- --------------------------------------------------------
 
@@ -254,26 +257,29 @@ CREATE TABLE `user` (
   `user_phone` bigint(20) DEFAULT NULL,
   `password` varchar(20) NOT NULL,
   `type` varchar(10) DEFAULT NULL,
-  `balance` float NOT NULL DEFAULT '10000',
-  `bio` text,
-  `location` text,
-  `profile_img` mediumblob,
-  `website` text
+  `balance` float NOT NULL DEFAULT 10000,
+  `bio` text DEFAULT NULL,
+  `location` text DEFAULT NULL,
+  `profile_img` mediumblob DEFAULT NULL,
+  `website` text DEFAULT NULL,
+  `pan_card` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `user_name`, `user_email`, `user_phone`, `password`, `type`, `balance`, `bio`, `location`, `profile_img`, `website`) VALUES
-(1, 'sd@ds.com', 'sd@ds.com', 232312, '123', 'creator', 10000, '', '', '', ''),
-(2, 'sd@ds.com', 'sd@ds.com', 232312, '123', 'creator', 10000, '', '', '', ''),
-(3, 'Aniket Somwanshi', 'aniket@gmail.com', 898730080, 'aniket', 'creator', 10000, '', '', '', ''),
-(5, 'test', 'test@gmail.com', 1234567890, 'test', 'backer', 10000, '', '', '', ''),
-(6, 'a', 'a@a.com', 1234567890, 'a', 'creator', 10000, '', '', '', ''),
-(7, 'Aniket Somwanshi', 'aniketsomwanshi@gmail.com', 8978798789, 'aniket', NULL, 10000, NULL, NULL, NULL, NULL),
-(12, 'aniket', 'somwanshi@gmail.com', NULL, 'aniket', NULL, 10000, NULL, NULL, NULL, NULL),
-(13, 'Harsh Kunte', 'harshkunte99@gmail.com', NULL, 'harsh1234', NULL, 10000, NULL, NULL, NULL, NULL);
+INSERT INTO `user` (`user_id`, `user_name`, `user_email`, `user_phone`, `password`, `type`, `balance`, `bio`, `location`, `profile_img`, `website`, `pan_card`) VALUES
+(1, 'sd@ds.com', 'sd@ds.com', 232312, '123', 'creator', 10000, '', '', '', '', NULL),
+(2, 'sd@ds.com', 'sd@ds.com', 232312, '123', 'creator', 10000, '', '', '', '', NULL),
+(3, 'Aniket Somwanshi', 'aniket@gmail.com', 898730080, 'aniket', 'creator', 10000, '', '', '', '', NULL),
+(5, 'test', 'test@gmail.com', 1234567890, 'test', 'backer', 10000, '', '', '', '', NULL),
+(6, 'a', 'a@a.com', 1234567890, 'a', 'creator', 10000, '', '', '', '', NULL),
+(7, 'Aniket Somwanshi', 'aniketsomwanshi@gmail.com', 8978798789, 'aniket', NULL, 10000, NULL, NULL, NULL, NULL, NULL),
+(12, 'aniket', 'somwanshi@gmail.com', NULL, 'aniket', NULL, 10000, NULL, NULL, NULL, NULL, NULL),
+(13, 'Harsh Kunte', 'harshkunte99@gmail.com', NULL, 'harsh1234', NULL, 10000, NULL, NULL, NULL, NULL, NULL),
+(14, 'Dave Johnson', 'dave@gmail.com', NULL, 'dave123', NULL, 10000, NULL, NULL, NULL, NULL, 's21dsasdsd'),
+(15, 'aniket', 'aniketsomwanshi13@gmail.com', NULL, 'aniket123', NULL, 10000, NULL, NULL, NULL, NULL, 's21dsasdsd');
 
 --
 -- Indexes for dumped tables
@@ -348,19 +354,19 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `faq_campaign`
 --
 ALTER TABLE `faq_campaign`
-  MODIFY `faq_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `faq_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `funds`
 --
 ALTER TABLE `funds`
-  MODIFY `funds_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `funds_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `rewards`
 --
 ALTER TABLE `rewards`
-  MODIFY `rewards_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `rewards_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `story`
@@ -372,7 +378,7 @@ ALTER TABLE `story`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Constraints for dumped tables

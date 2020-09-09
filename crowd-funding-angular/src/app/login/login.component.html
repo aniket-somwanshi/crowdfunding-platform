@@ -89,7 +89,7 @@ style="color: red;">
       </div>
 
       <div class="email">
-        <span> Password</span>
+        <span>Password</span>
         <input
           placeholder="Enter Password"
           class="email-input"
@@ -107,10 +107,9 @@ style="color: red;">
           <span *ngIf="password.errors.required">Password is required.</span>
         </div>
 
-        <!-- <div class="forgot-password">
+        <div class="forgot-password" (click)="goToVerifyEmail()">
                     <span>Forgot password?</span>
                 </div> 
-             -->
       </div>
 
       <div class="login-button">
@@ -133,8 +132,8 @@ style="color: red;">
       <div class="terms">
         <span>
           By joining, or logging in via Facebook, you accept Change.org’s
-          <span class="forgot-password">Terms of Service</span> and
-          <span class="forgot-password">Privacy Policy</span>.
+          <span class="forgot-password1">Terms of Service</span> and
+          <span class="forgot-password1">Privacy Policy</span>.
         </span>
       </div>
     </form>

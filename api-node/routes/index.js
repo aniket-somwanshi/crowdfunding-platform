@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const router = express.Router();
 const db = require("../database");
 const multer = require('multer');
+var nodemailer = require('nodemailer');
 
 var jwt = require('jsonwebtoken');
 const { makepayment } = require('../stripepayment');
@@ -496,9 +497,96 @@ router.get('/manage-campaigns/:user_id', (req, res) => {
         db.query(sql, (err, results) => {
                 if (err) throw err;
                 console.log(results);
-                res.send(results);
+                let funds = results;
+
+                let sql2 = "SELECT funds.*,user.user_email, campaign.cam_title FROM funds_without_rewards as funds INNER JOIN user ON user.user_id = funds.backer_id INNER JOIN campaign ON campaign.campaign_id = funds.campaign_id WHERE funds.campaign_id IN (SELECT campaign_id FROM campaign WHERE user_id=" + req.params.user_id + ")";
+                db.query(sql2, (err, results) => {
+                        if (err) throw err;
+                        console.log(results);
+                        let fundswtr = results;
+
+                        res.send({ funds: funds, fundswrt: fundswtr })
+                });
         });
 });
+
+router.get('/delete-campaign/:id', (req, res) => {
+
+        let sql = "update campaign set status = 'failed' where campaign_id = " + req.params.id;
+        db.query(sql, (err, result) => {
+                if (err) throw err;
+                // console.log(results);
+                res.send(result);
+        });
+});
+
+//delete campaign
+router.post('/update-campaign', (req, res) => {
+
+        let sql = "update campaign set cam_title = ?, cam_subject = ?, cam_desc = ? where campaign_id = " + req.body.campaign_id;
+        db.query(sql, [req.body.cam_title, req.body.cam_subject, req.body.cam_desc], (err, result) => {
+                if (err) throw err;
+                // console.log(results);
+                res.send(result);
+        });
+
+});
+
+
+//sendOtp
+router.post('/send-otp', (req, res) => {
+        let query = "select * from user where user_email=?";
+        db.query(query, req.body.email, (err, result) => {
+                if (err) throw err;
+                if (result.length > 0) {
+
+
+
+                        var transporter = nodemailer.createTransport({
+                                service: 'gmail',
+                                auth: {
+                                        user: 'aniketsomwanshi13@gmail.com',
+                                        pass: 'apocalypse123'
+                                }
+                        });
+
+                        var mailOptions = {
+                                from: 'aniketsomwanshi13@gmail.com',
+                                to: req.body.email,
+                                subject: 'Your OTP is',
+                                text: "OTP : " + req.body.system_otp
+                        };
+
+                        transporter.sendMail(mailOptions, function (error, info) {
+                                if (error) {
+                                        console.log(error);
+                                } else {
+                                        console.log('Email sent: ' + info.response);
+                                        res.send({ status: "1", user_id: result[0].user_id });
+                                }
+                        });
+
+
+                }
+                else {
+                        res.send({ status: "0" });
+                }
+        })
+
+});
+
+//reset password
+router.post('/reset-password', (req, res) => {
+
+        let sql = "update user set password = ? where user_id = " + req.body.user_id;
+        db.query(sql, [req.body.new_password], (err, result) => {
+                if (err) throw err;
+                // console.log(results);
+                res.send(result);
+        });
+
+});
+
 
 
 // harsh's apis
@@ -552,7 +640,7 @@ router.get('/:id/backed/details/:fundsid', function (req, res) {
 
 //get myprojects from profile
 router.get('/:id/myprojects', function (req, res) {
-        let sql = "select c.campaign_id,c.cam_title,c.cam_subject from campaign c where c.user_id=?";
+        let sql = "select c.status, c.campaign_id,c.cam_title,c.cam_subject from campaign c where c.user_id=?";
         db.query(sql, [req.params.id], function (error, result) {
                 if (error) throw error;
                 res.send(result);

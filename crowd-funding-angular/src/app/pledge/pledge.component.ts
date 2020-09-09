@@ -4,7 +4,6 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { FundsService } from "../services/funds.service";
 import { AuthService } from "../services/auth.service";
 import { HttpClientModule, HttpClient } from "@angular/common/http";
-import { loadStripe } from "@stripe/stripe-js";
 
 @Component({
   selector: "app-pledge",
@@ -42,7 +41,7 @@ export class PledgeComponent implements OnInit {
   faqs: any;
   camp = [];
   user_id;
-
+  cantaccess: boolean = false;
   funds_id;
 
   constructor(
@@ -70,13 +69,17 @@ export class PledgeComponent implements OnInit {
     this.campaignService
       .getCampaignById(this.route.snapshot.paramMap.get("campaign_id"))
       .subscribe((data: any) => {
-        this.camp = data.campaign;
-        this.days_to_go = data.days_to_go;
-        this.rewards = data.rewards;
-        this.comments = data.comments;
-        this.story = data.story;
-        this.faqs = data.faqs;
-        console.log(data);
+        if (data.campaign.status != "failed") {
+          this.camp = data.campaign;
+          this.days_to_go = data.days_to_go;
+          this.rewards = data.rewards;
+          this.comments = data.comments;
+          this.story = data.story;
+          this.faqs = data.faqs;
+          console.log(data);
+        } else {
+          this.cantaccess = true;
+        }
       });
   }
 
@@ -99,32 +102,6 @@ export class PledgeComponent implements OnInit {
               console.log(err);
             }
           );
-
-        // const data = fetch("http://localhost:3000/api/payment", {
-        //   method: "POST",
-        //   headers: {
-        //     "Content-Type": "application/json",
-        //     Accept: "application/json",
-        //   },
-        //   body: JSON.stringify({
-        //     token: token,
-        //     amount: amount,
-        //   }),
-        // })
-        //   .then((res) => {
-        //     console.log(res);
-        //     return res.json();
-        //   })
-        //   .then(function (data) {
-        //     console.log(data.message);
-        //     this.testFunction();
-        //   })
-        //   .catch((err) => {
-        //     console.log(err);
-        //     return err;
-        //   });
-
-        // console.log(data);
       },
     });
     console.log("im still here");

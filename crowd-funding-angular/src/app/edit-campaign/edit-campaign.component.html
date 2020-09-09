@@ -1,0 +1,118 @@
+<section class="preview">
+    <div class="preview-title ">
+        <span>{{campaign.cam_title}}</span>
+    </div>
+    <div class="preview-subtitle">
+        <span>{{campaign.cam_subject}}</span>
+    </div>
+</section>
+<section class="edit" style="padding-left: 100px;">
+    <div class="row">
+        <div class="col-sm-8">
+
+
+            <form
+      name="form"
+      #campaignForm="ngForm"
+      (ngSubmit)="campaignForm.form.valid && updateCampaign(campaignForm)"
+    >
+      <div class="form-row row">
+        <div class="form-group col-md-4">
+          <label for="name">Project Title</label>
+          <p>
+            Be more precise and give clear brief title that helps people quickly
+            understand the gist of your project.
+          </p>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputemail">Title</label>
+
+          <input
+            class="form-control"
+            
+            minlength="2"
+            maxlength="80"
+            [(ngModel)]="campaign.cam_title"
+            name="cam_title"
+            #cam_title="ngModel"
+            type="text"
+          />
+          <div *ngIf="cam_title.touched && !cam_title.valid" style="color: red">
+            <span *ngIf="cam_title.errors.required">Title is required.</span>
+            <span *ngIf="cam_title.errors.minlength"
+              >Title should be more than 2 characters at least.</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="h-divider"></div>
+
+      <div class="form-row row">
+        <div class="form-group col-md-4">
+          <label for="name">Subtitle</label>
+          <p>Give an elegant subtitle to express your idea easily.</p>
+        </div>
+        
+        <div class="form-group col-md-6">
+          <input
+            class="form-control"
+            
+            minlength="2"
+            [(ngModel)]="campaign.cam_subject"
+            name="cam_subject"
+            #cam_subject="ngModel"
+            type="text"
+          />
+        </div>
+      </div>
+      <div class="h-divider"></div>
+
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="name">Description</label>
+          <p>Describe your project as briefly as you can.</p>
+          <p>
+            Better the people will understand your project more is the money you
+            make!
+          </p>
+        </div>
+        <div class="form-group col-md-6">
+          <textarea
+            class="form-control"
+            
+            minlength="2"
+            [(ngModel)]="campaign.cam_desc"
+            name="cam_desc"
+            #cam_desc="ngModel"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-4">
+            <button class="btn" style="float: left" type="submit">Update Primary Info</button>
+
+        </div>
+        <div class="form-group col-md-6">
+        </div>
+      </div>
+    </form>
+        </div>
+        <div class="col-sm-4">
+            <div class="row">
+                <div style="width: 100%; padding-top: 50px">
+                  <label style="font-size: 30px;">Enhance Your Project</label>
+                  <p style="color: #656969; font-size: 15px">
+                    Add more rewards, FAQs for your campaign
+                  </p>
+                </div>
+
+                <button (click)="goToNewRewards()" style="margin-bottom: 20px; width: 70%; text-align: center;" class="btn"> Add new Rewards </button>
+                <button (click)="goToNewFAQs()" style="margin-bottom: 20px; width: 70%; text-align: center;" class="btn"> Add new FAQs </button>
+
+              </div>
+
+        </div>
+    </div>
+</section>
