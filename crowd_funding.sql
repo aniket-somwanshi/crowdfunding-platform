@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Sep 09, 2020 at 06:50 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.2.27
+-- Host: 127.0.0.1
+-- Generation Time: Sep 09, 2020 at 11:07 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -37,11 +37,11 @@ CREATE TABLE `campaign` (
   `cam_duration` int(11) NOT NULL,
   `cam_pledge` float NOT NULL,
   `user_id` int(11) NOT NULL,
-  `cam_reg_date` datetime DEFAULT current_timestamp(),
+  `cam_reg_date` datetime DEFAULT CURRENT_TIMESTAMP,
   `cam_no_backers` int(11) NOT NULL,
   `total_amount` float NOT NULL,
   `status` varchar(20) NOT NULL DEFAULT 'in_progress',
-  `image_preview` text DEFAULT NULL
+  `image_preview` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -56,14 +56,14 @@ INSERT INTO `campaign` (`campaign_id`, `cam_title`, `cam_subject`, `cam_desc`, `
 (22, 'Catapult Kingdoms', 'Ready. Aim. LAUNCH! Build your castle, set up your troops, load your catapults and use your cunning tactics to conquer the floor!', 'Two households, the Chauforts and the Cunningfields, both alike in dignity, in their fair kingdoms... if only there wasn\'t that ancient grudge...', 'Miscelleneous', 30, 20000, 3, '2020-09-07 00:00:00', 15, 10000, 'failed', 'uploads/d284834f00c2bf41cb58a4ad10c23ed1_original.jpg'),
 (23, 'DRAGON: a new graphic novel by Saladin Ahmed and Dave Acosta', 'A fallen Muslim knight. A zealous young nun. Together against Dracula! A story of horror and faith, presented as a beautiful hardcover.', 'DRAGON tells the story of Adil, a fallen old Muslim warrior, and Marjorie, a zealous young Christian nun, two scarred heroes who must overcome inherited bigotries and mutual distrust to hunt a demonic creature that wears the skin of a prince -- Vlad the Impaler, known to history as Dracula. ', 'Comics', 30, 35000, 3, '2020-08-27 00:00:00', 49, 40000, 'in_progress', 'uploads/9d29ce30c09d0fffcb9bafa9277c4344_original.png'),
 (24, 'The Way of Kings 10th Anniversary Leatherbound Edition', 'Celebrate 10 years of The Stormlight Archive with Brandon Sanderson', 'The Way of Kings Prime was written in 2002 and is basically an alternate version of The Way of Kings, which was published by Tor Books in 2010. The Way of Kings Prime is very different from the published book. Think of it as set in a different universe with a completely different plot. If you haven\'t read the 2010 canonical version, please read that one first.', 'Publish', 30, 3500000, 3, '2020-07-28 00:00:00', 11482, 256000, 'failed', 'uploads/d6ec0f09d61da16cd2405539411ef072_original.jpg'),
-(25, 'Waveblade Sports Roller', 'The Waveblade is a versatile, durable and compact sports massage tool, designed to target all areas of the body. We are now in production and available to order, follow the link below to learn more! ', 'The Waveblade Sports Roller is a durable, versatile, and highly effective sports massage product that dramatically improves the way athletes address their preparation and recovery sessions, enhancing athletic potential.', 'Sports', 30, 43798, 3, '2020-08-30 00:00:00', 180, 39154, 'in_progress', 'uploads/b1bb892669457c58487d868f48db1dfc_original.png'),
-(26, 'Cinera Edge, a 5K OLED HMD with Dolby Digital 5.1 Headphone', '5K?micro OLED | Dolby Digital Certified | 5.1 Surround Sound Headphone | Android OS | HDMI 2.0 input | Elegant Design', 'Cinera Edge is the world\'s first personal cinema HMD that features dual 2.5K micro-OLED and a Dolby Digital® certified headphone with 5.1 channels of surround sound. The combination boasts a real theatrical immersive experience with fantastic video and audio quality, making the device a true mobile cinema. It invigorates your movie, TV, or gaming experience, and escalates your daily entertainment to a new level.\r\n', 'Design & Tech', 30, 536987, 3, '2020-08-27 00:00:00', 949, 10000, 'in_progress', 'uploads/2ef0884aa0dfbb6aa6b729bd91e42872_original.jpg'),
+(25, 'Waveblade Sports Roller', 'The Waveblade is a versatile, durable and compact sports massage tool, designed to target all areas of the body. We are now in production and available to order, follow the link below to learn more! ', 'The Waveblade Sports Roller is a durable, versatile, and highly effective sports massage product that dramatically improves the way athletes address their preparation and recovery sessions, enhancing athletic potential.', 'Sports', 30, 43798, 3, '2020-08-30 00:00:00', 181, 41153, 'in_progress', 'uploads/b1bb892669457c58487d868f48db1dfc_original.png'),
+(26, 'Cinera Edge, a 5K OLED HMD with Dolby Digital 5.1 Headphone', '5K?micro OLED | Dolby Digital Certified | 5.1 Surround Sound Headphone | Android OS | HDMI 2.0 input | Elegant Design', 'Cinera Edge is the world\'s first personal cinema HMD that features dual 2.5K micro-OLED and a Dolby Digital® certified headphone with 5.1 channels of surround sound. The combination boasts a real theatrical immersive experience with fantastic video and audio quality, making the device a true mobile cinema. It invigorates your movie, TV, or gaming experience, and escalates your daily entertainment to a new level.\r\n', 'Design & Tech', 30, 536987, 3, '2020-08-27 00:00:00', 949, 10000, 'failed', 'uploads/2ef0884aa0dfbb6aa6b729bd91e42872_original.jpg'),
 (27, 'Ptolus: Monte Cook\'s City by the Spire', '5K?micro OLED | Dolby Digital Certified | 5.1 Surround Sound Headphone | Android OS | HDMI 2.0 input | Elegant Design', 'Cinera Edge is the world\'s first personal cinema HMD that features dual 2.5K micro-OLED and a Dolby Digital® certified headphone with 5.1 channels of surround sound. The combination boasts a real theatrical immersive experience with fantastic video and audio quality, making the device a true mobile cinema. It invigorates your movie, TV, or gaming experience, and escalates your daily entertainment to a new level.\r\n', 'Comics', 30, 50000, 3, '2020-09-02 00:00:00', 1, 2900, 'failed', 'uploads/f2.jpg\r\n'),
 (28, 'MOFT Z: The 4-in-1 w', 'It helps you develop a healthy sit-stand working posture in an easy way, keeping you active and productive all day.', 'sd', 'Innovation', 15, 21312, 3, '2020-08-24 00:00:00', 1, 7321, 'failed', 'https://ksr-ugc.imgix.net/assets/029/917/974/ceeeaf2762dca8be23fe136527f567da_original.JPG?ixlib=rb-2.1.0&crop=faces&w=352&h=198&fit=crop&v=1595473971&auto=format&frame=1&q=92&s=11cc9d0617a96365b1c5f9c7dc12051a'),
 (30, 'Programmer quotes T-shirts', 'T-shirts with awesome programming quotes.', 'Coding Tshirts', 'Design & Tech', 30, 150000, 13, '2020-09-06 18:08:04', 2, 20000, 'in_progress', 'https://ksr-ugc.imgix.net/assets/029/917/974/ceeeaf2762dca8be23fe136527f567da_original.JPG?ixlib=rb-2.1.0&crop=faces&w=352&h=198&fit=crop&v=1595473971&auto=format&frame=1&q=92&s=11cc9d0617a96365b1c5f9c7dc12051a'),
 (32, 'test', 'test', 'test', 'Publish', 30, 454778, 13, '2020-09-07 00:00:19', 0, 0, 'in_progress', 'uploads\\2020-09-06T18_30_18.790Zeight.jpg'),
 (33, 'test2', 'test2', 'test description', 'Innovation', 60, 100000, 13, '2020-09-07 18:56:59', 0, 0, 'in_progress', 'uploads\\2020-09-07T13_26_56.651Ztwo.jpg'),
-(34, 'test4', 'test4', 'test 4', 'Innovation', 30, 600000, 3, '2020-09-07 20:34:30', 1, 5000, 'failed', 'uploads\\2020-09-07T15_04_29.133Zone.jpg');
+(34, 'test4', 'test4', 'test 4', 'Innovation', 30, 600000, 3, '2020-09-07 20:34:30', 2, 8500, 'failed', 'uploads\\2020-09-07T15_04_29.133Zone.jpg');
 
 -- --------------------------------------------------------
 
@@ -76,7 +76,7 @@ CREATE TABLE `comments` (
   `campaign_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `comment` text NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -97,7 +97,14 @@ INSERT INTO `comments` (`comments_id`, `campaign_id`, `user_id`, `comment`, `tim
 (13, 13, 3, 'This is a unique piece of art. Wonder when will this be available in India?', '2020-06-26 09:37:08'),
 (14, 13, 3, 'Wish there was shipping to Denmark', '2020-06-26 13:49:24'),
 (15, 27, 3, 'This is a unique piece of art. Wonder when will this be available in Sweden?', '2020-08-24 09:09:19'),
-(16, 24, 7, 'This is really awesome idea!!!', '2020-09-06 09:17:06');
+(16, 24, 7, 'This is really awesome idea!!!', '2020-09-06 09:17:06'),
+(18, 1, 15, 'I got some friends together and played this last week, and every time we play it\'s a hit.', '2020-09-08 13:14:08'),
+(19, 1, 15, 'Quality work on the game! Well done.', '2020-09-08 13:14:24'),
+(20, 21, 15, 'how many UVC LEDs are used per UVMask?', '2020-09-08 13:31:47'),
+(21, 22, 15, 'Looking forward to this game! I played weapons and warriors when I was a kid.', '2020-09-08 13:36:34'),
+(22, 23, 15, 'Hi. Can’t wait to see the final book. Well done on a campaign that’s flying right now.', '2020-09-08 13:51:05'),
+(23, 24, 15, 'I’d love it if one day we also get a slipcase for the Mistborn trilogy.', '2020-09-08 13:56:46'),
+(24, 25, 15, 'Funded!!! I am really excited to get this waveblade!!! Congrats!!!', '2020-09-08 14:12:40');
 
 -- --------------------------------------------------------
 
@@ -127,7 +134,39 @@ INSERT INTO `faq_campaign` (`faq_id`, `campaign_id`, `faq_qust`, `faq_ans`) VALU
 (15, 30, 'Are these t-shirts available in 4XL?', 'Yes they are.'),
 (16, 33, 'qusn 1', 'yes'),
 (17, 34, 'test 4 qustn', 'test 4 answer'),
-(18, 13, 'What is the warranty of the MOFT-Z Desk flap ?', 'The warranty is 2 years');
+(18, 1, 'Quiplash looks AWESOME but when will you release SlapFace? ', 'Maybe if we hit our stretch goal of $1,000,000 we\'ll find a way to get SlapFace in your hands.'),
+(19, 1, 'Can I buy more than one Quiplash download code? ', 'If you\'d like more than one download code for Quiplash -- for example if you want both a Steam code and a PS4 code, or if you want an extra code to give to a friend -- contribute at the $10 reward level, but add an additional $10 for every additional download code you would like.'),
+(20, 1, 'Is Quiplash DLC for The Jackbox Party Pack? ', 'No, Quiplash will be a game all it\'s own. It will be a separate download from The Jackbox Party Pack completely.'),
+(21, 20, 'What does Swiss movement mean? ', 'According to the “Guide to the use of the designation “Swiss” for watches” by Federation of the Swiss Watch Industry, to be regarded as a Swiss movement, the movement must: a. have undergone technical development in Switzerland b. have been assembled in Switzerland c. have been inspected by the manufacturer in Switzerland d. at least 60% of the manufacturing costs must be generated in Switzerland e. at least 50% of the value of all the constituent parts, but excluding the cost of assembly, must be of Swiss manufacture.'),
+(22, 20, 'What if I have put down $1 deposit to reserve but all the super early bird rewards are gone? ', 'You can go to the \"Krons Stone Original S VIP Club\" reward level and pledge the super early bird price of $999 + add-ons price + shipping fee. You can find the shipping fee and the detailed instruction in your email. After you pledged on \"Krons Stone Original S VIP Club\", please click \"Krons Stone Original S Profile Image\" to contact us via the message. We will confirm the order for you and refund the $1 to you.'),
+(23, 21, 'Does UVMask come in different sizes? Does it come in a child-friendly size too?', 'You’ll be able to select the sizes in our post-campaign survey on BackerKit, together with your shipping address and add-ons!  UVMask will come in 2 different sizes. We call them Type X and Type C.'),
+(24, 21, 'What is the double breathing protection? ', '  UVMask comes with 2 layers of protection.  The advanced filtration system uses CE-FFP2 air filters to purify PM 0.3 particles, including air pollution, dust, and other particles up to 100x smaller than a grain of flour!  The patent-pending Sterile-Vortex technology then concentrates the UV-C light\'s full power on the air you breathe, adding to a higher total filtration efficiency in real-time!'),
+(25, 21, 'How safe is UVMask’s silicone for my skin? ', 'It’s FDA-certified food-grade silicone. 100% safe for your skin.'),
+(26, 21, 'How should I clean the mask? ', 'Use soft fabric with a medical alcohol spray to clean the surface gently.'),
+(27, 21, 'Is UVMask water-resistant? ', 'UVMask is rated IP54 water-resistant. Rain falls at a low pressure, so ratings in the IP54 to IP65 range are enough to keep the filter and interior components safe and dry. These ratings are also enough to stop airborne particulates from damaging the filter and components inside the enclosure.'),
+(28, 22, 'What is included with the Deluxe Edition? ', 'The \"Deluxe Edition\" Pledge includes: - 1 x \"Core Game\" - 1 x \"Siege Expansion\" - 1 x \"Artificer\'s Expansion\" and all applicable rewards (meaning all rewards that are part of the above three boxes).'),
+(29, 22, 'Is the Artificer\'s Expansion part of the Deluxe Pledge or the Early Bird? ', 'Yes, the Artificer\'s Tower Expansion is part of BOTH the Deluxe Pledge and the Early Bird Pledge.'),
+(30, 22, 'I missed the Early Bird offer, is there a way to get the Game Mats for Free? ', '  Yes, only during the Kickstarter campaign, the two \"All-In\" pledges offer the same type of deal. They both give you Game Mats for free.  Important Note: Both those pledges will NOT be available after the end of this campaign at the same price!'),
+(31, 23, 'Can I get multiple copies of the book? ', '  Yes! You will be able to add on a second (or third, or fourth) copy of the book to your order after the Kickstarter ends, in Backerkit. For right now, you do not need to do anything!  The exception is retailers, who can back at the \"retailer\" level.'),
+(32, 23, 'What is the estimated size and page count for DRAGON? ', 'DRAGON will be *at least* 8\" x 11\" and 168 pages, including process pages and extras. The book is fully written. But it is still being drawn and designed, and thus we\'ve refrained from providing exact page count or dimensions to allow the artist and designer maximum flexibility in executing the final product.'),
+(33, 23, 'No digital edition? No softcover? ', 'There are currently no plans for digital or softcover editions of DRAGON. That may well change eventually, but this is being planned from the ground up as a special event hardcover book and that\'s very intentionally the form this story will be debuting in.'),
+(34, 23, 'Will there be signed copies? ', 'We\'d love to provide signed copies to readers, but the logistics are just too daunting right now and we really are trying to avoid anything that distracts from producing the book itself.'),
+(35, 24, 'What kind of leather is used for the cover of The Way of Kings 10th Anniversary Leatherbound Edition? ', '  With the stretch goal having been reached, we will upgrade the leather cover from the bonded leather we use for our other leatherbound books to a top grain leather cover.  We cannot guarantee that we will continue to use this level of leather in future printings of this book after the Kickstarter campaign is over and may return to bonded leather.'),
+(36, 24, 'Where do the two volumes split? ', 'Volume 1 includes everything through Interlude 6. Volume 2 begins with Part 3 (chapter 29) through the end.'),
+(37, 24, 'How many pages are in each volume? ', 'Volume 1 includes 560 pages of story, plus an 8 page gallery, plus two 2-page spread illustrations and one 1-page spread illustration Volume 2 includes 688 pages of story, plus an 8 page gallery, plus one 2-page spread illustration and three 1-page illustrations.'),
+(38, 25, 'Why is the Waveblade Roller is different to any other massage tool on the market', 'I have found that it\'s unique design has enabled me to make improvements to my mobility like no other device on the market.'),
+(39, 26, 'Does it support wearing Glasses? ', 'Cinera Edge supports vision adjustment so you don’t need to wear glasses. Wearing glasses is NOT supported by design on Cinera Edge due to limited space. There will be lens accessory available to offer extra vision correction. it can be zapped to Cinera Edge on top of the existing lens with its magnetics.'),
+(40, 26, 'Do I have to have a specific TV type or what? ', 'Cinera Edge is running Android so you can install apps like Netflix or HBO and stream from Wifi. Alternatively, you can connect Cinera Edge to external HDMI devices like Blu-ray, gaming consoles, PC, or drone.'),
+(41, 26, 'How big is the screen? ', 'Cinera Edge’s virtual screen is 1200inch from 20m away, or 66 degree wide left-to-right.'),
+(42, 26, 'How can this product fit different head sizes and shapes? ', 'It works like a headphone that two sides are extendable'),
+(43, 26, 'Will this headset have noice cancelling? ', 'We don\'t have active noise cancelling however the headphone itself can shield lots of noise.'),
+(44, 27, 'Are the extras that come with the new Ptolus book the same as those that came with the original? ', 'The new versions of Ptolus (for 5e and Cypher System) will each include a packet of physical extras and nearly 300 pages of digital extras. These will include oodles of handouts; two campaign journals; fiction; This Week in Ptolus, which outlines a year’s worth of local news and events from around the city on a week-by-week basis; and several tools that make navigating and using the main book even easier. Past versions of Ptolus also included various combinations of marketing items and bonus products in the extras, but those won’t be included in the new version. (That said, the bonus products are among the collection of 3e titles included in most backer levels of this campaign.)'),
+(45, 27, 'Does the conversion of Ptolus for 5e and Cypher System include The Banewarrens, The Night of Dissolution, Chaositech, or other existing Malhavoc Press products? ', 'The primary offering of this campaign is the Ptolus book itself. We aren’t converting any of those titles as part of that specific reward. However, you never know what we might be able to unlock through stretch goals. . . .'),
+(46, 27, 'There’s only one Player’s Guide, but two versions of Ptolus--one for 5e, and the other for Cypher System. Why is that? ', '  The Player’s Guide contains so little rules content that it simply didn’t make sense to produce two versions of it. The single version serves both 5e and Cypher System users just fine, with very little content that’s irrelevant to either.  The main book, though, will have substantial mechanical content, so there will be two versions--one for 5e and one for the Cypher System.'),
+(47, 28, 'What are the dimensions of MOFT Z when folded? ', 'The stand is 9.4 inches wide, 11 inches long, and 0.6 inches high.'),
+(48, 28, 'What is MOFT Z made of? ', 'It’s made of PU, Fiberglass and magnets and iron pieces.'),
+(49, 28, 'How much weight can MOFT Z hold? ', 'It holds up to 22 lbs.'),
+(50, 28, 'What are the heights of the stand in different sitting modes? ', 'At 25°, the stand is 12cm/4.7in high. At 45°, the stand is 19.4cm/7.6in high. At 60°, the stand is 25cm/9.8in high.');
 
 -- --------------------------------------------------------
 
@@ -140,7 +179,7 @@ CREATE TABLE `funds` (
   `campaign_id` int(11) NOT NULL,
   `backer_id` int(11) NOT NULL,
   `rewards_id` int(11) NOT NULL,
-  `funds_date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `funds_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `amount` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -168,7 +207,29 @@ INSERT INTO `funds` (`funds_id`, `campaign_id`, `backer_id`, `rewards_id`, `fund
 (17, 30, 7, 23, '2020-09-06 14:19:30', 10000),
 (18, 13, 13, 11, '2020-09-07 13:25:00', 3900),
 (19, 34, 7, 25, '2020-09-07 17:48:35', 5000),
-(20, 30, 3, 23, '2020-09-08 08:51:03', 10000);
+(20, 30, 3, 23, '2020-09-08 08:51:03', 10000),
+(21, 25, 3, 42, '2020-09-09 20:49:03', 1999);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `funds_without_rewards`
+--
+
+CREATE TABLE `funds_without_rewards` (
+  `fundswr_id` int(11) NOT NULL,
+  `campaign_id` int(11) NOT NULL,
+  `backer_id` int(11) NOT NULL,
+  `funds_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `amount` float DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `funds_without_rewards`
+--
+
+INSERT INTO `funds_without_rewards` (`fundswr_id`, `campaign_id`, `backer_id`, `funds_date`, `amount`) VALUES
+(8, 34, 3, '2020-09-10 02:09:16', 3500);
 
 -- --------------------------------------------------------
 
@@ -195,16 +256,33 @@ INSERT INTO `rewards` (`rewards_id`, `campaign_id`, `rewards_desc`, `rewards_sub
 (10, 13, 'You will get a MOFT Z and a MOFT laptop stand at only $69  Will retail for $94 | 27% off retail  Shipping Worldwide except for Brazil and the Philippines', 'Early Bird - MOFT Z ', 2900),
 (11, 13, 'You will get five MOFT Z at only $200  Will retail for $345 | 42% off retail  Shipping Worldwide except for Brazil and the Philippines', 'Early Bird - MOFT Z ', 3900),
 (14, 27, 'You will get a Ptolus at only $49  Will retail for $69 | 29% off retail  Shipping Worldwide except for Brazil and the Philippines', 'Super Early Bird - M', 490),
-(15, 27, 'You will get a Ptolus at only $54  Will retail for $69 | 22% off retail  Shipping Worldwide except for Brazil and the Philippines', 'Early Bird - MOFT Z', 1390),
-(16, 27, 'You will get a Ptolus and a Ptolus stand at only $69  Will retail for $94 | 27% off retail  Shipping Worldwide except for Brazil and the Philippines', 'Early Bird - MOFT Z ', 2900),
-(17, 27, 'You will get five Ptolus at only $200  Will retail for $345 | 42% off retail  Shipping Worldwide except for Brazil and the Philippines', 'Early Bird - MOFT Z ', 3900),
+(15, 27, 'You will get a Ptolus at only $54  Will retail for $69 | 22% off retail  Shipping Worldwide except for Brazil and the Philippines', 'Early Bird ', 139),
+(16, 27, 'You will get a Ptolus and a Ptolus stand at only $69  Will retail for $94 | 27% off retail  Shipping Worldwide except for Brazil and the Philippines', 'Early Bird', 290),
+(17, 27, 'You will get five Ptolus at only $200  Will retail for $345 | 42% off retail  Shipping Worldwide except for Brazil and the Philippines', 'Early Bird', 390),
 (18, 28, 'bh', 'sdjksand,m', 7321),
 (19, 24, 'Get first signed copy', 'Signed First Copy', 5000),
 (20, 24, 'Get exclusive author designed cover', 'Exclusive cover', 3000),
 (23, 30, 'Get your named First edition exclusive T-shirt', 'Your Named T-shirt', 10000),
 (24, 33, 'reward desc', 'reward 1', 5000),
 (25, 34, 'test4 reward', 'test4 reward ', 5000),
-(26, 13, 'You will get a MOFT Z and a MOFT X phone stand at only $64', 'Early Bird - MOFT Z + MOFT X Phone Stand', 999);
+(26, 1, 'HOLLYWOOD: All of the above, plus we\'ll list you in the credits however you want (as long as it\'s T rated and approved by Jackbox Games). Want to be President of Indiana? YOU CAN! (in the Quiplash credits, at least)', 'Pledge Rs. 500 or more', 500),
+(27, 1, 'WRITER: You\'ve always wanted to be a famous writer? Here\'s your chance! This reward tier gets you all of the above, plus you can submit a Quiplash prompt (like \"A good way to get fired\") that will be included in the first Quiplash DLC expansion pack! We\'ll even credit you in the game when your prompt shows up. (Editorial review and approval by Jackbox Games. DLC pack launch date TBD.)', 'Pledge Rs. 1000 or more ', 1000),
+(28, 1, 'SUPERSTAR: Evan did a great job in that video, didn\'t he? But you know who did an even better job? His sweater. Be a superstar like Evan by wearing Evan\'s sweater. This reward tier gets you all of the above, plus we\'ll send you Evan\'s sweater. (And who wouldn\'t want that awesome sweater in June?!)', 'Pledge Rs. 1,500 or more ', 1500),
+(29, 20, ' Early Bird  Get a Krons Stone Original S moonphase watch at a great price. Save 45%.', 'Pledge Rs. 1,099 or more ', 1090),
+(30, 20, ' KS Special  Get a Krons Stone Original S moonphase watch at a speical price. Save 40%.', 'Pledge Rs. 1,199 or more ', 1199),
+(31, 20, ' Early Bird - Double Pack  Get two Krons Stone Original S moonphase watches at a great price. Save 45%.', 'Pledge Rs. 2,198 or more ', 2198),
+(32, 21, ' Super Early Bird: 1x UVMask 64% OFF ????  UVMask uses patented UV-C Light air purification technology, protecting you from air pollutants in real-time.', 'Pledge Rs. 289 or more ', 289),
+(33, 21, 'Crowdfunding Special: 1x UVMask 60% OFF  UVMask uses a patent-pending UV-C Light air purification technology, protecting you from air pollutants in real-time.', 'Pledge Rs. 599 or more ', 599),
+(35, 21, ' Couples Pack: 2X UVMask 62% OFF   UVMask uses patent-pending UV-C Light purification technology, protecting you from air pollutants in real-time.', 'Pledge Rs. 1089 or more', 1089),
+(36, 22, ' Standard Edition  Get a copy of Catapult Kingdoms and all applicable Stretch Goals.  *Shipping charged after the campaign (see Shipping section for full details)', 'Pledge Rs. 500 or more ', 500),
+(37, 22, ' Deluxe Edition  Get a copy of Catapult Kingdoms, a copy of the Siege Expansion, and all Stretch Goals.  *Shipping charged after the campaign (see Shipping section for full details)', 'Pledge Rs. 1000 or more', 1000),
+(38, 23, ' DRAGON Deluxe Hardcover  One copy of the Crowdfunding-exclusive, oversized hardcover edition of DRAGON.  Shipping is not included and will be charged by Backerkit when the book goes out to backers.', 'Pledge Rs. 500 or more ', 500),
+(39, 23, ' RETAILER LEVEL!  We\'re pleased to offer retailers a bundle of 10 copies of the Kickstarter-exclusive, oversized hardcover edition of DRAGON for $200.', 'Pledge Rs. 2000 or more ', 2000),
+(42, 25, ' Waveblade - Early Bird  Waveblade Sports Roller delivered from our first production run.', 'Pledge Rs. 1999 or more ', 1999),
+(43, 25, ' Waveblade twin pack  2 Waveblade Sports Rollers delivered from our first production run.', 'Pledge Rs. 3999 or more ', 3999),
+(44, 26, ' Early Bird | Cinera Edge  45% Off MSRP ($799) ? 2G+16G ? HDMI input ? Dolby Digital  Add these amounts for Accessories: +$19 per HDMI Type AtoD 2m cable +$29 per Cinera Edge Travel Case +$19 per 128GB TF Card +$36 per 256GB TF Card', 'Pledge Rs. 499 or more', 499),
+(45, 26, ' Pledge US$ 599 or more Early Bird | Cinera Edge Pro  40% Off MSRP ($999) ? 4G+32G ? HDMI input ? Dolby Digital  Add these amounts for Accessories: +$19 per HDMI Type AtoD 2m cable +$29 per Cinera Edge Travel Case +$19 per 128GB TF Card +$36 per 256GB TF Card', 'Pledge Rs. 599 or more ', 599),
+(46, 26, ' Friends Pack | Cinera Edge x 2  Get 2 Cinera Edge, 50% Off MSRS ($799x2) ? 2G+16G ? HDMI input ? Dolby Digital  Add these amounts for Accessories: +$19 per HDMI Type AtoD 2m cable +$29 per Cinera Edge Travel Case +$19 per 128GB TF Card +$36 per 256GB TF Card', 'Pledge Rs. 798 or more', 798);
 
 -- --------------------------------------------------------
 
@@ -257,12 +335,12 @@ CREATE TABLE `user` (
   `user_phone` bigint(20) DEFAULT NULL,
   `password` varchar(20) NOT NULL,
   `type` varchar(10) DEFAULT NULL,
-  `balance` float NOT NULL DEFAULT 10000,
-  `bio` text DEFAULT NULL,
-  `location` text DEFAULT NULL,
-  `profile_img` mediumblob DEFAULT NULL,
-  `website` text DEFAULT NULL,
-  `pan_card` text DEFAULT NULL
+  `balance` float NOT NULL DEFAULT '10000',
+  `bio` text,
+  `location` text,
+  `profile_img` mediumblob,
+  `website` text,
+  `pan_card` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -316,6 +394,14 @@ ALTER TABLE `funds`
   ADD KEY `reward_id` (`rewards_id`);
 
 --
+-- Indexes for table `funds_without_rewards`
+--
+ALTER TABLE `funds_without_rewards`
+  ADD PRIMARY KEY (`fundswr_id`),
+  ADD KEY `campaign_id` (`campaign_id`),
+  ADD KEY `backer_id` (`backer_id`);
+
+--
 -- Indexes for table `rewards`
 --
 ALTER TABLE `rewards`
@@ -348,25 +434,31 @@ ALTER TABLE `campaign`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comments_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `comments_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `faq_campaign`
 --
 ALTER TABLE `faq_campaign`
-  MODIFY `faq_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `faq_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `funds`
 --
 ALTER TABLE `funds`
-  MODIFY `funds_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `funds_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT for table `funds_without_rewards`
+--
+ALTER TABLE `funds_without_rewards`
+  MODIFY `fundswr_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `rewards`
 --
 ALTER TABLE `rewards`
-  MODIFY `rewards_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `rewards_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `story`
@@ -409,6 +501,13 @@ ALTER TABLE `faq_campaign`
 ALTER TABLE `funds`
   ADD CONSTRAINT `funds_ibfk_1` FOREIGN KEY (`backer_id`) REFERENCES `user` (`user_id`),
   ADD CONSTRAINT `funds_ibfk_2` FOREIGN KEY (`rewards_id`) REFERENCES `rewards` (`rewards_id`);
+
+--
+-- Constraints for table `funds_without_rewards`
+--
+ALTER TABLE `funds_without_rewards`
+  ADD CONSTRAINT `funds_without_rewards_ibfk_1` FOREIGN KEY (`campaign_id`) REFERENCES `campaign` (`campaign_id`),
+  ADD CONSTRAINT `funds_without_rewards_ibfk_2` FOREIGN KEY (`backer_id`) REFERENCES `user` (`user_id`);
 
 --
 -- Constraints for table `rewards`
