@@ -6,6 +6,7 @@ const db = require("../database");
 const multer = require('multer');
 
 var jwt = require('jsonwebtoken');
+const { makepayment } = require('../stripepayment');
 
 
 const storage = multer.diskStorage({
@@ -242,21 +243,56 @@ router.post('/pledge', (req, res) => {
                 if (err) throw err;
                 console.log(result);
                 if (result.affectedRows > 0) {
+
                         console.log("rewardsamt" + req.body.rewards_amount);
                         // increase number of backers and add total amount
                         sql = "UPDATE campaign SET cam_no_backers = cam_no_backers + 1, total_amount = total_amount +" + req.body.rewards_amount + " WHERE campaign_id=" + req.body.funds.campaign_id;
                         db.query(sql, (err, result) => {
-                                if (err) throw err;
+                                if (err) {
+                                        console.log(err);
+                                        res.send({ status: 0 })
+                                }
+                                else {
+                                        res.send({ status: 1 })
+                                }
+
                                 console.log(result);
-                                res.send({ status: "1" });
                         });
 
                 }
                 else {
-                        res.send({ status: "0" });
+                        res.send({ status: 0 });
                 }
         });
 });
+router.post('/pledge-without-rewards', (req, res) => {
+        let sql = "INSERT INTO funds_without_rewards SET ?";
+        db.query(sql, req.body.funds, (err, result) => {
+                if (err) throw err;
+                console.log(result);
+                if (result.affectedRows > 0) {
+
+                        console.log("rewardsamt" + req.body.rewards_amount);
+                        // increase number of backers and add total amount
+                        sql = "UPDATE campaign SET cam_no_backers = cam_no_backers + 1, total_amount = total_amount +" + req.body.rewards_amount + " WHERE campaign_id=" + req.body.funds.campaign_id;
+                        db.query(sql, (err, result) => {
+                                if (err) {
+                                        console.log(err);
+                                        res.send({ status: 0 })
+                                }
+                                else {
+                                        res.send({ status: 1 })
+                                }
+                                console.log(result);
+                        });
+
+                }
+                else {
+                        res.send({ status: 0 });
+                }
+        });
+});
+
 
 
 router.get('/get-creators-campaigns/:user_id', (req, res) => {
@@ -469,6 +505,7 @@ router.get('/manage-campaigns/:user_id', (req, res) => {
 
 
 //to get name and email on profile
+
 router.get('/:id', function (req, res) {
         db.query('select user_name,user_email,profile_img from user where user_id=?', [req.params.id], function (error, result) {
                 if (error) throw error;
@@ -521,6 +558,10 @@ router.get('/:id/myprojects', function (req, res) {
                 res.send(result);
         });
 });
+
+
+//payment route
+router.post('/payment', makepayment);
 
 // // login
 // router.post('/register', (req, res) => {

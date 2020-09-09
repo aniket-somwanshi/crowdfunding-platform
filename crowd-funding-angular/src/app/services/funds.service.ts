@@ -1,33 +1,43 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse, HttpRequest, HttpHeaders } from '@angular/common/http';
+import { Injectable } from "@angular/core";
+import {
+  HttpClient,
+  HttpResponse,
+  HttpRequest,
+  HttpHeaders,
+} from "@angular/common/http";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class FundsService {
+  url: string = "http://localhost:3000/api/";
+  constructor(public http: HttpClient) {}
 
-  url:string="http://localhost:3000/api/";
-  constructor(public http:HttpClient) { }
-
-  pledge(pledgePost){
-    return this.http.post(this.url+"pledge", pledgePost);
+  pledge(pledgePost) {
+    return this.http.post(this.url + "pledge", pledgePost);
   }
 
-  getCreatorsCampaigns(user_id){
-    return this.http.get(this.url+"get-creators-campaigns/"+user_id);
+  pledgeWithoutRewards(pledgeWtRewards) {
+    return this.http.post(this.url + "pledge-without-rewards", pledgeWtRewards);
   }
 
-  createCampaign(campaign){
+  getCreatorsCampaigns(user_id) {
+    return this.http.get(this.url + "get-creators-campaigns/" + user_id);
+  }
+
+  createCampaign(campaign) {
     // const options = {
     //   headers: new HttpHeaders().append('Content-Type':'application/json')
     // }
     // let body = JSON.stringify(food);
-    return this.http.post(this.url+'create-campaign', campaign);
+    return this.http.post(this.url + "create-campaign", campaign);
   }
 
-
-  manageCampaigns(user_id){
-    return this.http.get(this.url+"manage-campaigns/"+user_id);
+  stripePayment(paymentData) {
+    return this.http.post(this.url + "payment", paymentData);
   }
 
+  manageCampaigns(user_id) {
+    return this.http.get(this.url + "manage-campaigns/" + user_id);
+  }
 }

@@ -50,6 +50,9 @@
           >Your have successfully funded this project.</span
         >
       </div>
+      <div class="alert alert-danger" role="alert" *ngIf="this.error">
+        Something went wrong!!!
+      </div>
       <div class="reward" *ngFor="let rew of rewards">
         <div class="reward-amount">
           <span>Pledge ₹ {{ rew.rewards_amount }}</span>
@@ -62,7 +65,8 @@
           <span>{{ rew.rewards_desc }}</span>
         </div>
         <div class="reward-pledge">
-          <button (click)="pledge(rew.rewards_id, rew.rewards_amount)">
+          <!-- <button (click)="pledge(rew.rewards_id, rew.rewards_amount)"> -->
+          <button (click)="pay(rew.rewards_amount, rew.rewards_id)">
             Pledge ₹ {{ rew.rewards_amount }}
           </button>
         </div>
@@ -81,14 +85,15 @@
         </div>
         <div class="reward-pledge">
           <input
+            [(ngModel)]="pledgeWithoutReward"
             type="number"
+            min="0"
             class="form-control"
             placeholder="Enter amount in ₹"
           />
           <br />
-          <button (click)="pledge(rew.rewards_id, rew.rewards_amount)">
-            Pledge
-          </button>
+          <!-- <button (click)="pledge(rew.rewards_id, pledgeWithoutReward)"> -->
+          <button (click)="pay(pledgeWithoutReward, 0)">Pledge</button>
         </div>
       </div>
     </div>

@@ -12,6 +12,7 @@ app.use('/uploads', express.static('uploads'));
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+app.use(cors())
 const routes = require("./routes");
 
 app.use("/api", routes);

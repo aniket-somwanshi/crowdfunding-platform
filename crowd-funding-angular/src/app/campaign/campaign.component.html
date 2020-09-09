@@ -85,7 +85,7 @@
       <div class="story-tag">
         <span>Our Story</span>
       </div>
-      <div class="story">
+      <div class="story" *ngIf="story[0]">
         <div class="story-block">
           <span *ngIf="story[0].desc_1 != undefined">
             {{ story[0]?.desc_1 }}
