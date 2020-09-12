@@ -39,8 +39,9 @@ import { NewRewardsComponent } from "./new-rewards/new-rewards.component";
 import { NewFAQsComponent } from "./new-faqs/new-faqs.component";
 
 //stripe payment module
-import { NgxStripeModule } from "ngx-stripe";
+// import { NgxStripeModule } from "ngx-stripe";
 import { SuccesspageComponent } from "./successpage/successpage.component";
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { SuccesspageComponent } from "./successpage/successpage.component";
     EditCampaignComponent,
     NewRewardsComponent,
     NewFAQsComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

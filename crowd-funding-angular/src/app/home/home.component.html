@@ -200,25 +200,6 @@
   </div>
 </section>
 
-<section class="category-container">
-  <div class="row category-div">
-    <div class="col-md-12">
-      <div class="cat-title">
-        <span>Welcome to the world of </span><span>Creative</span
-        ><span> people.</span>
-      </div>
-      <div class="cat-desc">
-        <span>
-          From tabletop adventures to beloved revivals, discover the projects
-          forging the future of gameplay.
-        </span>
-      </div>
-      <!-- <div class="cat-explore">
-                Advanced search
-            </div> -->
-    </div>
-  </div>
-</section>
 
 <div style="background-color: rgb(237, 241, 248)">
   <div class="row category-div" style="background-color: rgb(237, 241, 248)">
@@ -340,13 +321,78 @@
   </section>
 </div>
 
+<section class="category-container">
+  <div class="row category-div">
+    <div class="col-md-12">
+      <div class="cat-title">
+        <span>Welcome to the world of </span><span>Creative</span
+        ><span> people.</span>
+      </div>
+      <div class="cat-desc">
+        <span>
+          From tabletop adventures to beloved revivals, discover the projects
+          forging the future of gameplay.
+        </span>
+      </div>
+      <div (click)="goToLogin()" *ngIf="loginDiv" class="cat-explore">
+        <button  style="border: none; padding: 10px 30px ; font-size: 18px; background: var(--green); color:  white;">Sign in</button>
+              
+            </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="filter-campaigns">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="filter-by">
+        <span class="filter-by-tag">TRENDING CAMPAIGNS</span>
+
+        <span class="discover-more">Showing all trending</span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <ngx-slick-carousel
+        class="carousel"
+        #slickModal="slick-carousel"
+        [config]="slideConfig"
+      >
+        <div *ngFor="let nc of trendingCampaigns" ngxSlickItem class="slide">
+          <a (click)="goToCampaign(nc.campaign_id)">
+            <div class="campaign-slide">
+              <div class="slide-img">
+                <img src="http://localhost:3000/{{ nc.image_preview }}" />
+              </div>
+              <div class="slide-title">
+                <span>{{ nc.cam_title }} </span>
+              </div>
+              <div class="slide-desc">
+                <span>
+                  {{ nc.cam_desc }}
+                </span>
+              </div>
+              <div class="slide-by">
+                <span>By {{ nc.user_name }}</span>
+              </div>
+            </div>
+          </a>
+        </div>
+      </ngx-slick-carousel>
+    </div>
+  </div>
+</section>
+
 <section class="filter-campaigns" style="background-color: rgb(237, 241, 248)">
   <div class="row">
     <div class="col-md-12">
       <div class="filter-by">
         <span class="filter-by-tag">FRESH FAVORITES </span>
 
-        <span class="discover-more">Discover More</span>
+        <span class="discover-more">showing all new</span>
       </div>
     </div>
   </div>
@@ -375,48 +421,6 @@
                 <span>By {{ nc.user_name }}</span>
               </div>
               <p>{{ nc.cam_reg_date | date }}</p>
-            </div>
-          </a>
-        </div>
-      </ngx-slick-carousel>
-    </div>
-  </div>
-</section>
-
-<section class="filter-campaigns">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="filter-by">
-        <span class="filter-by-tag">TRENDING CAMPAIGNS</span>
-
-        <span class="discover-more">Discover More</span>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <ngx-slick-carousel
-        class="carousel"
-        #slickModal="slick-carousel"
-        [config]="slideConfig"
-      >
-        <div *ngFor="let nc of trendingCampaigns" ngxSlickItem class="slide">
-          <a (click)="goToCampaign(nc.campaign_id)">
-            <div class="campaign-slide">
-              <div class="slide-img">
-                <img src="http://localhost:3000/{{ nc.image_preview }}" />
-              </div>
-              <div class="slide-title">
-                <span>{{ nc.cam_title }} </span>
-              </div>
-              <div class="slide-desc">
-                <span>
-                  {{ nc.cam_desc }}
-                </span>
-              </div>
-              <div class="slide-by">
-                <span>By {{ nc.user_name }}</span>
-              </div>
             </div>
           </a>
         </div>

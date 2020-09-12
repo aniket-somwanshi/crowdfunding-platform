@@ -10,6 +10,7 @@ import { AuthService } from "../services/auth.service";
   styleUrls: ["./home.component.css"],
 })
 export class HomeComponent implements OnInit {
+  loginDiv:boolean;
   searchData = {
     data: null,
   };
@@ -34,6 +35,20 @@ export class HomeComponent implements OnInit {
       this.newestCampaigns = data;
       //console.log(this.newestCampaigns.length);
     });
+
+    if (localStorage.getItem("token")) {
+      this.authService.getUserId().subscribe((data: any) => {
+        if (data.status == "1") {
+            this.loginDiv=false;
+        } else {
+          this.loginDiv=true;
+        }
+      });
+    } else {
+      this.loginDiv=true;
+    }
+
+
   }
 
   slideConfig = {
@@ -93,5 +108,10 @@ export class HomeComponent implements OnInit {
     } else {
       this.router.navigate(["login"]);
     }
+  }
+
+  goToLogin(){
+    this.router.navigate(["login"]);
+
   }
 }

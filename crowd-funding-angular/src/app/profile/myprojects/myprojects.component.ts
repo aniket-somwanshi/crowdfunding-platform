@@ -42,7 +42,7 @@ export class MyprojectsComponent implements OnInit {
     this.campaignService.deleteCampaign(id).subscribe((data)=>{
       console.log(id);
     });
-    this.router.navigate(['/profile/myprojects']);
+    this.router.navigate(['/profile']);
 
   }
   goToEditCampaign(id){
