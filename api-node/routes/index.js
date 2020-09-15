@@ -224,7 +224,7 @@ router.put('/campaignfailed', (req, res) => {
 
 // add comments
 router.post('/add-comment', (req, res) => {
-        let sql = "INSERT INTO comments SET ?";
+        let sql = "INSERT INTO comments SET ?"
         db.query(sql, req.body, (err, result) => {
                 if (err) throw err;
                 console.log(result);
@@ -492,7 +492,7 @@ router.get('/get-rewards/:campaign_id', (req, res) => {
 });
 
 //manage campaings
-router.get('/manage-campaigns/:user_id', (req, res) => {
+router.get('/manage-campaigns/:user_id', (req, res) => {er
         let sql = "SELECT funds.*,user.user_email, rewards.rewards_sub, campaign.cam_title FROM funds INNER JOIN rewards ON rewards.rewards_id = funds.rewards_id INNER JOIN user ON user.user_id = funds.backer_id INNER JOIN campaign ON campaign.campaign_id = funds.campaign_id WHERE funds.campaign_id IN (SELECT campaign_id FROM campaign WHERE user_id=" + req.params.user_id + ")";
         db.query(sql, (err, results) => {
                 if (err) throw err;
@@ -545,8 +545,8 @@ router.post('/send-otp', (req, res) => {
                         var transporter = nodemailer.createTransport({
                                 service: 'gmail',
                                 auth: {
-                                        user: 'aniketsomwanshi13@gmail.com',
-                                        pass: 'apocalypse123'
+                                        user: 'Enter your email ',
+                                        pass: 'Do what ever you want'
                                 }
                         });
 
