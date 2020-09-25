@@ -1,4 +1,4 @@
-# CrowdFunding webapp
+# CrowdFunding Application Preview
 
 <img src= "screens/home.png">
 
@@ -9,11 +9,6 @@
 <img src= "screens/camp.png">
 
 <img src= "screens/WhatsApp Image 2020-06-15 at 00.29.29.jpeg">
-
-<img src= "screens/WhatsApp Image 2020-06-15 at 00.29.29 (1).jpeg">
-
-<img src= "screens/WhatsApp Image 2020-06-15 at 00.29.29 (2).jpeg">
-
 
 ## Instructions
 - api node folder contains backend use npm i to install packages and node app.js to start 
