@@ -1,4 +1,4 @@
-# Application Preview
+# Crowdfunding Platform
 
 <img src= "screens/home.png">
 
