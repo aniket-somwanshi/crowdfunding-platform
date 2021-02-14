@@ -1,6 +1,6 @@
 # Crowdfunding Platform
-###### Reward based Crowdfunding platform for creators and backers using 
-<img src= "screens/home.png">
+###### Reward based Crowdfunding platform for creators and backers using Angular Framework, Express.js on top of node.js and MySql.  
+<img src= "screens/home.png"> 
 
 <img src= "screens/Screenshot 2020-03-13 at 6.20.02 PM.png">
 
